@@ -1,6 +1,22 @@
 sup {
     color: red;
 }
+/* FSelect Css Starts here*/
+.fs-option:hover {
+    background-color: #426cb4 !important;
+    color: white !important;
+}
+
+.fs-wrap.multiple .fs-option {
+    background: White;
+    color: #000;
+}
+
+.fs-option.selected {
+    background-color: #426cb4 !important;
+    color: white !important;
+}
+/* FSelect Css Ends here*/
 
 .btn-primary {
     padding: 0.5rem 1.5rem;

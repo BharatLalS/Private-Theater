@@ -61,7 +61,7 @@ public class TheaterDetails
         var ListOfBolgs = new List<TheaterDetails>();
         try
         {
-            string query = "Select *,(Select StateTitle from StateMaster where stateID=StateMaster.ID) as StateTitle,(Select AreaTitle from AreaMaster where AreaID=AreaMaster.ID) as AreaTitle ,(Select CityTitle from CityMaster where CityID=CityMaster.ID) as CityTitle from TheaterDetails where Status=@Status Order by Id";
+            string query = "Select *,(Select StateTitle from StateMaster where stateID=StateMaster.ID) as StateTitle,(Select AreaTitle from AreaMaster where AreaID=AreaMaster.ID) as AreaTitle ,(Select CityTitle from CityMaster where CityID=CityMaster.ID) as CityTitle,(Select Count(ID) from TheaterTiming Where TheaterID=TheaterGuid and TheaterTiming.Status !='Deleted') as TimingCount,(Select Count(ID) from TheaterImages Where TheaterID=TheaterGuid and TheaterImages.Status !='Deleted') as GalleryCount from TheaterDetails where Status=@Status Order by Id";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
                 cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Active";
@@ -76,6 +76,8 @@ public class TheaterDetails
                                    StateTitle = Convert.ToString(dr["StateTitle"]),
                                    CityTitle = Convert.ToString(dr["CityTitle"]),
                                    TheaterTitle = Convert.ToString(dr["TheaterTitle"]),
+                                   GalleryCount = Convert.ToString(dr["GalleryCount"]),
+                                   TimingCount = Convert.ToString(dr["TimingCount"]),
                                    TheaterGuid = Convert.ToString(dr["TheaterGuid"]),
                                    TheaterUrl = Convert.ToString(dr["TheaterUrl"]),
                                    StateID = Convert.ToString(dr["StateID"]),
@@ -163,6 +165,65 @@ public class TheaterDetails
         catch (Exception ex)
         {
             ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetAlTheaterDetailsWithId", ex.Message);
+        }
+        return categories;
+    }
+
+    /// <summary>
+    /// Retrieves all details of a Theater from the database based on the Theater's Guid.
+    /// </summary>
+    /// <param name="conSQ">The SQL connection object.</param>
+    /// <param name="id">The identifier of the Theater.</param>
+    /// <returns>A TheaterDetails object containing details of the specified Theater.</returns>
+
+    public static TheaterDetails GetAllTheaterDetailsWithGuid(SqlConnection conSQ, string guid)
+    {
+        var categories = new TheaterDetails();
+        try
+        {
+            string query = "Select *,(Select StateTitle from StateMaster where stateID=StateMaster.ID) as StateTitle,(Select AreaTitle from AreaMaster where AreaID=AreaMaster.ID) as AreaTitle,(Select CityTitle from CityMaster where CityID=CityMaster.ID) as CityTitle from TheaterDetails where Status='Active' and TheaterGuid=@TheaterGuid ";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@TheaterGuid", SqlDbType.NVarChar).Value = guid;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                categories = (from DataRow dr in dt.Rows
+                              select new TheaterDetails()
+                              {
+                                  Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                                  AreaTitle = Convert.ToString(dr["AreaTitle"]),
+                                  StateTitle = Convert.ToString(dr["StateTitle"]),
+                                  CityTitle = Convert.ToString(dr["CityTitle"]),
+                                  TheaterTitle = Convert.ToString(dr["TheaterTitle"]),
+                                  TheaterGuid = Convert.ToString(dr["TheaterGuid"]),
+                                  TheaterUrl = Convert.ToString(dr["TheaterUrl"]),
+                                  StateID = Convert.ToString(dr["StateID"]),
+                                  CityID = Convert.ToString(dr["CityID"]),
+                                  AreaID = Convert.ToString(dr["AreaID"]),
+                                  Pincode = Convert.ToString(dr["Pincode"]),
+                                  Address = Convert.ToString(dr["Address"]),
+                                  FullDesc = Convert.ToString(dr["FullDesc"]),
+                                  ShortDesc = Convert.ToString(dr["ShortDesc"]),
+                                  PageTitle = Convert.ToString(dr["PageTitle"]),
+                                  MetaKeys = Convert.ToString(dr["MetaKeys"]),
+                                  MetaDesc = Convert.ToString(dr["MetaDesc"]),
+                                  MaxAllowed = Convert.ToString(dr["MaxAllowed"]),
+                                  MaxCapacity = Convert.ToString(dr["MaxCapacity"]),
+                                  ExtraPrice = Convert.ToString(dr["ExtraPrice"]),
+                                  Price = Convert.ToString(dr["Price"]),
+                                  LocationLink = Convert.ToString(dr["LocationLink"]),
+                                  ThumbImage = Convert.ToString(dr["ThumbImage"]),
+                                  AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                                  AddedIp = Convert.ToString(dr["AddedIP"]),
+                                  AddedBy = Convert.ToString(dr["AddedBy"]),
+                                  Status = Convert.ToString(dr["Status"])
+                              }).FirstOrDefault();
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetAllTheaterDetailsWithGuid", ex.Message);
         }
         return categories;
     }

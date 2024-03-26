@@ -27,7 +27,6 @@
     <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" />
     <link href="assets/libs/fSelect/fSelect.css" rel="stylesheet" />
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
-
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -250,6 +249,11 @@
                 //enableTime: true,
                 dateFormat: "d-M-Y",
             });
+            var f2 = flatpickr(document.getElementsByClassName('timepicker'), {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "h:i K",
+            });
 
             $(document).ready(function () {
                 tinymce.init({
@@ -264,6 +268,7 @@
                         'forecolor backcolor emoticons | help',
 
                     menubar: 'file edit view insert format tools table help',
+                    branding: false,
 
                 });
                 $(".fSelect").fSelect(); $(".fs-wrap").each(function () {

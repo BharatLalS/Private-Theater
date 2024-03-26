@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="state-master.aspx.cs" Inherits="Admin_state_master" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="manage-addon-categories.aspx.cs" Inherits="Admin_manage_addon_categories" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -24,18 +24,18 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="mb-sm-0 card-title"><%=Request.QueryString["id"] ==null?"Add New":"Update"%> State</h4>
+                            <h4 class="mb-sm-0 card-title"><%=Request.QueryString["id"] ==null?"Add New":"Update"%> Category</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-4 mb-3">
-                                    <label class="form-label" for="project-title-input">State Name<sup style="color: red;">*</sup></label>
-                                    <asp:TextBox runat="server" MaxLength="100" class="form-control mb-2 mr-sm-2 alphaonly txtName" ID="txtName" placeholder="Enter State Name" />
+                                    <label class="form-label" for="project-title-input">Category Name<sup style="color: red;">*</sup></label>
+                                    <asp:TextBox runat="server" MaxLength="100" class="form-control mb-2 mr-sm-2 alphaonly txtName" ID="txtName" placeholder="Enter Category Name" />
                                     <asp:RequiredFieldValidator ID="req1" runat="server" ControlToValidate="txtName" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-lg-4 mb-3">
-                                    <label class="form-label" for="project-title-input">State Url<sup style="color: red;">*</sup></label>
-                                    <asp:TextBox runat="server" MaxLength="100" class="form-control mb-2 mr-sm-2 txtURl" ID="txtURl" placeholder="Enter State Url" />
+                                    <label class="form-label" for="project-title-input">Category Url<sup style="color: red;">*</sup></label>
+                                    <asp:TextBox runat="server" MaxLength="100" class="form-control mb-2 mr-sm-2 txtURl" ID="txtURl" placeholder="Enter Category Url" />
                                     <asp:RequiredFieldValidator ID="req2" runat="server" ControlToValidate="txtURl" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-lg-4 mb-3">
@@ -53,18 +53,18 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>State Name</th>
+                                        <th>Category Name</th>
                                         <th>Last Updated On</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%=strState %>
+                                      <%=strCategory %>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>State Name</th>
+                                        <th>Category Name</th>
                                         <th>Last Updated On</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/pages/state-master.js"></script>
+    <script src="assets/js/pages/category-master.js"></script>
     <script>
         $(document.body).on("change", '.txtName', function () {
             $(".txtURl").val($(".txtName").val().toLowerCase().replace(/\./g, '').replace(/\//g, '').replace(/\\/g, '').replace(/\*/g, '').replace(/\?/g, '').replace(/\~/g, '').replace(/\ /g, '-'));

@@ -8,45 +8,23 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_city_master : System.Web.UI.Page
+public partial class Admin_manage_addon_categories : System.Web.UI.Page
 {
     SqlConnection conSQ = new SqlConnection(ConfigurationManager.ConnectionStrings["conSQ"].ConnectionString);
 
-    public string strCity = "";
+    public string strCategory = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-       
         if (!IsPostBack)
         {
-            BindStates();
-            GetCityList();
+            GetCategoryList();
             if (Request.QueryString["id"] != null)
             {
-                GetCityDetails();
+                GetCategoryDetails();
             }
         }
     }
-    public void BindStates()
-    {
-        try
-        {
-            List<StateMaster> sub = StateMaster.GetAllStateMaster(conSQ);
-            ddlState.Items.Clear();
-            if (sub.Count > 0)
-            {
-                ddlState.DataSource = sub;
-                ddlState.DataValueField = "Id";
-                ddlState.DataTextField = "StateTitle";
-                ddlState.DataBind();
 
-            }
-            ddlState.Items.Insert(0, new ListItem("Select States", "0"));
-        }
-        catch (Exception ex)
-        {
-            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "BindStates", ex.Message);
-        }
-    }
     protected void btnSave_Click(object sender, EventArgs e)
     {
         if (Page.IsValid)
@@ -54,23 +32,23 @@ public partial class Admin_city_master : System.Web.UI.Page
             try
             {
                 string aid = Request.Cookies["nt_aid"].Value;
-                CityMaster st = new CityMaster()
+                AddOnCategories st = new AddOnCategories()
                 {
-                    CityTitle = txtName.Text,
-                    StateID = ddlState.SelectedValue,
-                    CityUrl = txtURl.Text,
-                    CityOrder = "0",
+                    CategoryTitle = txtName.Text,
+                    CategoryUrl = txtURl.Text,
+                    CategoryGuid=Guid.NewGuid().ToString(),
+                    CategoryOrder = "0",
                     AddedBy = aid,
                     Status = "Active",
                     Id = Request.QueryString["id"] == null ? 0 : Convert.ToInt32(Request.QueryString["id"]),
                 };
                 if (btnSave.Text == "Update")
                 {
-                    int result = CityMaster.UpdateCity(conSQ, st);
+                    int result = AddOnCategories.UpdateCategory(conSQ, st);
                     if (result > 0)
                     {
-                        GetCityDetails();
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'City details Updated successfully.',actionTextColor: '#fff',backgroundColor: '#008a3d'});", true);
+                        GetCategoryDetails();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'Category details Updated successfully.',actionTextColor: '#fff',backgroundColor: '#008a3d'});", true);
                     }
                     else
                     {
@@ -80,19 +58,18 @@ public partial class Admin_city_master : System.Web.UI.Page
                 }
                 else
                 {
-                    int result = CityMaster.AddCity(conSQ, st);
+                    int result = AddOnCategories.AddCategory(conSQ, st);
                     if (result > 0)
                     {
                         txtName.Text = txtURl.Text = string.Empty;
-                        ddlState.ClearSelection();
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'City details added successfully.',actionTextColor: '#fff',backgroundColor: '#008a3d'});", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'Category details added successfully.',actionTextColor: '#fff',backgroundColor: '#008a3d'});", true);
                     }
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'Oops! Something went wrong. Please try after some time',actionTextColor: '#fff',backgroundColor: '#ea1c1c'});", true);
                     }
                 }
-                GetCityList();
+                GetCategoryList();
             }
             catch (Exception ex)
             {
@@ -101,40 +78,38 @@ public partial class Admin_city_master : System.Web.UI.Page
         }
     }
 
-    public void GetCityDetails()
+    public void GetCategoryDetails()
     {
         try
         {
-            var City = CityMaster.GetAllCityDetailsWithId(conSQ, Convert.ToInt32(Request.QueryString["id"]));
-            if (City != null)
+            var Category = AddOnCategories.GetAllCategoryDetailsWithId(conSQ, Convert.ToInt32(Request.QueryString["id"]));
+            if (Category != null)
             {
                 btnSave.Text = "Update";
-                ddlState.SelectedValue = City.StateID;
-                txtName.Text = City.CityTitle;
-                txtURl.Text = City.CityUrl;
+                txtName.Text = Category.CategoryTitle;
+                txtURl.Text = Category.CategoryUrl;
             }
         }
         catch (Exception ex)
         {
-            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetCityDetails", ex.Message);
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetCategoryDetails", ex.Message);
         }
     }
-    public void GetCityList()
+    public void GetCategoryList()
     {
         try
         {
-            var sub = CityMaster.GetAllCityMaster(conSQ);
+            var sub = AddOnCategories.GetAllAddOnCategories(conSQ);
             if (sub != null)
             {
                 for (int i = 0; i < sub.Count; i++)
                 {
-                    strCity += @"<tr>
+                    strCategory += @"<tr>
                                         <td>" + (i + 1) + @"</td>
-                                        <td>" + sub[i].StateTitle + @"</td>
-                                        <td>" + sub[i].CityTitle + @"</td>
+                                        <td>" + sub[i].CategoryTitle + @"</td>
                                         <td>" + Convert.ToDateTime(sub[i].AddedOn).ToString("dd MMM yyyy") + @"</td>
                                         <td class='text-center'>
-                                            <a href='city-master.aspx?id=" + sub[i].Id + @"' class='bs-tooltip text-info fs-18' data-id='" + sub[i].Id + @"' data-toggle='tooltip' data-placement='top' title='Edit' data-original-title='Edit'>
+                                            <a href='manage-addon-categories.aspx?id=" + sub[i].Id + @"' class='bs-tooltip text-info fs-18' data-id='" + sub[i].Id + @"' data-toggle='tooltip' data-placement='top' title='Edit' data-original-title='Edit'>
                                                <i class='mdi mdi-pencil'></i></a>
                                             <a href='javascript:void(0);' class='bs-tooltip deleteItem warning confirm text-danger fs-18' data-id='" + sub[i].Id + @"' data-toggle='tooltip' data-placement='top' title='Delete' data-original-title='Delete'>
                                                <i class='mdi mdi-delete-forever'></i></a>
@@ -145,7 +120,7 @@ public partial class Admin_city_master : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetCityList", ex.Message);
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetCategoryList", ex.Message);
 
         }
     }
@@ -156,11 +131,11 @@ public partial class Admin_city_master : System.Web.UI.Page
         try
         {
             SqlConnection conSQ = new SqlConnection(ConfigurationManager.ConnectionStrings["conSQ"].ConnectionString);
-            CityMaster BD = new CityMaster();
+            AddOnCategories BD = new AddOnCategories();
             BD.Id = Convert.ToInt32(id);
             BD.AddedOn = DateTime.UtcNow;
             BD.AddedIp = CommonModel.IPAddress();
-            int exec = CityMaster.DeleteCity(conSQ, BD);
+            int exec = AddOnCategories.DeleteCategory(conSQ, BD);
             if (exec > 0)
             {
                 x = "Success";

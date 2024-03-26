@@ -77,7 +77,7 @@ public partial class Admin_area_master : System.Web.UI.Page
         {
             try
             {
-                string aid = Request.Cookies["vg_aid"].Value;
+                string aid = Request.Cookies["nt_aid"].Value;
                 AreaMaster st = new AreaMaster()
                 {
                     AreaTitle = txtName.Text,

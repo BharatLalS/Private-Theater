@@ -12,7 +12,7 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="/Admin/">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Settings</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Theater</a></li>
                                 <li class="breadcrumb-item active">Manage Theater</li>
                             </ol>
                         </div>
@@ -160,10 +160,14 @@
                 </div>
             </div>
         </div>
-        <script>
-            $(document.body).on("change", '.txtName', function () {
-                $(".txtUrl").val($(".txtName").val().toLowerCase().replace(/\./g, '').replace(/\//g, '').replace(/\\/g, '').replace(/\*/g, '').replace(/\?/g, '').replace(/\~/g, '').replace(/\ /g, '-'));
-            });
-        </script>
+    </div>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+       
+        $(document.body).on("change", '.txtName', function () {
+            $(".txtUrl").val($(".txtName").val().toLowerCase().replace(/\./g, '').replace(/\//g, '').replace(/\\/g, '').replace(/\*/g, '').replace(/\?/g, '').replace(/\~/g, '').replace(/\ /g, '-'));
+        });
+    </script>
 </asp:Content>
 
