@@ -209,5 +209,6 @@ public partial class Admin_area_master : System.Web.UI.Page
     protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
     {
         BindCity();
+        GetAreaList();
     }
 }
