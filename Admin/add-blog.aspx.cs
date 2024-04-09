@@ -36,6 +36,8 @@ public partial class Admin_add_blog : System.Web.UI.Page
                 txtName.Text = BD.BlogTitle;
                 txtUrl.Text = BD.BlogUrl;
                 txtMetaDesc.Text = BD.MetaDesc;
+                txtCat.Text = BD.Category;
+                txtposted.Text = BD.PostedOn.ToString("dd MMM  yyyy");
                 txtMetaKey.Text = BD.MetaKeys;
                 txtDesc.Text = BD.FullDesc;
                 txtPageTitle.Text = BD.PageTitle;
@@ -91,6 +93,7 @@ public partial class Admin_add_blog : System.Web.UI.Page
                 BlogDetails BD = new BlogDetails();
                 BD.BlogTitle = txtName.Text;
                 BD.BlogUrl = txtUrl.Text;
+                BD.Category = txtCat.Text;
                 BD.ThumbImage = UploadThumbImage();
                 BD.BlogImage = UploadBlogImage();
                 BD.FullDesc = txtDesc.Text;
@@ -99,6 +102,7 @@ public partial class Admin_add_blog : System.Web.UI.Page
                 BD.PageTitle = txtPageTitle.Text;
                 BD.AddedIP = CommonModel.IPAddress();
                 BD.AddedOn = TimeStamps.UTCTime();
+                BD.PostedOn = Convert.ToDateTime(txtposted.Text);
                 BD.AddedBy = aid;
 
                 if (BD.ThumbImage != "" && BD.BlogImage != "")
@@ -159,7 +163,7 @@ public partial class Admin_add_blog : System.Web.UI.Page
                 {
                     string iconPath = Server.MapPath(".") + "\\../UploadImages\\" + ImageGuid1 + "_Blogthumb" + fileExtension;
                     System.Drawing.Bitmap bitimg = new System.Drawing.Bitmap(Thumbimage.PostedFile.InputStream);
-                    if ((bitimg.PhysicalDimension.Height != 400) || (bitimg.PhysicalDimension.Width != 350))
+                    if ((bitimg.PhysicalDimension.Height != 250) || (bitimg.PhysicalDimension.Width != 380))
                     {
                         return "Size";
                     }
@@ -231,7 +235,7 @@ public partial class Admin_add_blog : System.Web.UI.Page
                 {
                     string iconPath = Server.MapPath(".") + "\\../UploadImages\\" + ImageGuid1 + "_Blogthumb" + fileExtension;
                     System.Drawing.Bitmap bitimg = new System.Drawing.Bitmap(BlogImage.PostedFile.InputStream);
-                    if ((bitimg.PhysicalDimension.Height != 450) || (bitimg.PhysicalDimension.Width != 750))
+                    if ((bitimg.PhysicalDimension.Height != 500) || (bitimg.PhysicalDimension.Width != 1000))
                     {
                         return "Size";
                     }

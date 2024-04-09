@@ -14,228 +14,33 @@
     <!-- fraimwork - css include -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <!-- icon css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome-all.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/flaticon.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/owl.theme.default.min.css">
 
     <!-- others css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.min.css">
 
     <!-- color switcher css include -->
-    <link id="color_theme" rel="stylesheet" type="text/css" href="assets/css/colors/default.css">
+    <link id="color_theme" rel="stylesheet" type="text/css" href="/assets/css/colors/default.css">
 
     <!-- custom css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <header id="header-section" class="header-section default-header-section auto-hide-header clearfix">
-
-            <!-- header-top - start -->
-            <%--<div class="header-top">
-				<div class="container">
-					<div class="row">
-
-						<!-- basic-contact - start -->
-						<div class="col-lg-6">
-							<div class="basic-contact">
-								<ul>
-									<li>
-										<a href="#!">
-											<i class="fas fa-envelope"></i>
-											info@harmoni.com
-										</a>
-									</li>
-									<li>
-										<a href="#!">
-											<i class="fas fa-phone"></i>
-											100-2222-9999
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- basic-contact - end -->
-
-						<!-- register-login-group - start -->
-						<div class="col-lg-6">
-							<div class="register-login-group">
-								<ul>
-									<li>
-										<a href="#register-modal" class="register-modal-btn">
-											<i class="fas fa-user"></i>
-											Register
-										</a>
-										<div id="register-modal" class="reglog-modal-wrapper register-modal mfp-hide clearfix" style="background-image: url(assets/images/login-modal-bg.jpg);">
-											<div class="overlay-black clearfix">
-
-												<!-- leftside-content - start -->
-												<div class="leftside-content">
-													<div class="site-logo-wrapper mb-80">
-														<a href="#!" class="logo">
-\															<img src="assets/images/00icons/logo1.png" alt="logo_not_found">
-														</a>
-													</div>
-													<div class="register-login-link mb-80">
-														<ul>
-															<li><a href="#!">Login</a></li>
-															<li class="active"><a href="#!">Register</a></li>
-														</ul>
-													</div>
-													<div class="copyright-text">
-														<p class="m-0">©2019 <a href="#!" class="yellow-color">Harmoni.com</a> all right reserved, made with <i class="fas fa-heart"></i> by jThemes Studio </p>
-													</div>
-												</div>
-												<!-- leftside-content - end -->
-
-												<!-- rightside-content - start -->
-												<div class="rightside-content text-center">
-
-													<div class="mb-30">
-														<h2 class="form-title title-large white-color">Account <strong>Register</strong></h2>
-														<span class="form-subtitle white-color">Have an account? <strong>LOGIN NOW</strong></span>
-													</div>
-
-													<div class="login-form text-center mb-50">
-														<form action="#!">
-															<div class="form-item">
-																<input type="email" placeholder="User Name">
-															</div>
-															<div class="form-item">
-																<input type="password" placeholder="Password">
-															</div>
-															<div class="form-item">
-																<input type="email" placeholder="Repeat Password">
-															</div>
-															<div class="form-item">
-																<input type="password" placeholder="Email Address">
-															</div>
-															<div class="human-verification text-left">
-																<input type="checkbox" id="imnotarobot">
-																<label for="imnotarobot">I'm not a robot</label>
-																<span class="verification-image">
-																	<img src="assets/images/iamnotrobot.png" alt="Image_not_found">
-																</span>
-															</div>
-															<button type="submit" class="login-btn">login now</button>
-														</form>
-													</div>
-
-													<div class="bottom-text white-color">
-														<p class="m-0">
-															* Denotes mandatory field.
-														</p>
-														<p class="m-0">** At least one telephone number is required.</p>
-													</div>
-
-												</div>
-												<!-- rightside-content - end -->
-
-												<a class="popup-modal-dismiss" href="#!">
-													<i class="fas fa-times"></i>
-												</a>
-
-											</div>
-										</div>
-									</li>
-									<li>
-										<a href="#login-modal" class="login-modal-btn">
-											<i class="fas fa-lock"></i>
-											Login
-										</a>
-										<div id="login-modal" class="reglog-modal-wrapper mfp-hide clearfix" style="background-image: url(assets/images/login-modal-bg.jpg);">
-											<div class="overlay-black clearfix">
-
-												<!-- leftside-content - start -->
-												<div class="leftside-content">
-													<div class="site-logo-wrapper mb-80">
-														<a href="#!" class="logo">
-															<img src="assets/images/00icons/logo1.png" alt="logo_not_found">
-														</a>
-													</div>
-													<div class="register-login-link mb-80">
-														<ul>
-															<li class="active"><a href="#!">Login</a></li>
-															<li><a href="#!">Register</a></li>
-														</ul>
-													</div>
-													<div class="copyright-text">
-														<p class="m-0">©2019 <a href="#!" class="yellow-color">Harmoni.com</a> all right reserved, made with <i class="fas fa-heart"></i> by jThemes Studio </p>
-													</div>
-												</div>
-												<!-- leftside-content - end -->
-
-												<!-- rightside-content - start -->
-												<div class="rightside-content text-center">
-
-													<div class="mb-30">
-														<h2 class="form-title title-large white-color">Account <strong>Login</strong></h2>
-														<span class="form-subtitle white-color">Login to our website, or <strong>REGISTER</strong></span>
-													</div>
-
-													<div class="fb-login-btn mb-30">
-														<a href="#!">
-															<span class="icon">
-																<i class="fab fa-facebook-f"></i>
-															</span>
-															login with facebook
-														</a>
-													</div>
-
-													<div class="or-text mb-30">
-														<span>or sign in</span>
-													</div>
-
-													<div class="login-form text-center mb-50">
-														<form action="#!">
-															<div class="form-item">
-																<input type="email" placeholder="example@gmail.com">
-															</div>
-															<div class="form-item">
-																<input type="password" placeholder="Password">
-															</div>
-															<button type="submit" class="login-btn">login now</button>
-														</form>
-													</div>
-
-													<div class="bottom-text white-color">
-														<p class="m-0">
-															* Denotes mandatory field.
-														</p>
-														<p class="m-0">** At least one telephone number is required.</p>
-													</div>
-
-												</div>
-												<!-- rightside-content - end -->
-
-												<a class="popup-modal-dismiss" href="#!">
-													<i class="fas fa-times"></i>
-												</a>
-
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- register-login-group - end -->
-						
-					</div>
-				</div>
-			</div>--%>
-            <!-- header-top - end -->
-
             <!-- header-bottom - start -->
             <div class="header-bottom">
                 <div class="container">
@@ -244,8 +49,8 @@
                         <!-- site-logo-wrapper - start -->
                         <div class="col-lg-3">
                             <div class="site-logo-wrapper">
-                                <a href="Default.aspx" class="logo">
-                                    <img src="assets/images/00icons/logo.png" alt="logo_not_found">
+                                <a href="/" class="logo">
+                                    <img src="/assets/images/00icons/logo.png" alt="logo_not_found">
                                 </a>
                             </div>
                         </div>
@@ -261,23 +66,23 @@
                                         <div class="menu-item-list ul-li clearfix">
                                             <ul>
                                                 <li class="menu-item-has-children">
-                                                    <a href="Default.aspx">home</a>
+                                                    <a href="/">home</a>
 
                                                 </li>
                                                 <li class="menu-item-has-children">
-                                                    <a href="book-now.aspx">Book now</a>
+                                                    <a href="/book-now.aspx">Book now</a>
 
                                                 </li>
                                                 <li class="menu-item-has-children">
-                                                    <a href="about-us.aspx">About Us</a>
+                                                    <a href="/about-us.aspx">About Us</a>
 
                                                 </li>
                                                 <li class="menu-item-has-children">
-                                                    <a href="blog.aspx">Blog</a>
+                                                    <a href="/blog.aspx">Blog</a>
 
                                                 </li>
                                                 <li>
-                                                    <a href="faq.aspx">FAQ</a>
+                                                    <a href="/faq.aspx">FAQ</a>
                                                 </li>
 
                                             </ul>
@@ -296,13 +101,11 @@
             <!-- header-bottom - end -->
 
         </header>
-        <!-- altranative-header - start
-		================================================== -->
         <div class="header-altranative">
             <div class="container">
                 <div class="logo-area float-left">
                     <a href="Default.aspx">
-                        <img src="assets/images/00icons/logo.png" alt="logo_not_found">
+                        <img src="/assets/images/00icons/logo.png" alt="logo_not_found">
                     </a>
                 </div>
 
@@ -319,49 +122,30 @@
                     </span>
 
                     <div class="sidebar-header">
-                        <a href="#!">
-                            <img src="assets/images/00icons/logo.png" alt="logo_not_found">
-                        </a>
+                        <a href="javascript:void(0);"><img src="/assets/images/00icons/logo.png" alt="logo_not_found"></a>
                     </div>
 
-                   	<div class="menu-link-list other-pages-links">
-						<ul>
-							<li>
-								<a href="Default.aspx">
-									<span class="icon"><i class="fas fa-home"></i></span>
-Home								</a>
-							</li>
-							<li>
-								<a href="book-now.aspx">
-									<span class="icon"><i class="fas fa-home"></i></span>
-Book Now								</a>
-							</li>
-							<li>
-								<a href="blog.aspx">
-									<span class="icon"><i class="fas fa-home"></i></span>
-									Blog
-								</a>
-							</li>
-							<li>
-								<a href="faq.aspx">
-									<span class="icon"><i class="fas fa-home"></i></span>
-									Faq
-								</a>
-							</li>
-							
-						</ul>
-					</div>
-
-                   
-                    <!-- social-links - end -->
-
+                    <div class="menu-link-list other-pages-links">
+                        <ul>
+                            <li>
+                                <a href="/"><span class="icon"><i class="fas fa-home"></i></span>Home</a>
+                            </li>
+                            <li>
+                                <a href="/book-now.aspx"><span class="icon"><i class="fas fa-home"></i></span>Book Now</a>
+                            </li>
+                            <li>
+                                <a href="/blog.aspx"><span class="icon"><i class="fas fa-home"></i></span>Blog</a>
+                            </li>
+                            <li>
+                                <a href="/faq.aspx"><span class="icon"><i class="fas fa-home"></i></span>Faq</a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="overlay"></div>
                 </div>
             </div>
             <!-- sidebar menu - end -->
         </div>
-        <!-- altranative-header - end
-		================================================== -->
 
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -385,17 +169,18 @@ Book Now								</a>
 
                                 <!-- site-logo-wrapper - start -->
                                 <div class="site-logo-wrapper mb-30">
-                                    <a href="Default.aspx" class="logo">
-                                        <img src="assets/images/00icons/logo1.png" alt="logo_not_found">
+                                    <a href="/" class="logo">
+                                        <img src="/assets/images/00icons/logo1.png" alt="logo_not_found">
                                     </a>
                                 </div>
                                 <!-- site-logo-wrapper - end -->
 
                                 <p class="mb-30 text-white">
-Welcome to Binge Party Bengaluru, where we redefine the essence of celebration through the captivating world of cinema.                                </p>
+                                    Welcome to Binge Party Bengaluru, where we redefine the essence of celebration through the captivating world of cinema.                               
+                                </p>
 
                                 <!-- social-links - start -->
-                                
+
                                 <!-- social-links - end -->
 
                             </div>
@@ -408,11 +193,11 @@ Welcome to Binge Party Bengaluru, where we redefine the essence of celebration t
                                 <h3 class="footer-item-title">Quick Links
                                 </h3>
                                 <ul>
-                                    <li><a href="Default.aspx">Home</a></li>
-                                   <li><a href="about-us.aspx">About Us</a></li>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/about-us.aspx">About Us</a></li>
 
-                                    <li><a href="blog.aspx">Blog</a></li>
-                                    <li><a href="faq.aspx">FAQ</a></li>
+                                    <li><a href="/blog.aspx">Blog</a></li>
+                                    <li><a href="/faq.aspx">FAQ</a></li>
 
                                 </ul>
 
@@ -426,12 +211,12 @@ Welcome to Binge Party Bengaluru, where we redefine the essence of celebration t
                                 <h3 class="footer-item-title">Book Now
                                 </h3>
                                 <ul>
-                                    <li><a href="details.aspx">Electronic City</a></li>
-                                    <li><a href="details.aspx">HSR Layout 
+                                    <li><a href="/details.aspx">Electronic City</a></li>
+                                    <li><a href="/details.aspx">HSR Layout 
                                     </a></li>
-                                    <li><a href="details.aspx">Anathnaagar
-</a></li>
-                                    <li><a href="details.aspx">Sahkarnagar</a></li>
+                                    <li><a href="/details.aspx">Anathnaagar
+                                    </a></li>
+                                    <li><a href="/details.aspx">Sahkarnagar</a></li>
                                 </ul>
 
                             </div>
@@ -446,7 +231,7 @@ Welcome to Binge Party Bengaluru, where we redefine the essence of celebration t
                                 <ul>
                                     <li class="image-wrapper">
                                         <i class="fas fa-map-marker-alt"></i>
-                                        <p> 4th Floor, 338, 27th Main Rd, 2nd Sector, Sector 2, HSR Layout, Bengaluru, Karnataka 560102</p>
+                                        <p>4th Floor, 338, 27th Main Rd, 2nd Sector, Sector 2, HSR Layout, Bengaluru, Karnataka 560102</p>
                                     </li>
                                     <li class="image-wrapper">
                                         <i class="fas fa-envelope"></i>
@@ -474,7 +259,11 @@ Welcome to Binge Party Bengaluru, where we redefine the essence of celebration t
                         <!-- copyright-text - start -->
                         <div class="col-lg-7 col-md-12 col-sm-12">
                             <div class="copyright-text">
-                                <p class="m-0"> &#169; <script>document.write(new Date().getFullYear())</script> <a href="#!" class="site-link">Bingeparty,</a> All Right Reserved</p>
+                                <p class="m-0">
+                                    &#169;
+                                    <script>document.write(new Date().getFullYear())</script>
+                                    <a href="#!" class="site-link">Bingeparty,</a> All Right Reserved
+                                </p>
                             </div>
                         </div>
                         <!-- copyright-text - end -->
@@ -482,8 +271,8 @@ Welcome to Binge Party Bengaluru, where we redefine the essence of celebration t
                         <!-- footer-menu - start -->
                         <div class="col-lg-5 col-md-12 col-sm-12 text-end">
                             <div class="text-end-new">
-                        <p class="m-0"> <a href="https://www.nextwebi.com/" class="site-link">Developed by Nextwebi</a> </p>
-                                </div>
+                                <p class="m-0"><a href="https://www.nextwebi.com/" class="site-link">Developed by Nextwebi</a> </p>
+                            </div>
                         </div>
                         <!-- footer-menu - end -->
 
@@ -493,44 +282,31 @@ Welcome to Binge Party Bengaluru, where we redefine the essence of celebration t
 
         </footer>
         <div class="fixed-whatsapp-btn">
-        <a href="https://api.whatsapp.com/send?phone=">
-            <div class="whatsapp-btn">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-        </a>
-    </div>
+            <a href="https://api.whatsapp.com/send?phone=">
+                <div class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </a>
+        </div>
         <!-- fraimwork - jquery include -->
-        <script src="assets/js/jquery-3.3.1.min.js"></script>
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/jquery-3.3.1.min.js"></script>
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
 
         <!-- carousel jquery include -->
-        <script src="assets/js/slick.min.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/slick.min.js"></script>
+        <script src="/assets/js/owl.carousel.min.js"></script>
 
         <!-- map jquery include -->
-        <script src="assets/js/gmap3.min.js"></script>
-        <script src="http://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-        <!-- calendar jquery include -->
-        <script src="assets/js/atc.min.js"></script>
-
-        <!-- others jquery include -->
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/jarallax.min.js"></script>
-        <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
-        <!-- gallery img loaded - jqury include -->
-        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-        <!-- multy count down - jqury include -->
-        <script src="assets/js/jquery.countdown.js"></script>
-
-        <!-- color panal - jqury include -->
-
-        <!-- custom jquery include -->
-        <script src="assets/js/custom.js"></script>
+        <%--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>--%>
+        <script src="/assets/js/atc.min.js"></script>
+        <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="/assets/js/isotope.pkgd.min.js"></script>
+        <script src="/assets/js/jarallax.min.js"></script>
+        <script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="/assets/js/imagesloaded.pkgd.min.js"></script>
+        <script src="/assets/js/jquery.countdown.js"></script>
+        <script src="/assets/js/custom.js"></script>
         <script>
             var input = document.querySelector('#qty');
             var btnminus = document.querySelector('.qtyminus');

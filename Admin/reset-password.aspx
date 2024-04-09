@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8" />
-    <title>Private Theater Password Recovery</title>
+    <title>Binge Party Password Recovery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Private Theater" name="author" />
+    <meta content="Binge Party" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.png">
 
@@ -94,7 +94,7 @@
                                     &copy;
                                
                                     <script>document.write(new Date().getFullYear())</script>
-                                    Private Theater
+                                    Binge Party
                                 </p>
                             </div>
 

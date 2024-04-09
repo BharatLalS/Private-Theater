@@ -4,10 +4,10 @@
 <html data-layout="vertical" data-topbar="light" data-sidebar="<%=((Request.Cookies["sq_theme"] == null  ) ? "" : Context.Request.Cookies["sq_theme"].Value == "dark" ? "dark" :"light" )%>" data-sidebar-size="<%=((Request.Cookies["sq_tray"] == null  ) ? "" : Context.Request.Cookies["sq_tray"].Value == "closed" ? "sm" :"lg" )%>" data-sidebar-image="none" data-preloader="disable" data-layout-mode="<%=((Request.Cookies["sq_theme"] == null  ) ? "" : Context.Request.Cookies["sq_theme"].Value == "dark" ? "dark" :"light" )%>">
 <head runat="server">
     <meta charset="utf-8" />
-    <title>Private Theater Admin</title>
+    <title>Binge Party Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Private Theater" name="description" />
-    <meta content="Private Theater" name="author" />
+    <meta content="Binge Party" name="description" />
+    <meta content="Binge Party" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="/Img/websiteLogos/favicon.png">
     <!-- Layout config Js -->
@@ -31,19 +31,6 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
-        /*.navbar-brand-box {
-            background-color: #24083ed4 !important;
-        }
-
-        .simplebar-content-wrapper {
-            background-color: #24083ed4 !important;
-        }*/
-
-
-        /*  .navbar-menu .navbar-nav .nav-link {
-            color: white !important;
-        }*/
-
         .navbar-menu .navbar-nav .nav-link:hover {
             color: #3577F1 !important;
         }
@@ -86,7 +73,7 @@
                                         <img src="/Img/websiteLogos/favicon.png" height="40">
                                     </span>
                                     <span class="logo-lg">
-                                        <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="70">
+                                        <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="60">
                                     </span>
                                 </a>
 
@@ -95,7 +82,7 @@
                                         <img src="/Img/websiteLogos/favicon.png" height="40">
                                     </span>
                                     <span class="logo-lg">
-                                        <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="70">
+                                        <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="60">
                                     </span>
                                 </a>
                             </div>
@@ -154,7 +141,7 @@
                             <img src="/Img/websiteLogos/favicon.png" height="40">
                         </span>
                         <span class="logo-lg">
-                            <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="70">
+                            <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="60">
                         </span>
                     </a>
                     <!-- Light Logo-->
@@ -163,7 +150,7 @@
                             <img src="/Img/websiteLogos/favicon.png" height="40">
                         </span>
                         <span class="logo-lg">
-                            <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="70">
+                            <img src="/Img/websiteLogos/logo.png" style="padding: 10px" alt="" height="60">
                         </span>
                     </a>
                     <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -197,7 +184,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <script>document.write(new Date().getFullYear())</script>
-                                © Private Theater
+                                © Binge Party
                        
                             </div>
                             <div class="col-sm-6">

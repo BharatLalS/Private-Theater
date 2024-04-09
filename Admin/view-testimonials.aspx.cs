@@ -31,9 +31,9 @@ public partial class Admin_view_testimonials : System.Web.UI.Page
             for (int i = 0; i < BD.Count; i++)
             {
                 var Message = "";
-                if (BD[i].Message.Length > 80)
+                if (BD[i].Message.Length > 120)
                 {
-                     Message = BD[i].Message.Substring(0,80)+" ....";
+                     Message = BD[i].Message.Substring(0,120)+" ....";
                 }
                 else
                 {
@@ -42,8 +42,7 @@ public partial class Admin_view_testimonials : System.Web.UI.Page
                 strTestimonials += @"<tr>
                                         <td>" + (i + 1) + @"</td>
                                         <td>" + BD[i].PostedBy + @"</td>
-                                        <td>" + BD[i].Designation + @"</td>
-                                        <td>" + Message + @"</td>
+                                        <td class='col-1'>" + Message + @"</td>
                                         <td>" + BD[i].AddedBy + @"</td>
                                          <td>" + BD[i].AddedOn.ToString("dd/MMM/yyyy") + @"</td>
                                         <td class='text-center'> 

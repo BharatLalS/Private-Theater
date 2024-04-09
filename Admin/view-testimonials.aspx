@@ -38,7 +38,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Posted By</th>
-                                        <th>Designation</th>
                                         <th>Message</th>
                                         <th>Added By</th>
                                         <th>Added On</th>
@@ -52,7 +51,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Posted By</th>
-                                        <th>Designation</th>
                                         <th>Message</th>
                                         <th>Added By</th>
                                         <th>Added On</th>

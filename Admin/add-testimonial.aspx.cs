@@ -32,7 +32,7 @@ public partial class Admin_add_testimonial : System.Web.UI.Page
                 btnSave.Text = "Update";
                 btnNew.Visible = true;
                 txtPosted.Text = BD.PostedBy;
-                txtDesignation.Text = BD.Designation;
+                //txtDesignation.Text = BD.Designation;
                 txtMessage.Text = BD.Message;
             }
         }
@@ -52,8 +52,8 @@ public partial class Admin_add_testimonial : System.Web.UI.Page
                 TestimonialDetails BD = new TestimonialDetails();
                 BD.PostedBy = txtPosted.Text;
                 BD.Message = txtMessage.Text;
-                BD.Designation = txtDesignation.Text;
-                
+                BD.Designation = ""; // txtDesignation.Text;
+
                 BD.AddedIp = CommonModel.IPAddress();
                 BD.AddedOn = TimeStamps.UTCTime();
                 BD.AddedBy = aid;
@@ -78,7 +78,7 @@ public partial class Admin_add_testimonial : System.Web.UI.Page
                     if (result > 0)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'Testimonial Added successfully.',actionTextColor: '#fff',backgroundColor: '#008a3d'});", true);
-                        txtPosted.Text = txtMessage.Text = txtDesignation.Text ="";
+                        txtPosted.Text = txtMessage.Text = "";
                     }
                     else
                     {

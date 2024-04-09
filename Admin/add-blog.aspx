@@ -43,6 +43,18 @@
                                 </div>
                             </div>
                             <div class="row mb-2">
+                                <div class="col-lg-6">
+                                    <label class="text-muted">Posted On<sup class="text-danger">*</sup></label>
+                                    <asp:TextBox runat="server" MaxLength="100" class="form-control mb-2 mr-sm-2 datepicker" ID="txtposted" placeholder="Posted On" />
+                                    <asp:RequiredFieldValidator ID="req2" runat="server" ControlToValidate="txtposted" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="text-muted">Category<sup class="text-danger">*</sup></label>
+                                    <asp:TextBox runat="server" MaxLength="100" class="form-control mb-2 mr-sm-2" ID="txtCat" placeholder="Category" />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCat" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
                                 <div class="col-lg-12">
                                     <label class="text-muted">Full Description<sup class="text-danger">*</sup></label>
                                     <asp:TextBox runat="server" TextMode="MultiLine" class="form-control mb-2 mr-sm-2 summernote" ID="txtDesc" Placeholder="Full Description ....." />
@@ -57,12 +69,8 @@
                                     <asp:Label ID="lblBlog" runat="server" Visible="false"></asp:Label>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-
-
                 </div>
                 <div class="col-lg-4">
                     <div class="card">
@@ -95,12 +103,12 @@
                                 <div class="col-lg-12 mb-3">
                                     <label class="text-muted">Thumb Image<sup class="text-danger">*</sup></label>
                                     <asp:FileUpload ID="Thumbimage" runat="server" ToolTip="Maxmimum 1 MB file size" CssClass="form-control"></asp:FileUpload>
-                                    <small class="text-danger">.png, .jpeg, .jpg, .gif formats are required, Image Size Should be 350 × 400 px</small><br />
+                                    <small class="text-danger">.png, .jpeg, .jpg, .gif formats are required, Image Size Should be 380 × 250 px</small><br />
                                 </div>
                                 <div class="col-lg-12 mb-3">
                                     <label class="text-muted">Blog Image<sup class="text-danger">*</sup></label>
                                     <asp:FileUpload ID="BlogImage" runat="server" ToolTip="Maxmimum 1 MB file size" CssClass="form-control"></asp:FileUpload>
-                                    <small class="text-danger">.png, .jpeg, .jpg, .gif formats are required, Image Size Should be 750 × 450 px</small><br />
+                                    <small class="text-danger">.png, .jpeg, .jpg, .gif formats are required, Image Size Should be 1000 × 500 px</small><br />
                                 </div>
                                 <div runat="server" id="divimg" class="col-lg-12 d-flex justify-content-around" visible="false">
                                     <div class="col-lg-3 text-center">

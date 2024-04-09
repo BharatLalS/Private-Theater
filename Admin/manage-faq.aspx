@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title"><%=Request.QueryString["id"] ==null?"Add ":"Update"%>  FAQ</h5>
@@ -48,9 +48,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-9">
+            
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Manage FAQs</h5>
@@ -64,7 +63,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Question</th>
-                                                    <th>Answer</th>
                                                     <th>Added On</th>
                                                     <th class="text-center">Action</th>
                                                 </tr>
@@ -76,7 +74,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Question</th>
-                                                    <th>Answer</th>
                                                     <th>Added On</th>
                                                     <th class="text-center">Action</th>
                                                 </tr>

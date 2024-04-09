@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Private Theater Password Recovery</title>
+    <title>Binge Party Password Recovery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Private-Theater" name="author" />
     <!-- App favicon -->
@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="text-center mt-2">
                                         <h5 class="text-primary">Forgot Password?</h5>
-                                        <p class="text-muted">Reset password with Private Theater Admin</p>
+                                        <p class="text-muted">Reset password with Binge Party Admin</p>
                                     </div>
                                     <div class="alert alert-borderless alert-warning text-center mb-2 mx-2" role="alert">
                                         Enter your email and instructions will be sent to you! 
@@ -70,7 +70,7 @@
                                     &copy;
                                
                                     <script>document.write(new Date().getFullYear())</script>
-                                  Private Theater
+                                 Binge Party
                                 </p>
                             </div>
 

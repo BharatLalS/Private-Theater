@@ -23,6 +23,7 @@ public class AreaMaster
     public string CityID { get; set; }
     public string AreaUrl { get; set; }
     public string AreaOrder { get; set; }
+    public string ImageUrl { get; set; }
     public DateTime AddedOn { get; set; }
     public string AddedIp { get; set; }
     public string AddedBy { get; set; }
@@ -92,6 +93,7 @@ public class AreaMaster
                                   StateID = Convert.ToString(dr["StateID"]),
                                   CityID = Convert.ToString(dr["CityID"]),
                                   AreaUrl = Convert.ToString(dr["AreaUrl"]),
+                                  ImageUrl = Convert.ToString(dr["ImageUrl"]),
                                   AreaOrder = Convert.ToString(dr["AreaOrder"]),
                                   AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
                                   AddedIp = Convert.ToString(dr["AddedIP"]),
@@ -137,6 +139,7 @@ public class AreaMaster
                                   StateID = Convert.ToString(dr["StateID"]),
                                   CityID = Convert.ToString(dr["CityID"]),
                                   AreaUrl = Convert.ToString(dr["AreaUrl"]),
+                                  ImageUrl = Convert.ToString(dr["ImageUrl"]),
                                   AreaOrder = Convert.ToString(dr["AreaOrder"]),
                                   AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
                                   AddedIp = Convert.ToString(dr["AddedIP"]),
@@ -182,6 +185,7 @@ public class AreaMaster
                                    StateID = Convert.ToString(dr["StateID"]),
                                    CityID = Convert.ToString(dr["CityID"]),
                                    AreaUrl = Convert.ToString(dr["AreaUrl"]),
+                                   ImageUrl = Convert.ToString(dr["ImageUrl"]),
                                    AreaOrder = Convert.ToString(dr["AreaOrder"]),
                                    AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
                                    AddedIp = Convert.ToString(dr["AddedIP"]),
@@ -223,6 +227,7 @@ public class AreaMaster
                                    StateTitle = Convert.ToString(dr["StateTitle"]),
                                    CityTitle = Convert.ToString(dr["CityTitle"]),
                                    AreaUrl = Convert.ToString(dr["AreaUrl"]),
+                                   ImageUrl = Convert.ToString(dr["ImageUrl"]),
                                    AreaOrder = Convert.ToString(dr["AreaOrder"]),
                                    StateID = Convert.ToString(dr["StateID"]),
                                    CityID = Convert.ToString(dr["CityID"]),
@@ -251,12 +256,13 @@ public class AreaMaster
         int result = 0;
         try
         {
-            string query = "Update AreaMaster Set AreaTitle=@AreaTitle,AreaUrl=@AreaUrl,StateID=@StateID,CityID=@CityID,AddedOn=@AddedOn,AddedIp=@AddedIp, AddedBy=@AddedBy Where Id=@Id ";
+            string query = "Update AreaMaster Set AreaTitle=@AreaTitle,AreaUrl=@AreaUrl,ImageUrl=@ImageUrl,StateID=@StateID,CityID=@CityID,AddedOn=@AddedOn,AddedIp=@AddedIp, AddedBy=@AddedBy Where Id=@Id ";
             using (SqlCommand cmd = new SqlCommand(query, conGV))
             {
                 cmd.Parameters.AddWithValue("@Id", SqlDbType.NVarChar).Value = Area.Id;
                 cmd.Parameters.AddWithValue("@AreaTitle", SqlDbType.NVarChar).Value = Area.AreaTitle;
                 cmd.Parameters.AddWithValue("@AreaUrl", SqlDbType.NVarChar).Value = Area.AreaUrl;
+                cmd.Parameters.AddWithValue("@ImageUrl", SqlDbType.NVarChar).Value = Area.ImageUrl;
                 cmd.Parameters.AddWithValue("@StateID", SqlDbType.NVarChar).Value = Area.StateID;
                 cmd.Parameters.AddWithValue("@CityID", SqlDbType.NVarChar).Value = Area.CityID;
                 cmd.Parameters.AddWithValue("@AddedOn", SqlDbType.NVarChar).Value = DateTime.UtcNow;
@@ -285,11 +291,12 @@ public class AreaMaster
         int result = 0;
         try
         {
-            string query = "Insert Into AreaMaster (AreaTitle,AreaUrl,StateID,CityID,AddedOn,AddedIP,Status,AddedBy) values (@AreaTitle,@AreaUrl,@StateID,@CityID,@AddedOn,@AddedIP,@Status,@AddedBy) select SCOPE_IDENTITY()";
+            string query = "Insert Into AreaMaster (AreaTitle,AreaUrl,ImageUrl,StateID,CityID,AddedOn,AddedIP,Status,AddedBy) values (@AreaTitle,@AreaUrl,@ImageUrl,@StateID,@CityID,@AddedOn,@AddedIP,@Status,@AddedBy) select SCOPE_IDENTITY()";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
                 cmd.Parameters.AddWithValue("@AreaTitle", SqlDbType.NVarChar).Value = Area.AreaTitle;
                 cmd.Parameters.AddWithValue("@AreaUrl", SqlDbType.NVarChar).Value = Area.AreaUrl;
+                cmd.Parameters.AddWithValue("@ImageUrl", SqlDbType.NVarChar).Value = Area.ImageUrl;
                 cmd.Parameters.AddWithValue("@AddedIp", SqlDbType.NVarChar).Value = CommonModel.IPAddress();
                 cmd.Parameters.AddWithValue("@AddedBy", SqlDbType.NVarChar).Value = Area.AddedBy;
                 cmd.Parameters.AddWithValue("@AreaOrder", SqlDbType.NVarChar).Value = Area.AreaOrder;

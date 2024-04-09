@@ -56,17 +56,17 @@
         }
 
         .tile {
-            height: 190px;
-            width: 170px;
+            height: 300px;
+            width: 100%;
             position: relative;
             margin-bottom: 10px;
         }
 
-            .tile.new-hei {
+        /*  .tile.new-hei {
                 height: 250px;
                 width: 170px;
                 position: relative;
-            }
+            }*/
 
         input[type="checkbox"] {
             -webkit-appearance: none;
@@ -148,11 +148,11 @@
         .sticky-header-section .header-bottom .user-search-btn-group ul li > a,
         .upcomming-event-section2 .comming-event-item .event-content .details-btn,
         .upcomming-event-section3 .comming-event-item .event-content .details-btn,
-        .sticky-header-section .header-bottom .user-search-btn-group ul li > button,
+        .sticky-header-section .header-bottom .user-search-btn-group ul li > a,
         .slide-section .main-carousel1 .item .slider-item-content .link-groups .start-btn,
         .scrolltop-fixed-header-section .header-bottom .user-search-btn-group ul li > a,
-        .scrolltop-fixed-header-section .header-bottom .user-search-btn-group ul li > button,
-        .event-details-section .reviewer-comment-wrapper .comment-bar .comment-content .meta-wrapper .btn-group-right ul li button:hover {
+        .scrolltop-fixed-header-section .header-bottom .user-search-btn-group ul li > a,
+        .event-details-section .reviewer-comment-wrapper .comment-bar .comment-content .meta-wrapper .btn-group-right ul li a:hover {
             border-color: unset !important;
         }
 
@@ -302,32 +302,30 @@
                             <!-- <h3 class="float-left">change layout</h3> -->
                             <ul class="nav blog-layout-menubar float-right">
                                 <li>
-                                    <a class="active" data-toggle="tab" href="#Customization">Customization</a>
+                                    <a class="active" data-toggle="tab" href="#Occation">Occation</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#Theme">Theme</a>
+                                    <a data-toggle="tab" href="#Cakes">Cakes</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#Cake">Cake</a>
+                                    <a data-toggle="tab" href="#Cake">Bouquet</a>
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#Decorations">Decorations</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#Eatery">Eatery</a>
+                                    <a data-toggle="tab" href="#foodparty">Food party</a>
                                 </li>
-                                <li>
-                                    <a data-toggle="tab" href="#Ballon">Balloon</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
 
                     <div class="tab-content">
                         <!-- grid-layout - start -->
-                        <div id="Customization" class="tab-pane fade in active show">
+                        <div id="Occation" class="tab-pane fade in active show">
                             <div class="row mt-0 gy-4">
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Birthday" />
                                         <label for="Birthday" class="theme-sec">
@@ -335,17 +333,17 @@
                                             <div class="content">
                                                 <p>Birthday</p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                know more
-                                            </button>
+
 
 
 
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Bride" />
                                         <label for="Bride" class="theme-sec">
@@ -356,6 +354,8 @@
 
                                                 </p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
 
 
@@ -363,7 +363,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Anniversary" />
                                         <label for="Anniversary" class="theme-sec">
@@ -371,6 +371,8 @@
                                             <div class="content">
                                                 <p>Anniversary</p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
 
 
@@ -378,7 +380,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Proposal" />
                                         <label for="Proposal" class="theme-sec">
@@ -386,6 +388,8 @@
                                             <div class="content">
                                                 <p>Proposal</p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
 
 
@@ -393,7 +397,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Baby" />
                                         <label for="Baby" class="theme-sec">
@@ -404,6 +408,8 @@
 
                                                 </p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
 
 
@@ -414,7 +420,7 @@
 
                             </div>
                             <div class="row justify-content-center mt-2">
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <a href="#Theme" class="custom-btn" tabindex="-1">Next<i class=" ms-2 mt-1 fas fa-angle-right fa-lg"></i></a>
                                 </div>
                             </div>
@@ -457,126 +463,10 @@
                                 <textarea placeholder="Add Note Here"></textarea>
                             </div>
                         </div>
-                        <div id="Theme" class="tab-pane fade">
+                        <div id="Cakes" class="tab-pane fade">
                             <div class="row mt-0 gy-4">
-                                <div class="col-lg-3 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Gold" />
-                                        <label for="Gold" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/theme/1.png" />
-                                            <div class="content">
-                                                <p>Gold</p>
-                                                <p>₹0</p>
-                                            </div>
 
-
-
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Silver" />
-                                        <label for="Silver" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/theme/2.png" />
-                                            <div class="content">
-                                                <p>
-                                                    Silver
-
-                                                </p>
-                                                <p>₹0</p>
-                                            </div>
-
-
-
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="White" />
-                                        <label for="White" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/theme/3.png" />
-                                            <div class="content">
-                                                <p>White</p>
-                                                <p>₹0</p>
-                                            </div>
-
-
-
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Black" />
-                                        <label for="Black" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/theme/4.png" />
-                                            <div class="content">
-                                                <p>Black</p>
-                                                <p>₹0</p>
-                                            </div>
-
-
-
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div class="row justify-content-center mt-4">
-                                <div class="col-lg-6 text-center">
-                                    <a href="#" class="custom-btn" tabindex="-1">Skip<i class=" ms-2 mt-1 fas fa-angle-right fa-lg"></i></a>
-
-                                </div>
-                                <div class="col-lg-6 text-center">
-                                    <a href="#" class="custom-btn" tabindex="-1">Next<i class=" ms-2 mt-1 fas fa-angle-right fa-lg"></i></a>
-
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-
-                                <div class="order-summary-table table-responsive">
-                                    <h3>Selected items</h3>
-                                    <table class="table text-center">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Item Type	</th>
-                                                <th scope="col">Items Name	</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="bg-gray-light">
-                                                <td scope="row">Customizations	</td>
-                                                <td>Baby Shower	</td>
-                                                <td>1</td>
-                                                <td>₹150.00</td>
-                                                <td>₹150.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">Customizations</td>
-                                                <td>Anniversary</td>
-                                                <td>2</td>
-                                                <td>₹5.00</td>
-                                                <td>₹5.00</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <textarea placeholder="Add Note Here"></textarea>
-                            </div>
-                        </div>
-                        <div id="Cake" class="tab-pane fade">
-                            <div class="row mt-0 gy-4">
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c1" />
                                         <label for="c1" class="theme-sec">
@@ -588,9 +478,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -600,7 +490,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c2" />
                                         <label for="c2" class="theme-sec">
@@ -613,9 +503,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -625,7 +515,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c3" />
                                         <label for="c3" class="theme-sec">
@@ -638,9 +528,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -650,7 +540,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c4" />
                                         <label for="c4" class="theme-sec">
@@ -662,9 +552,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -674,8 +564,6 @@
                                         </label>
                                     </div>
                                 </div>
-
-
 
                             </div>
                             <div class="row">
@@ -734,12 +622,121 @@
                             <div class="row mt-4">
                                 <textarea placeholder="Add Note Here"></textarea>
                             </div>
+                        </div>
+                        <div id="Cake" class="tab-pane fade">
+                            <div class="row mt-0 gy-4">
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="Black" />
+                                        <label for="Black" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/theme/4.png" />
+                                            <div class="content">
+                                                <p>10 Roses</p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more</a>
+
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="Black" />
+                                        <label for="Black" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/theme/4.png" />
+                                            <div class="content">
+                                                <p>15 Roses</p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more</a>
+
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="Black" />
+                                        <label for="Black" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/theme/4.png" />
+                                            <div class="content">
+                                                <p>15 Roses</p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more</a>
+
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="row justify-content-center mt-4">
+                                <div class="col-lg-6 text-center">
+                                    <a href="#" class="custom-btn" tabindex="-1">Skip<i class=" ms-2 mt-1 fas fa-angle-right fa-lg"></i></a>
+
+                                </div>
+                                <div class="col-lg-6 text-center">
+                                    <a href="#" class="custom-btn" tabindex="-1">Next<i class=" ms-2 mt-1 fas fa-angle-right fa-lg"></i></a>
+
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+
+                                <div class="order-summary-table table-responsive">
+                                    <h3>Selected items</h3>
+                                    <table class="table text-center">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Item Type	</th>
+                                                <th scope="col">Items Name	</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-gray-light">
+                                                <td scope="row">Customizations	</td>
+                                                <td>Baby Shower	</td>
+                                                <td>1</td>
+                                                <td>₹150.00</td>
+                                                <td>₹150.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Customizations</td>
+                                                <td>Anniversary</td>
+                                                <td>2</td>
+                                                <td>₹5.00</td>
+                                                <td>₹5.00</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <textarea placeholder="Add Note Here"></textarea>
+                            </div>
 
 
                         </div>
                         <div id="Decorations" class="tab-pane fade">
-                            <div class="row mt-0 gy-4 align-items-center">
-                                <div class="col-lg-3 col-md-6 col-6">
+                            <div class="row mt-0 gy-4 ">
+                                <h4 class="fw-semibold">Back Drop</h4>
+
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d1" />
                                         <label for="d1" class="theme-sec">
@@ -750,6 +747,8 @@
 
                                                 </p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
 
 
@@ -757,7 +756,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d2" />
                                         <label for="d2" class="theme-sec">
@@ -770,6 +769,8 @@
 
                                                 </p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
 
 
@@ -777,7 +778,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d3" />
                                         <label for="d3" class="theme-sec">
@@ -788,6 +789,146 @@
 
                                                 </p>
                                                 <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row mt-0 gy-4 align-items-center">
+                                <h4 class="fw-semibold">Balloon</h4>
+
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="d1" />
+                                        <label for="d1" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/dec/9.png" />
+                                            <div class="content">
+                                                <p>
+                                                    Photo Wall
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="d2" />
+                                        <label for="d2" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/dec/8.png" />
+                                            <div class="content">
+                                                <p>
+                                                    Decorative floral
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="d3" />
+                                        <label for="d3" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/dec/7.png" />
+                                            <div class="content">
+                                                <p>
+                                                    Fog Entry
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row mt-0 gy-4 align-items-center">
+                                <h4 class="fw-semibold">Add on</h4>
+
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="d1" />
+                                        <label for="d1" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/dec/9.png" />
+                                            <div class="content">
+                                                <p>
+                                                    Photo Wall
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="d2" />
+                                        <label for="d2" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/dec/8.png" />
+                                            <div class="content">
+                                                <p>
+                                                    Decorative floral
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile">
+                                        <input type="checkbox" name="party" id="d3" />
+                                        <label for="d3" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/dec/7.png" />
+                                            <div class="content">
+                                                <p>
+                                                    Fog Entry
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                </a>
                                             </div>
 
 
@@ -849,10 +990,10 @@
                             </div>
 
                         </div>
-                        <div id="Eatery" class="tab-pane fade">
+                        <div id="foodparty" class="tab-pane fade">
                             <div class="row mt-0 gy-4">
-                                <h4 class="fw-semibold">Beverages</h4>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <h4 class="fw-semibold">Snacks</h4>
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s1" />
                                         <label for="s1" class="theme-sec">
@@ -867,9 +1008,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -879,7 +1020,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s2" />
                                         <label for="s2" class="theme-sec">
@@ -894,9 +1035,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -906,7 +1047,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s3" />
                                         <label for="s3" class="theme-sec">
@@ -919,9 +1060,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -931,7 +1072,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s4" />
                                         <label for="s4" class="theme-sec">
@@ -946,9 +1087,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -964,7 +1105,7 @@
                             </div>
                             <div class="row mt-0 gy-4">
                                 <h4 class="fw-semibold">Appetizer</h4>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s5" />
                                         <label for="s5" class="theme-sec">
@@ -979,9 +1120,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -991,7 +1132,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s6" />
                                         <label for="s6" class="theme-sec">
@@ -1006,9 +1147,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -1018,7 +1159,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s7" />
                                         <label for="s7" class="theme-sec">
@@ -1031,9 +1172,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -1043,7 +1184,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s8" />
                                         <label for="s8" class="theme-sec">
@@ -1058,9 +1199,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -1076,7 +1217,7 @@
                             </div>
                             <div class="row mt-0 gy-4">
                                 <h4 class="fw-semibold">Main Course</h4>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s9" />
                                         <label for="s9" class="theme-sec">
@@ -1091,9 +1232,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -1103,7 +1244,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s10" />
                                         <label for="s10" class="theme-sec">
@@ -1118,9 +1259,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -1130,7 +1271,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s11" />
                                         <label for="s11" class="theme-sec">
@@ -1143,9 +1284,9 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -1155,7 +1296,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s12" />
                                         <label for="s12" class="theme-sec">
@@ -1170,9 +1311,233 @@
                                                 </p>
                                                 <p>₹0</p>
                                                 <div class="add">
-                                                    <button class="qtyminus" aria-hidden="true">&minus;</button>
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
                                                     <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
-                                                    <button class="qtyplus" aria-hidden="true">&plus;</button>
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row mt-0 gy-4">
+                                <h4 class="fw-semibold">Beverage</h4>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s9" />
+                                        <label for="s9" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/10.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    Butter Popcorn
+
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s10" />
+                                        <label for="s10" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/11.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    Caramel Popcorn
+
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s11" />
+                                        <label for="s11" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/12.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    Nachos  
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s12" />
+                                        <label for="s12" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/13.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    French Fries
+
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row mt-0 gy-4">
+                                <h4 class="fw-semibold">Desserts</h4>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s9" />
+                                        <label for="s9" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/10.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    Butter Popcorn
+
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s10" />
+                                        <label for="s10" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/11.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    Caramel Popcorn
+
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s11" />
+                                        <label for="s11" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/12.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    Nachos  
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6">
+                                    <div class="tile new-hei">
+                                        <input type="checkbox" name="party" id="s12" />
+                                        <label for="s12" class="theme-sec">
+                                            <img src="assets/images/00icons/addon/snacks/13.png" />
+                                            <div class="content">
+                                                <p class="cake">
+                                                    French Fries
+
+
+
+
+                                                </p>
+                                                <p>₹0</p>
+                                                <div class="add">
+                                                    <a class="qtyminus" aria-hidden="true">&minus;</a>
+                                                    <input type="text" name="qty" id="qty" min="1" max="10" step="1" value="1">
+                                                    <a class="qtyplus" aria-hidden="true">&plus;</a>
 
                                                 </div>
                                             </div>
@@ -1238,7 +1603,7 @@
                         </div>
                         <div id="Ballon" class="tab-pane fade">
                             <div class="row mt-0 gy-4">
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="r1" />
                                         <label for="r1" class="theme-sec">
@@ -1253,7 +1618,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="r2" />
                                         <label for="r2" class="theme-sec">
@@ -1271,7 +1636,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6">
+                                <div class="col-lg-4 col-md-6 col-6">
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="r3" />
                                         <label for="r3" class="theme-sec">
@@ -1390,9 +1755,9 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel1">Birthday :-
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <a type="a" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </a>
                 </div>
                 <div class="modal-body">
                     <ul>
@@ -1415,9 +1780,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel2">Guidelines to Follow</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <a type="a" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </a>
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-center">

@@ -21,12 +21,14 @@ public class BlogDetails
     public string BlogImage { get; set; }
     public string BlogTitle { get; set; }
     public string BlogUrl { get; set; }
+    public string Category { get; set; }
     public string PageTitle { get; set; }
     public string MetaKeys { get; set; }
     public string MetaDesc { get; set; }
     public string FullDesc { get; set; }
     public string AddedBy { get; set; }
     public DateTime AddedOn { get; set; }
+    public DateTime PostedOn { get; set; }
     public string AddedIP { get; set; }
     public string Status { get; set; }
     #endregion
@@ -52,11 +54,13 @@ public class BlogDetails
                                   ThumbImage = Convert.ToString(dr["ThumbImage"]),
                                   BlogTitle = Convert.ToString(dr["BlogTitle"]),
                                   BlogUrl = Convert.ToString(dr["BlogUrl"]),
+                                  Category = Convert.ToString(dr["Category"]),
                                   PageTitle = Convert.ToString(dr["PageTitle"]),
                                   MetaKeys = Convert.ToString(dr["MetaKeys"]),
                                   MetaDesc = Convert.ToString(dr["MetaDesc"]),
                                   FullDesc = Convert.ToString(dr["FullDesc"]),
                                   AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                                  PostedOn = Convert.ToDateTime(Convert.ToString(dr["PostedOn"])),
                                   AddedBy = Convert.ToString(dr["AddedBy"]),
                                   AddedIP = Convert.ToString(dr["AddedIP"]),
                                   Status = Convert.ToString(dr["Status"])
@@ -90,11 +94,13 @@ public class BlogDetails
                                   ThumbImage = Convert.ToString(dr["ThumbImage"]),
                                   BlogTitle = Convert.ToString(dr["BlogTitle"]),
                                   BlogUrl = Convert.ToString(dr["BlogUrl"]),
+                                  Category = Convert.ToString(dr["Category"]),
                                   PageTitle = Convert.ToString(dr["PageTitle"]),
                                   MetaKeys = Convert.ToString(dr["MetaKeys"]),
                                   MetaDesc = Convert.ToString(dr["MetaDesc"]),
                                   FullDesc = Convert.ToString(dr["FullDesc"]),
                                   AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                                  PostedOn = Convert.ToDateTime(Convert.ToString(dr["PostedOn"])),
                                   AddedBy = Convert.ToString(dr["AddedBy"]),
                                   AddedIP = Convert.ToString(dr["AddedIP"]),
                                   Status = Convert.ToString(dr["Status"])
@@ -127,12 +133,14 @@ public class BlogDetails
                                   ThumbImage = Convert.ToString(dr["ThumbImage"]),
                                   BlogTitle = Convert.ToString(dr["BlogTitle"]),
                                   BlogUrl = Convert.ToString(dr["BlogUrl"]),
+                                  Category = Convert.ToString(dr["Category"]),
                                   PageTitle = Convert.ToString(dr["PageTitle"]),
                                   MetaKeys = Convert.ToString(dr["MetaKeys"]),
                                   MetaDesc = Convert.ToString(dr["MetaDesc"]),
                                   FullDesc = Convert.ToString(dr["FullDesc"]),
                                   AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
-                                  AddedBy = Convert.ToString(dr["UpdatedBy"]),
+                                  PostedOn = Convert.ToDateTime(Convert.ToString(dr["PostedOn"])),
+                                  AddedBy = Convert.ToString(dr["AddedBy"]),
                                   AddedIP = Convert.ToString(dr["AddedIP"]),
                                   Status = Convert.ToString(dr["Status"])
                               }).ToList();
@@ -150,18 +158,21 @@ public class BlogDetails
 
         try
         {
-            string query = "Insert Into BlogDetails (ThumbImage,BlogImage,BlogTitle,BlogUrl,PageTitle,MetaKeys,MetaDesc,FullDesc,AddedOn,AddedBy,AddedIP,Status) values (@ThumbImage,@BlogImage,@BlogTitle,@BlogUrl,@PageTitle,@MetaKeys,@MetaDesc,@FullDesc,@AddedOn,@AddedBy,@AddedIP,@Status) ";
+            string query = "Insert Into BlogDetails (ThumbImage,BlogImage,BlogTitle,BlogUrl,Category,PageTitle,MetaKeys,MetaDesc,FullDesc,PostedOn,AddedOn,AddedBy,AddedIP,Status) values " +
+                "(@ThumbImage,@BlogImage,@BlogTitle,@BlogUrl,@Category,@PageTitle,@MetaKeys,@MetaDesc,@FullDesc,@PostedOn,@AddedOn,@AddedBy,@AddedIP,@Status) ";
             using (SqlCommand cmd = new SqlCommand(query, conGV))
             {
                 cmd.Parameters.AddWithValue("@ThumbImage", SqlDbType.NVarChar).Value = cat.ThumbImage;
                 cmd.Parameters.AddWithValue("@BlogImage", SqlDbType.NVarChar).Value = cat.BlogImage;
                 cmd.Parameters.AddWithValue("@BlogTitle", SqlDbType.NVarChar).Value = cat.BlogTitle;
                 cmd.Parameters.AddWithValue("@BlogUrl", SqlDbType.NVarChar).Value = cat.BlogUrl;
+                cmd.Parameters.AddWithValue("@Category", SqlDbType.NVarChar).Value = cat.Category;
                 cmd.Parameters.AddWithValue("@PageTitle", SqlDbType.NVarChar).Value = cat.PageTitle;
                 cmd.Parameters.AddWithValue("@MetaKeys", SqlDbType.NVarChar).Value = cat.MetaKeys;
                 cmd.Parameters.AddWithValue("@MetaDesc", SqlDbType.NVarChar).Value = cat.MetaDesc;
                 cmd.Parameters.AddWithValue("@FullDesc", SqlDbType.NVarChar).Value = cat.FullDesc;
                 cmd.Parameters.AddWithValue("@AddedOn", SqlDbType.DateTime).Value = cat.AddedOn;
+                cmd.Parameters.AddWithValue("@PostedOn", SqlDbType.DateTime).Value = cat.PostedOn;
                 cmd.Parameters.AddWithValue("@AddedBy", SqlDbType.NVarChar).Value = cat.AddedBy;
                 cmd.Parameters.AddWithValue("@AddedIP", SqlDbType.NVarChar).Value = cat.AddedIP;
                 cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Active";
@@ -188,7 +199,7 @@ public class BlogDetails
         int result = 0;
         try
         {
-            string query = "Update BlogDetails Set ThumbImage=@ThumbImage,BlogImage=@BlogImage,BlogTitle=@BlogTitle,BlogUrl=@BlogUrl,PageTitle=@PageTitle,MetaKeys=@MetaKeys,MetaDesc=@MetaDesc,FullDesc=@FullDesc,AddedOn=@AddedOn,AddedBy=@AddedBy,AddedIP=@AddedIP Where Id=@Id ";
+            string query = "Update BlogDetails Set ThumbImage=@ThumbImage,BlogImage=@BlogImage,BlogTitle=@BlogTitle,BlogUrl=@BlogUrl,Category=@Category,PageTitle=@PageTitle,MetaKeys=@MetaKeys,MetaDesc=@MetaDesc,FullDesc=@FullDesc,PostedOn=@PostedOn,AddedOn=@AddedOn,AddedBy=@AddedBy,AddedIP=@AddedIP Where Id=@Id ";
             using (SqlCommand cmd = new SqlCommand(query, conGV))
             {
                 cmd.Parameters.AddWithValue("@id", SqlDbType.Int).Value = cat.Id;
@@ -196,10 +207,12 @@ public class BlogDetails
                 cmd.Parameters.AddWithValue("@BlogImage", SqlDbType.NVarChar).Value = cat.BlogImage;
                 cmd.Parameters.AddWithValue("@BlogTitle", SqlDbType.NVarChar).Value = cat.BlogTitle;
                 cmd.Parameters.AddWithValue("@BlogUrl", SqlDbType.NVarChar).Value = cat.BlogUrl;
+                cmd.Parameters.AddWithValue("@Category", SqlDbType.NVarChar).Value = cat.Category;
                 cmd.Parameters.AddWithValue("@PageTitle", SqlDbType.NVarChar).Value = cat.PageTitle;
                 cmd.Parameters.AddWithValue("@MetaKeys", SqlDbType.NVarChar).Value = cat.MetaKeys;
                 cmd.Parameters.AddWithValue("@MetaDesc", SqlDbType.NVarChar).Value = cat.MetaDesc;
                 cmd.Parameters.AddWithValue("@FullDesc", SqlDbType.NVarChar).Value = cat.FullDesc;
+                cmd.Parameters.AddWithValue("@PostedOn", SqlDbType.DateTime).Value = cat.PostedOn;
                 cmd.Parameters.AddWithValue("@AddedOn", SqlDbType.DateTime).Value = cat.AddedOn;
                 cmd.Parameters.AddWithValue("@AddedBy", SqlDbType.NVarChar).Value = cat.AddedBy;
                 cmd.Parameters.AddWithValue("@AddedIP", SqlDbType.NVarChar).Value = cat.AddedIP;

@@ -4,9 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Private Theater Admin</title>
+    <title>Binge Party Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta content="Private Theater" name="author" />
+    <meta content="Binge Party" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
 
@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="text-center mt-2">
                                         <h5 class="text-primary">Welcome Back !</h5>
-                                        <p class="text-muted">Sign in to continue to Private Theater Admin</p>
+                                        <p class="text-muted">Sign in to continue to Binge Party Admin</p>
                                         <asp:Label ID="lblStatus" runat="server" Style="width: 100%;" Visible="false"></asp:Label>
                                     </div>
                                     <div class="p-2 mt-4 mb-4">
@@ -70,7 +70,7 @@
                                 <p class="mb-0">
                                     &copy; 
                                     <script>document.write(new Date().getFullYear())</script>
-                                    Private Theater
+                                    Binge Party
                                 </p>
                             </div>
 

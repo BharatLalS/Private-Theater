@@ -17,7 +17,7 @@ public class Emails
             MailMessage mail = new MailMessage();
             mail.To.Add(emails);
             mail.From = new MailAddress(ConfigurationManager.AppSettings["from"], ConfigurationManager.AppSettings["fromName"]);
-            mail.Subject = "Private Theater Admin  Reset Password";
+            mail.Subject = "Binge Party Admin  Reset Password";
             mail.Body = @"<!DOCTYPE HTML PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
@@ -25,8 +25,8 @@ public class Emails
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
     <meta name='format-detection' content='telephone=no' />
-    <title>Private Theater </title>
-    <link rel='shortcut icon' href='https://www.Private Theater /images/Nextwebi-sq_Black_Logo2_1_140x.png' />
+    <title>Binge Party </title>
+    <link rel='shortcut icon' href='https://www.Bingeparty/images/logo.png' />
     <link href='https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap' rel='stylesheet' />
     <style type='text/css'>
         html {
@@ -427,7 +427,7 @@ public class Emails
                                                                         <tr>
                                                                             <td align='left' valign='top' width='100%' style='vertical-align: middle;' class='flexibleContainerCell'>
                                                                                 <center>
-                                                                                    <img style='width:110px;margin-bottom:0px;' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-Private Theater-logo.png' />
+                                                                                    <img style='width:110px;margin-bottom:0px;' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-BingeParty-logo.png' />
                                                                                 </center>
                                                                             </td>
                                                                         </tr>
@@ -442,7 +442,7 @@ public class Emails
                                                                             <td align='left' valign='top' width='100%' class='flexibleContainerCell'>
                                                                                 <p style='font-size:22px;line-height:32px!important;text-align:center;color:white;margin-top:0px;background:#cd6c73;padding:10px;'>PASSWORD RESET</p>
                                                                                 <p style='font-size:20px;line-height:28px!important;text-align:center;color:#000;font-weight:bold!important'>Request for password reset</p>
-                                                                                <p style='font-size:15px;color:#000;line-height:22px!important;margin-bottom:5px;text-align:center;padding:0px 20px !important'>Hello " + name + @". We have just received a request to reset your password for the Private Theater  account.<br><br></p>
+                                                                                <p style='font-size:15px;color:#000;line-height:22px!important;margin-bottom:5px;text-align:center;padding:0px 20px !important'>Hello " + name + @". We have just received a request to reset your password for the Binge Party account.<br><br></p>
 
 
                                                                             </td>
@@ -468,11 +468,11 @@ public class Emails
                                                                             <td align='center' valign='top' width='100%' class='flexibleContainerCell'>
                                                                                 <ul style='list-style:none;width:400px;margin:0px auto;'>
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
-                                                                                        <a href='https://www.facebook.com/pages/category/Brand/Private Theater -1404212866358535/' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/facebook.png' /></a>
+                                                                                        <a href='https://www.facebook.com/pages/category/Brand/Binge Party -1404212866358535/' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/facebook.png' /></a>
                                                                                     </li>
                                                                                    
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
-                                                                                        <a href='https://www.instagram.com/Private Theater lifestyles/?hl=en' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/instagram.png' /></a>
+                                                                                        <a href='https://www.instagram.com/Binge Party lifestyles/?hl=en' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/instagram.png' /></a>
                                                                                     </li>
                                                                                    
                                                                                 </ul>
@@ -526,8 +526,8 @@ public class Emails
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
     <meta name='format-detection' content='telephone=no' />
-    <title>Private Theater </title>
-    <link rel='shortcut icon' href='https://www.Private Theater /images/Nextwebi-sq_Black_Logo2_1_140x.png' />
+    <title>Binge Party </title>
+    <link rel='shortcut icon' href='https://www.Binge Party /images/Nextwebi-sq_Black_Logo2_1_140x.png' />
     <link href='https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap' rel='stylesheet' />
     <style type='text/css'>
         html {
@@ -961,16 +961,16 @@ public class Emails
                                                                             <td align='center' valign='top' width='100%' class='flexibleContainerCell'>
                                                                                 <ul style='list-style:none;width:400px;margin:0px auto;'>
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
-                                                                                        <a href='https://www.facebook.com/pages/category/Brand/Private Theater -1404212866358535/' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/facebook.png' /></a>
+                                                                                        <a href='https://www.facebook.com/pages/category/Brand/BingeParty-1404212866358535/' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/facebook.png' /></a>
                                                                                     </li>
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
                                                                                         <a href='https://www.youtube.com/channel/UCs3BrrlAc5K93z3jrlYVJZw' target='_blank'> <img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/youtube.png' /></a>
                                                                                     </li>
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
-                                                                                        <a href='https://www.instagram.com/Private Theater lifestyles/?hl=en' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/instagram.png' /></a>
+                                                                                        <a href='https://www.instagram.com/BingePartylifestyles/?hl=en' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/instagram.png' /></a>
                                                                                     </li>
                                                                                     <li style='display:inline-block;margin-right:0px;'>
-                                                                                        <a href='https://twitter.com/Private Theater Retail' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/twitter.png' /></a>
+                                                                                        <a href='https://twitter.com/BingeParty' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/twitter.png' /></a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </td>
@@ -1001,7 +1001,7 @@ public class Emails
             MailMessage mail = new MailMessage();
             mail.To.Add(email);
             mail.From = new MailAddress(ConfigurationManager.AppSettings["from"], ConfigurationManager.AppSettings["fromName"]);
-            mail.Subject = "Private Theater  Account verification";
+            mail.Subject = "Binge Party Account verification";
             mail.Body = mailBody1;
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
@@ -1026,7 +1026,7 @@ public class Emails
             MailMessage mail = new MailMessage();
             mail.To.Add(email);
 
-            mail.From = new MailAddress(ConfigurationManager.AppSettings["from"], "Private Theater  Password Reset");
+            mail.From = new MailAddress(ConfigurationManager.AppSettings["from"], "Binge Party Password Reset");
             mail.Subject = "Request for password reset";
 
             #region mailBody
@@ -1037,7 +1037,7 @@ public class Emails
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
     <meta name='format-detection' content='telephone=no' />
-    <title>Private Theater </title>
+    <title>Binge Party </title>
     <link rel='shortcut icon' href='https://www.PrivateTheater /images/Nextwebi-sq_Black_Logo2_1_140x.png' />
     <link href='https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap' rel='stylesheet' />
     <style type='text/css'>
@@ -1452,7 +1452,7 @@ public class Emails
                                                                             <td align='left' valign='top' width='100%' class='flexibleContainerCell'>
                                                                                 <p style='font-size:22px;line-height:32px!important;text-align:center;color:white;margin-top:0px;background:#cd6c73;padding:10px;'>PASSWORD RESET</p>
                                                                                 <p style='font-size:20px;line-height:28px!important;text-align:center;color:#000;font-weight:bold!important'>Request for password reset!</p>
-                                                                                <p style='font-size:14px;color:#000;line-height:22px!important;margin-bottom:5px;text-align:center;padding:0px 20px !important'>Hello " + name + @", <br>We have just received a request to reset your password for the Private Theater  account.</p>
+                                                                                <p style='font-size:14px;color:#000;line-height:22px!important;margin-bottom:5px;text-align:center;padding:0px 20px !important'>Hello " + name + @", <br>We have just received a request to reset your password for the Binge Party account.</p>
                                                                                 <p style='font-size:14px;color:#000;line-height:22px!important;margin-bottom:5px;text-align:center;padding:0px 20px !important'>If you have made this request, please click on the following link to reset your password.</p>
                                                                                 <p style='margin-bottom:30px;'><center> <a href='" + ConfigurationManager.AppSettings["domain"] + @"/reset-password.aspx?c=" + custId + @"' target='_blank' style='font-size:26px;line-height:32px!important;text-decoration:none; text-align:center;color:white;margin-top:0px;background:#cd6c73;padding:10px 25px;width:50%;margin:0px auto'>Reset Password</a></center></p>
             
@@ -1472,16 +1472,16 @@ Your password remains unchanged.</p></td> </tr> <tr>
                                                                             <td align='center' valign='top' width='100%' class='flexibleContainerCell'>
                                                                                 <ul style='list-style:none;width:400px;margin:0px auto;'>
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
-                                                                                        <a href='https://www.facebook.com/pages/category/Brand/Private Theater -1404212866358535/' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/facebook.png' /></a>
+                                                                                        <a href='https://www.facebook.com/pages/category/Brand/Binge Party -1404212866358535/' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/facebook.png' /></a>
                                                                                     </li>
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
                                                                                         <a href='https://www.youtube.com/channel/UCs3BrrlAc5K93z3jrlYVJZw' target='_blank'> <img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/youtube.png' /></a>
                                                                                     </li>
                                                                                     <li style='display:inline-block;margin-right:10px;border-right:2px solid #ccc;padding-right:14px;'>
-                                                                                        <a href='https://www.instagram.com/Private Theater lifestyles/?hl=en' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/instagram.png' /></a>
+                                                                                        <a href='https://www.instagram.com/Binge Party lifestyles/?hl=en' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/instagram.png' /></a>
                                                                                     </li>
                                                                                     <li style='display:inline-block;margin-right:0px;'>
-                                                                                        <a href='https://twitter.com/Private Theater Retail' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/twitter.png' /></a>
+                                                                                        <a href='https://twitter.com/Binge Party Retail' target='_blank'><img width='30' src='" + ConfigurationManager.AppSettings["domain"] + @"/img/email-icons/twitter.png' /></a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </td>

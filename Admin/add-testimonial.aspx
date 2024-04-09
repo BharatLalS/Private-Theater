@@ -35,11 +35,11 @@
                                     <asp:RequiredFieldValidator ID="req1" runat="server" ControlToValidate="txtPosted" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
 
                                 </div>
-                                <div class="col-lg-6 mb-2">
+                              <%--  <div class="col-lg-6 mb-2">
                                     <label class="text-muted">Designation<sup class="text-danger">*</sup></label>
                                     <asp:TextBox runat="server" MaxLength="100" class="form-control mb-2 mr-sm-2" ID="txtDesignation" placeholder="Designation" />
                                     <asp:RequiredFieldValidator ID="req2" runat="server" ControlToValidate="txtPosted" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
-                                </div>
+                                </div>--%>
                                 <div class="col-lg-12 mb-2">
                                     <label class="text-muted">Message<sup class="text-danger">*</sup></label>
                                     <asp:TextBox runat="server" TextMode="MultiLine" class="form-control mb-2 mr-sm-2 summernote" ID="txtMessage" Placeholder="Full Description ....." />

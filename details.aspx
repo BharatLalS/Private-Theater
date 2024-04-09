@@ -5,9 +5,10 @@
     <link href="assets/css/booking-theater.css" rel="stylesheet" />
     <link href="assets/css/frontendStyle.css" rel="stylesheet" />
     <style>
-               .default-header-section .header-bottom .menu-item-list ul li:nth-child(2) a {
-    color: #f5e860;
-}
+        .default-header-section .header-bottom .menu-item-list ul li:nth-child(2) a {
+            color: #f5e860;
+        }
+
         .reason-box input[type="checkbox"]:checked + label::after {
             font-family: "";
             content: url('assets/images/00icons/check.png');
@@ -299,12 +300,12 @@
                                 </div>
                             </div>
                             <div class="owl-nav">
-                                <button type="button" role="presentation" class="owl-prev">
+                                <a role="presentation" class="owl-prev">
                                     <div class="nav-btn prev-slide"><i class="fas fa-chevron-left"></i></div>
-                                </button>
-                                <button type="button" role="presentation" class="owl-next">
+                                </a>
+                                <a role="presentation" class="owl-next">
                                     <div class="nav-btn next-slide"><i class="fas fa-chevron-right"></i></div>
-                                </button>
+                                </a>
                             </div>
                             <div class="owl-dots disabled"></div>
                         </div>
@@ -348,8 +349,8 @@
                                 </div>
                             </div>
                             <div class="owl-nav disabled">
-                                <button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button>
-                                <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>
+                                <a  role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></a>
+                                <a  role="presentation" class="owl-next"><span aria-label="Next">›</span></a>
                             </div>
                             <div class="owl-dots disabled"></div>
                         </div>
@@ -425,7 +426,8 @@
                     <div class="map">
                         <h3>Get Direction</h3>
                         <div style="width: 100%">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2721565225893!2d78.3743068785798!3d17.44668324077908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e2663ae9c1%3A0x12aa54009dbee559!2sBinge%20and%20Party%20-%20Private%20Theatre%20%7C%20Party%20Place!5e0!3m2!1sen!2sin!4v1712134312460!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        </div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2721565225893!2d78.3743068785798!3d17.44668324077908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e2663ae9c1%3A0x12aa54009dbee559!2sBinge%20and%20Party%20-%20Private%20Theatre%20%7C%20Party%20Place!5e0!3m2!1sen!2sin!4v1712134312460!5m2!1sen!2sin" width="100%" height="450" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-5  mb-4 mt-4 mt-lg-0 pl-2">
@@ -538,9 +540,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Add Booking Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <a  class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>
+                        </a>
                     </div>
 
 
@@ -587,16 +589,24 @@
                                     <div class="col-lg-12">
                                         <div class="input-group mb-0">
                                             <i class="fas fa-phone fa-flip-horizontal"></i>
-                                            <input type="text" placeholder="Name" name="name" value="">
+                                            <input type="text" placeholder="Phone" name="name" value="">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="select-group">
                                             <select id="number" class="number_of_people form-select" name="number_of_people">
                                                 <option selected="">No of People</option>
-                                                <option>2</option>
-                                                <option>3</option>
                                                 <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+
                                             </select>
                                         </div>
                                     </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -12,7 +13,7 @@ public partial class Admin_area_master : System.Web.UI.Page
 {
     SqlConnection conSQ = new SqlConnection(ConfigurationManager.ConnectionStrings["conSQ"].ConnectionString);
 
-    public string strArea = "";
+    public string strArea = "", strThumbImage = "";
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -73,10 +74,22 @@ public partial class Admin_area_master : System.Web.UI.Page
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        if (Page.IsValid)
+        try
         {
-            try
+            if (Page.IsValid)
             {
+                var thumbimg = CheckThumbFormat();
+
+                if (thumbimg == "Format")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'Invalid image format. Please upload .png, .jpeg, .jpg, .webp, .gif for thumb image',actionTextColor: '#fff',backgroundColor: '#ea1c1c'});", true);
+                    return;
+                }
+                if (thumbimg == "Size")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'Invalid image size.Please upload correct resolution image for thumb image',actionTextColor: '#fff',backgroundColor: '#ea1c1c'});", true);
+                    return;
+                }
                 string aid = Request.Cookies["nt_aid"].Value;
                 AreaMaster st = new AreaMaster()
                 {
@@ -84,6 +97,7 @@ public partial class Admin_area_master : System.Web.UI.Page
                     StateID = ddlState.SelectedValue,
                     CityID = ddlCity.SelectedValue,
                     AreaUrl = txtURl.Text,
+                    ImageUrl = UploadThumbImage(),
                     AreaOrder = "0",
                     AddedBy = aid,
                     Status = "Active",
@@ -119,10 +133,10 @@ public partial class Admin_area_master : System.Web.UI.Page
                 }
                 GetAreaList();
             }
-            catch (Exception ex)
-            {
-                ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "btnSave_Click", ex.Message);
-            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "btnSave_Click", ex.Message);
         }
     }
     public void GetAreaDetails()
@@ -138,6 +152,11 @@ public partial class Admin_area_master : System.Web.UI.Page
                 ddlCity.SelectedValue = Area.CityID;
                 txtName.Text = Area.AreaTitle;
                 txtURl.Text = Area.AreaUrl;
+                if (Area.ImageUrl != "")
+                {
+                    strThumbImage = "<img src='/" + Area.ImageUrl + "' style='max-height:60px;' />";
+                    lblThumb.Text = Area.ImageUrl;
+                }
             }
         }
         catch (Exception ex)
@@ -156,6 +175,7 @@ public partial class Admin_area_master : System.Web.UI.Page
                 {
                     strArea += @"<tr>
                                         <td>" + (i + 1) + @"</td>
+                                        <td><a href='" + sub[i].ImageUrl + @"' target='_blank'><img src='\" + sub[i].ImageUrl + @"' height='60px'/></a></td>
                                         <td>" + sub[i].StateTitle + @"</td>
                                         <td>" + sub[i].CityTitle + @"</td>
                                         <td>" + sub[i].AreaTitle + @"</td>
@@ -205,7 +225,77 @@ public partial class Admin_area_master : System.Web.UI.Page
         }
         return x;
     }
+    private string CheckThumbFormat()
+    {
+        #region ThumbImage
+        string thumbImg = "";
+        if (Thumbimage.HasFile)
+        {
+            try
+            {
+                string fileExtension = Path.GetExtension(Thumbimage.PostedFile.FileName.ToLower()), ImageGuid1 = Guid.NewGuid().ToString();
+                if ((fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png" || fileExtension == ".gif" || fileExtension == ".webp"))
+                {
+                    System.Drawing.Bitmap bitimg = new System.Drawing.Bitmap(Thumbimage.PostedFile.InputStream);
+                    if ((bitimg.PhysicalDimension.Height != 170) || (bitimg.PhysicalDimension.Width != 250))
+                    {
+                        return "Size";
+                    }
+                }
+                else
+                {
 
+                    return "Format";
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "CheckThumbFormat", ex.Message);
+
+            }
+        }
+        #endregion
+        return thumbImg;
+    }
+    public string UploadThumbImage()
+    {
+        #region upload file
+        string thumbfile = "";
+        try
+        {
+            if (Thumbimage.HasFile)
+            {
+                string fileExtension = Path.GetExtension(Thumbimage.PostedFile.FileName.ToLower()), ImageGuid1 = Guid.NewGuid().ToString() + "-area".Replace(" ", "-").Replace(".", "");
+                string iconPath = Server.MapPath(".") + "\\../UploadImages\\" + ImageGuid1 + "" + fileExtension;
+                try
+                {
+                    if (File.Exists(Server.MapPath("~/" + Convert.ToString(lblThumb.Text))))
+                    {
+                        File.Delete(Server.MapPath("~/" + Convert.ToString(lblThumb.Text)));
+                    }
+                }
+                catch (Exception eeex)
+                {
+                    ExceptionCapture.CaptureException(Request.Url.PathAndQuery, "UploadThumbImage", eeex.Message);
+                    return lblThumb.Text;
+                }
+                Thumbimage.SaveAs(iconPath);
+                thumbfile = "UploadImages/" + ImageGuid1 + "" + fileExtension;
+            }
+            else
+            {
+                thumbfile = lblThumb.Text;
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "UploadThumbImage", ex.Message);
+
+        }
+
+        #endregion
+        return thumbfile;
+    }
     protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
     {
         BindCity();
