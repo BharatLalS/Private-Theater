@@ -40,7 +40,7 @@
     <section id="event-section" class="event-section new-eve bg-gray-light sec-ptb-50 clearfix grey-bg">
         <div class="container">
             <div class="section-title ">
-                <h2 class="big-title text-start"><strong>Choose Your Theater</strong></h2>
+                <h2 class="big-title text-start"><strong>Choose Your Location</strong></h2>
             </div>
             <div class="row">
                 <!-- - start -->

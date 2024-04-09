@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Security.Policy;
 
 /// <summary>
 /// Summary description for TheaterDetails
@@ -288,6 +289,29 @@ public class TheaterDetails
         return categories;
     }
 
+    public static DataTable GetTheaterDetailsWithAreaId(SqlConnection conSQ, string areaId)
+    {
+        var dt = new DataTable();
+        try
+        {
+            string query = "Select (Select Top 1 TheaterUrl from TheaterDetails Where AreaID=@AreaID) as TheaterUrl,MIN(TRy_Convert(int,Price)) as minprice,MAX(TRY_CONVERT(int,MaxCapacity)) maxcap,Count(ID) as cnt from TheaterDetails Where AreaID=@AreaID";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@AreaID", SqlDbType.NVarChar).Value = areaId;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                return dt;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetTheaterDetailsWithAreaId", ex.Message);
+
+        }
+        return dt;
+    }
+
     /// <summary>
     /// Deletes a Theater from the database.
     /// </summary>
@@ -407,7 +431,7 @@ public class TheaterDetails
                             AreaID, CityID, StateID, TheaterTitle,TheaterGuid, TheaterUrl, Pincode,Address, FullDesc, ShortDesc, PageTitle, MetaKeys, MetaDesc, 
                             MaxAllowed, MaxCapacity, Price, ExtraPrice, ThumbImage, LocationLink, AddedOn, AddedIp, AddedBy, Status) 
                         VALUES (
-                            @AreaID, @CityID, @StateID, @TheaterTitle@TheaterGuid, @TheaterUrl, @Pincode, @Address, @FullDesc, @ShortDesc, @PageTitle, @MetaKeys, @MetaDesc, 
+                            @AreaID, @CityID, @StateID, @TheaterTitle,@TheaterGuid, @TheaterUrl, @Pincode, @Address, @FullDesc, @ShortDesc, @PageTitle, @MetaKeys, @MetaDesc, 
                             @MaxAllowed, @MaxCapacity, @Price, @ExtraPrice, @ThumbImage, @LocationLink, @AddedOn, @AddedIp, @AddedBy, @Status)";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
