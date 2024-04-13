@@ -14,17 +14,12 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-md-12 col-sm-12">
-
-                            <!-- breadcrumb-title - start -->
                             <div class="breadcrumb-title text-center mb-20">
                                 <h2 class="big-title">Book <strong>Now</strong></h2>
                             </div>
-                            <!-- breadcrumb-title - end -->
-
-                            <!-- breadcrumb-list - start -->
                             <div class="breadcrumb-list">
                                 <ul>
-                                    <li class="breadcrumb-item"><a href="index-1.html" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Book Now</li>
                                 </ul>
                             </div>

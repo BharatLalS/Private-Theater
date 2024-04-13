@@ -60,9 +60,11 @@
                             <label>Select Type <sup>*</sup></label>
                             <asp:DropDownList runat="server" ID="ddlProductType" CssClass="form-control form-select ddlProductType ">
                                 <asp:ListItem Value="0" Selected="True" disabled hidden>Select Type</asp:ListItem>
-                                <asp:ListItem Value="Beverages">Beverages</asp:ListItem>
+                                <asp:ListItem Value="Snacks">Snacks</asp:ListItem>
                                 <asp:ListItem Value="Appetizer">Appetizer</asp:ListItem>
                                 <asp:ListItem Value="Main Course">Main Course</asp:ListItem>
+                                <asp:ListItem Value="Beverages">Beverages</asp:ListItem>
+                                <asp:ListItem Value="Desert">Desert</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-lg-2 mb-2">
@@ -89,7 +91,7 @@
         $(document).ready(function () {
             $(document.body).on("change", ".ddlCategory", function (e) {
                 e.preventDefault();
-                if ($(".ddlCategory option:selected").text() == "Eatery") {
+                if ($(".ddlCategory option:selected").text() == "Food Party") {
                     $("#divprotype").removeClass("d-none");
                 } else {
                     $("#divprotype").addClass("d-none");

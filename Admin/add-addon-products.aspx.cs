@@ -179,7 +179,7 @@ public partial class Admin_add_addon_products : System.Web.UI.Page
                 if ((fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png" || fileExtension == ".gif" || fileExtension == ".webp"))
                 {
                     System.Drawing.Bitmap bitimg = new System.Drawing.Bitmap(FileUpload1.PostedFile.InputStream);
-                  
+
                 }
                 else
                 {

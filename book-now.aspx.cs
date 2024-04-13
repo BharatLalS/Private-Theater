@@ -44,7 +44,7 @@ public partial class book_now : System.Web.UI.Page
                             }
                             else
                             {
-                                link = "/booking/" + otherdetails.Rows[0]["TheaterUrl"];
+                                link = "/booking/" + area[i].AreaUrl + "/" + otherdetails.Rows[0]["TheaterUrl"];
                             }
                         }
 
@@ -69,7 +69,7 @@ public partial class book_now : System.Web.UI.Page
                                                 </div>
                                                 <div class='col-lg-6 col-7 my-auto'>
                                                     <p class='capacity text-dark'>
-                                                        <i class='fas fa-users'></i>" + maxpeople + @"</p>
+                                                        <i class='fas fa-users'></i> " + maxpeople + @"</p>
                                                 </div>
                                             </div>
                                             <a href='" + link + @"' class='tickets-details-btn'>Book Slot <i class='fas fa-angle-right fa-lg'></i>
@@ -83,6 +83,7 @@ public partial class book_now : System.Web.UI.Page
         }
         catch (Exception ex)
         {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "BindAreas", ex.Message);
 
         }
     }

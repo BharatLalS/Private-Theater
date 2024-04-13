@@ -11,6 +11,7 @@ using System.Web;
 public class TheaterTiming
 {
     public int Id { get; set; }
+    public string TimingGuid { get; set; }
     public string TheaterID { get; set; }
     public string StartTime { get; set; }
     public string EndTime { get; set; }
@@ -78,6 +79,7 @@ public class TheaterTiming
                               select new TheaterTiming()
                               {
                                   Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                                  TimingGuid = Convert.ToString(dr["TimingGuid"]),
                                   StartTime = Convert.ToString(dr["StartTime"]),
                                   EndTime = Convert.ToString(dr["EndTime"]),
                                   TheaterID = Convert.ToString(dr["TheaterID"]),
@@ -119,6 +121,7 @@ public class TheaterTiming
                                select new TheaterTiming()
                                {
                                    Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                                   TimingGuid = Convert.ToString(dr["TimingGuid"]),
                                    StartTime = Convert.ToString(dr["StartTime"]),
                                    EndTime = Convert.ToString(dr["EndTime"]),
                                    TheaterTitle = Convert.ToString(dr["TheaterTitle"]),
@@ -183,9 +186,10 @@ public class TheaterTiming
         int result = 0;
         try
         {
-            string query = "Insert Into TheaterTiming (StartTime,EndTime,TheaterID,AddedOn,AddedIP,Status,AddedBy) values (@StartTime,@EndTime,@TheaterID,@AddedOn,@AddedIP,@Status,@AddedBy) select SCOPE_IDENTITY()";
+            string query = "Insert Into TheaterTiming (TimingGuid,StartTime,EndTime,TheaterID,AddedOn,AddedIP,Status,AddedBy) values (@TimingGuid,@StartTime,@EndTime,@TheaterID,@AddedOn,@AddedIP,@Status,@AddedBy) select SCOPE_IDENTITY()";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
+                cmd.Parameters.AddWithValue("@TimingGuid", SqlDbType.NVarChar).Value = Timing.TimingGuid;
                 cmd.Parameters.AddWithValue("@StartTime", SqlDbType.NVarChar).Value = Timing.StartTime;
                 cmd.Parameters.AddWithValue("@EndTime", SqlDbType.NVarChar).Value = Timing.EndTime;
                 cmd.Parameters.AddWithValue("@AddedIp", SqlDbType.NVarChar).Value = CommonModel.IPAddress();

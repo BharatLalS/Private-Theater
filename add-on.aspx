@@ -266,7 +266,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section id="breadcrumb-section" class="breadcrumb-section clearfix">
-        <div class="jarallax" style="background-image: none; position: relative; z-index: 0; background: url(assets/images/00icons/bgg.png) center;">
+        <div class="jarallax" style="background-image: none; position: relative; z-index: 0; background: url(/assets/images/00icons/bgg.png) center;">
             <div class="overlay-black">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -329,7 +329,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Birthday" />
                                         <label for="Birthday" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/1.png" />
+                                            <img src="/assets/images/00icons/addon/1.png" />
                                             <div class="content">
                                                 <p>Birthday</p>
                                                 <p>₹0</p>
@@ -347,7 +347,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Bride" />
                                         <label for="Bride" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/2.png" />
+                                            <img src="/assets/images/00icons/addon/2.png" />
                                             <div class="content">
                                                 <p>
                                                     Bride to Be
@@ -367,7 +367,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Anniversary" />
                                         <label for="Anniversary" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/3.png" />
+                                            <img src="/assets/images/00icons/addon/3.png" />
                                             <div class="content">
                                                 <p>Anniversary</p>
                                                 <p>₹0</p>
@@ -384,7 +384,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Proposal" />
                                         <label for="Proposal" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/4.png" />
+                                            <img src="/assets/images/00icons/addon/4.png" />
                                             <div class="content">
                                                 <p>Proposal</p>
                                                 <p>₹0</p>
@@ -401,7 +401,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Baby" />
                                         <label for="Baby" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/5.png" />
+                                            <img src="/assets/images/00icons/addon/5.png" />
                                             <div class="content">
                                                 <p>
                                                     Baby Shower
@@ -470,7 +470,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c1" />
                                         <label for="c1" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/cake/1.png" />
+                                            <img src="/assets/images/00icons/addon/cake/1.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Chocolate Truffle
@@ -494,7 +494,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c2" />
                                         <label for="c2" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/cake/1.png" />
+                                            <img src="/assets/images/00icons/addon/cake/1.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Chocolate Truffle 
@@ -519,7 +519,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c3" />
                                         <label for="c3" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/cake/1.png" />
+                                            <img src="/assets/images/00icons/addon/cake/1.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Red Velvet egg
@@ -544,7 +544,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="c4" />
                                         <label for="c4" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/cake/1.png" />
+                                            <img src="/assets/images/00icons/addon/cake/1.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Chocolate Truffle
@@ -629,7 +629,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Black" />
                                         <label for="Black" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/theme/4.png" />
+                                            <img src="/assets/images/00icons/addon/theme/4.png" />
                                             <div class="content">
                                                 <p>10 Roses</p>
                                                 <p>₹0</p>
@@ -646,7 +646,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Black" />
                                         <label for="Black" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/theme/4.png" />
+                                            <img src="/assets/images/00icons/addon/theme/4.png" />
                                             <div class="content">
                                                 <p>15 Roses</p>
                                                 <p>₹0</p>
@@ -663,7 +663,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="Black" />
                                         <label for="Black" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/theme/4.png" />
+                                            <img src="/assets/images/00icons/addon/theme/4.png" />
                                             <div class="content">
                                                 <p>15 Roses</p>
                                                 <p>₹0</p>
@@ -740,7 +740,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d1" />
                                         <label for="d1" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/9.png" />
+                                            <img src="/assets/images/00icons/addon/dec/9.png" />
                                             <div class="content">
                                                 <p>
                                                     Photo Wall
@@ -760,7 +760,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d2" />
                                         <label for="d2" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/8.png" />
+                                            <img src="/assets/images/00icons/addon/dec/8.png" />
                                             <div class="content">
                                                 <p>
                                                     Decorative floral
@@ -782,7 +782,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d3" />
                                         <label for="d3" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/7.png" />
+                                            <img src="/assets/images/00icons/addon/dec/7.png" />
                                             <div class="content">
                                                 <p>
                                                     Fog Entry
@@ -809,7 +809,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d1" />
                                         <label for="d1" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/9.png" />
+                                            <img src="/assets/images/00icons/addon/dec/9.png" />
                                             <div class="content">
                                                 <p>
                                                     Photo Wall
@@ -829,7 +829,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d2" />
                                         <label for="d2" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/8.png" />
+                                            <img src="/assets/images/00icons/addon/dec/8.png" />
                                             <div class="content">
                                                 <p>
                                                     Decorative floral
@@ -851,7 +851,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d3" />
                                         <label for="d3" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/7.png" />
+                                            <img src="/assets/images/00icons/addon/dec/7.png" />
                                             <div class="content">
                                                 <p>
                                                     Fog Entry
@@ -878,7 +878,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d1" />
                                         <label for="d1" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/9.png" />
+                                            <img src="/assets/images/00icons/addon/dec/9.png" />
                                             <div class="content">
                                                 <p>
                                                     Photo Wall
@@ -898,7 +898,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d2" />
                                         <label for="d2" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/8.png" />
+                                            <img src="/assets/images/00icons/addon/dec/8.png" />
                                             <div class="content">
                                                 <p>
                                                     Decorative floral
@@ -920,7 +920,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="d3" />
                                         <label for="d3" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/dec/7.png" />
+                                            <img src="/assets/images/00icons/addon/dec/7.png" />
                                             <div class="content">
                                                 <p>
                                                     Fog Entry
@@ -997,7 +997,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s1" />
                                         <label for="s1" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/10.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/10.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Butter Popcorn
@@ -1024,7 +1024,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s2" />
                                         <label for="s2" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/11.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/11.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Caramel Popcorn
@@ -1051,7 +1051,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s3" />
                                         <label for="s3" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/12.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/12.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Nachos  
@@ -1076,7 +1076,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s4" />
                                         <label for="s4" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/13.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/13.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     French Fries
@@ -1109,7 +1109,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s5" />
                                         <label for="s5" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/10.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/10.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Butter Popcorn
@@ -1136,7 +1136,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s6" />
                                         <label for="s6" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/11.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/11.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Caramel Popcorn
@@ -1163,7 +1163,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s7" />
                                         <label for="s7" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/12.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/12.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Nachos  
@@ -1188,7 +1188,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s8" />
                                         <label for="s8" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/13.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/13.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     French Fries
@@ -1221,7 +1221,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s9" />
                                         <label for="s9" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/10.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/10.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Butter Popcorn
@@ -1248,7 +1248,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s10" />
                                         <label for="s10" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/11.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/11.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Caramel Popcorn
@@ -1275,7 +1275,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s11" />
                                         <label for="s11" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/12.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/12.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Nachos  
@@ -1300,7 +1300,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s12" />
                                         <label for="s12" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/13.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/13.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     French Fries
@@ -1333,7 +1333,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s9" />
                                         <label for="s9" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/10.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/10.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Butter Popcorn
@@ -1360,7 +1360,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s10" />
                                         <label for="s10" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/11.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/11.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Caramel Popcorn
@@ -1387,7 +1387,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s11" />
                                         <label for="s11" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/12.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/12.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Nachos  
@@ -1412,7 +1412,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s12" />
                                         <label for="s12" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/13.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/13.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     French Fries
@@ -1445,7 +1445,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s9" />
                                         <label for="s9" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/10.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/10.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Butter Popcorn
@@ -1472,7 +1472,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s10" />
                                         <label for="s10" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/11.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/11.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Caramel Popcorn
@@ -1499,7 +1499,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s11" />
                                         <label for="s11" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/12.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/12.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     Nachos  
@@ -1524,7 +1524,7 @@
                                     <div class="tile new-hei">
                                         <input type="checkbox" name="party" id="s12" />
                                         <label for="s12" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/snacks/13.png" />
+                                            <img src="/assets/images/00icons/addon/snacks/13.png" />
                                             <div class="content">
                                                 <p class="cake">
                                                     French Fries
@@ -1607,7 +1607,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="r1" />
                                         <label for="r1" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/baloon/1.png" />
+                                            <img src="/assets/images/00icons/addon/baloon/1.png" />
                                             <div class="content">
                                                 <p>Round</p>
                                                 <p>₹0</p>
@@ -1622,17 +1622,11 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="r2" />
                                         <label for="r2" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/baloon/2.png" />
+                                            <img src="/assets/images/00icons/addon/baloon/2.png" />
                                             <div class="content">
-                                                <p>
-                                                    Heart
-
-                                                </p>
+                                                <p>Heart</p>
                                                 <p>₹0</p>
                                             </div>
-
-
-
                                         </label>
                                     </div>
                                 </div>
@@ -1640,7 +1634,7 @@
                                     <div class="tile">
                                         <input type="checkbox" name="party" id="r3" />
                                         <label for="r3" class="theme-sec">
-                                            <img src="assets/images/00icons/addon/baloon/3.png" />
+                                            <img src="/assets/images/00icons/addon/baloon/3.png" />
                                             <div class="content">
                                                 <p>Square</p>
                                                 <p>₹0</p>

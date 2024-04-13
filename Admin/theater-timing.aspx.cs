@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
@@ -38,6 +39,7 @@ public partial class Admin_theater_timing : System.Web.UI.Page
                 string aid = Request.Cookies["nt_aid"].Value;
                 TheaterTiming st = new TheaterTiming()
                 {
+                    TimingGuid = Guid.NewGuid().ToString(),
                     StartTime = txtStart.Text,
                     EndTime = txtEnd.Text,
                     TheaterID = Request.QueryString["tid"],
@@ -123,5 +125,33 @@ public partial class Admin_theater_timing : System.Web.UI.Page
         {
             ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "BindTheaterList", ex.Message);
         }
+    }
+
+
+    [WebMethod(EnableSession = true)]
+    public static string Delete(string id)
+    {
+        string x = "";
+        try
+        {
+            SqlConnection conSQ = new SqlConnection(ConfigurationManager.ConnectionStrings["conSQ"].ConnectionString);
+            TheaterTiming img = new TheaterTiming();
+            img.Id = Convert.ToInt32(id);
+            img.AddedOn = TimeStamps.UTCTime();
+            img.AddedIp = CommonModel.IPAddress();
+            img.AddedBy = HttpContext.Current.Request.Cookies["nt_aid"].Value;
+            int exec = TheaterTiming.DeleteTiming(conSQ, img);
+            if (exec > 0)
+            {
+                x = "Success";
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "DeleteImage", ex.Message);
+        }
+        return x;
     }
 }

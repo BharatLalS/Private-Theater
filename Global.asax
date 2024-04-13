@@ -43,7 +43,9 @@
         //routes.Ignore("{resource}.axd/{*pathInfo}");
         routes.MapPageRoute("/404", "404", "~/404.aspx");
         routes.MapPageRoute("Blogs", "blog/{BUrl}", "~/blog-details.aspx");
-        routes.MapPageRoute("Booking Details", "booking/{BUrl}", "~/details.aspx");
+        routes.MapPageRoute("Booking Details", "booking/{AUrl}/{TUrl}", "~/details.aspx");
+        routes.MapPageRoute("Theater Listing", "theaters/{AUrl}", "~/theater-list.aspx");
+        routes.MapPageRoute("Add On", "add-on/{BUrl}", "~/add-on.aspx");
         //routes.MapPageRoute("Group", "destinations/{DType}", "~/destinations.aspx");
         //routes.MapPageRoute("Destination", "destination/{DUrl}", "~/destination-detail.aspx");
         //routes.MapPageRoute("ThemeDestination", "destination/{DUrl}/{TUrl}", "~/destination-detail.aspx");

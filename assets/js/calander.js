@@ -20,7 +20,7 @@ const months = [
 let date = new Date();
 let month = date.getMonth();
 let year = date.getFullYear();
-
+let today = new Date();
 function renderCalendar() {
     const start = new Date(year, month, 1).getDay();
     const endDate = new Date(year, month + 1, 0).getDate();
@@ -35,11 +35,7 @@ function renderCalendar() {
 
     for (let i = 1; i <= endDate; i++) {
         let className =
-            i === date.getDate() &&
-                month === new Date().getMonth() &&
-                year === new Date().getFullYear()
-                ? ' class="active"'
-                : "";
+            i === date.getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? ' class="active"' : i < date.getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ?' class="inactive"': month < new Date().getMonth() && year === new Date().getFullYear() ? ' class="inactive"' : year < new Date().getFullYear() ? ' class="inactive"' : "";
         datesHtml += `<li${className}>${i}</li>`;
     }
 
@@ -53,7 +49,7 @@ function renderCalendar() {
 
 navs.forEach((nav) => {
     nav.addEventListener("click", (e) => {
-        const btnId = e.target.id;
+        const btnId = nav.id;
 
         if (btnId === "prev" && month === 0) {
             year--;
@@ -68,7 +64,12 @@ navs.forEach((nav) => {
         date = new Date(year, month, new Date().getDate());
         year = date.getFullYear();
         month = date.getMonth();
-
+        if (month === today.getMonth() && year === today.getFullYear()) {
+            $("#prev").addClass("disable");
+        }
+        else {
+            $("#prev").removeClass("disable");
+        }
         renderCalendar();
     });
 });

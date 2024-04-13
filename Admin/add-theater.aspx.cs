@@ -213,8 +213,11 @@ public partial class Admin_add_thretre : System.Web.UI.Page
                         if (result > 0)
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "Snackbar.show({pos: 'top-right',text: 'Theater Added successfully.',actionTextColor: '#fff',backgroundColor: '#008a3d'});", true);
-                            txtFullDesc.Text = txtMetaDesc.Text = txtTheater.Text = txtUrl.Text = txtPageTitle.Text = txtMetaKey.Text = "";
+                            txtFullDesc.Text = txtMetaDesc.Text = txtPinCode.Text = txtAddress.Text = txtLocation.Text = txtShortDesc.Text = txtMaxAllCap.Text = txtMaxAllowed.Text = txtPrice.Text = txtExtPrice.Text = txtTheater.Text = txtUrl.Text = txtPageTitle.Text = txtMetaKey.Text = "";
                             StrThumbImage = "";
+                            ddlState.ClearSelection();
+                            ddlCity.ClearSelection();
+                            ddlArea.ClearSelection();
                         }
                         else
                         {

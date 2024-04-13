@@ -86,7 +86,7 @@ public class AddOnProducts
                                 Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
                                 ProductName = Convert.ToString(dr["ProductName"]),
                                 CategoryTitle = Convert.ToString(dr["CategoryTitle"]),
-                                Category = Convert.ToString(dr["CategoryTitle"]),
+                                Category = Convert.ToString(dr["Category"]),
                                 ProductUrl = Convert.ToString(dr["ProductUrl"]),
                                 ProductGuid = Convert.ToString(dr["ProductGuid"]),
                                 ProductOrder = Convert.ToString(dr["ProductOrder"]),

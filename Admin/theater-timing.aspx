@@ -78,5 +78,6 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/pages/theater-timing.js"></script>
 </asp:Content>
 
