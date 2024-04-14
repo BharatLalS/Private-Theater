@@ -281,7 +281,7 @@
                             <!-- breadcrumb-list - start -->
                             <div class="breadcrumb-list">
                                 <ul>
-                                    <li class="breadcrumb-item"><a href="index-1.html" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Add on</li>
                                 </ul>
                             </div>
@@ -301,10 +301,11 @@
                         <div class="layout-btn-group">
                             <!-- <h3 class="float-left">change layout</h3> -->
                             <ul class="nav blog-layout-menubar float-right">
-                                <li>
+                                <%= StrAddOnCategory%>
+                                <%--<li>
                                     <a class="active" data-toggle="tab" href="#Occation">Occation</a>
-                                </li>
-                                <li>
+                                </li>--%>
+                                <%--  <li>
                                     <a data-toggle="tab" href="#Cakes">Cakes</a>
                                 </li>
                                 <li>
@@ -315,25 +316,25 @@
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#foodparty">Food party</a>
-                                </li>
-
+                                </li>--%>
                             </ul>
                         </div>
                     </div>
 
                     <div class="tab-content">
+                                                <%=StrAddOnProducts %>
                         <!-- grid-layout - start -->
-                        <div id="Occation" class="tab-pane fade in active show">
-                            <div class="row mt-0 gy-4">
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Birthday" />
-                                        <label for="Birthday" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/1.png" />
-                                            <div class="content">
+                        <%--<div id='Occation' class='tab-pane fade in active show'>
+                            <div class='row mt-0 gy-4'>
+                                <div class='col-lg-4 col-md-6 col-6'>
+                                    <div class='tile'>
+                                        <input type='checkbox' name='party' id='Birthday' />
+                                        <label for='Birthday' class='theme-sec'>
+                                            <img src='/assets/images/00icons/addon/1.png' />
+                                            <div class='content'>
                                                 <p>Birthday</p>
                                                 <p>₹0</p>
-                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                <a class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>know more
                                                 </a>
                                             </div>
 
@@ -343,18 +344,18 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Bride" />
-                                        <label for="Bride" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/2.png" />
-                                            <div class="content">
+                                <div class='col-lg-4 col-md-6 col-6'>
+                                    <div class='tile'>
+                                        <input type='checkbox' name='party' id='Bride' />
+                                        <label for='Bride' class='theme-sec'>
+                                            <img src='/assets/images/00icons/addon/2.png' />
+                                            <div class='content'>
                                                 <p>
                                                     Bride to Be
 
                                                 </p>
                                                 <p>₹0</p>
-                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                <a class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>know more
                                                 </a>
                                             </div>
 
@@ -363,15 +364,15 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Anniversary" />
-                                        <label for="Anniversary" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/3.png" />
-                                            <div class="content">
+                                <div class='col-lg-4 col-md-6 col-6'>
+                                    <div class='tile'>
+                                        <input type='checkbox' name='party' id='Anniversary' />
+                                        <label for='Anniversary' class='theme-sec'>
+                                            <img src='/assets/images/00icons/addon/3.png' />
+                                            <div class='content'>
                                                 <p>Anniversary</p>
                                                 <p>₹0</p>
-                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                <a class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>know more
                                                 </a>
                                             </div>
 
@@ -380,15 +381,15 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Proposal" />
-                                        <label for="Proposal" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/4.png" />
-                                            <div class="content">
+                                <div class='col-lg-4 col-md-6 col-6'>
+                                    <div class='tile'>
+                                        <input type='checkbox' name='party' id='Proposal' />
+                                        <label for='Proposal' class='theme-sec'>
+                                            <img src='/assets/images/00icons/addon/4.png' />
+                                            <div class='content'>
                                                 <p>Proposal</p>
                                                 <p>₹0</p>
-                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                <a class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>know more
                                                 </a>
                                             </div>
 
@@ -397,18 +398,18 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="Baby" />
-                                        <label for="Baby" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/5.png" />
-                                            <div class="content">
+                                <div class='col-lg-4 col-md-6 col-6'>
+                                    <div class='tile'>
+                                        <input type='checkbox' name='party' id='Baby' />
+                                        <label for='Baby' class='theme-sec'>
+                                            <img src='/assets/images/00icons/addon/5.png' />
+                                            <div class='content'>
                                                 <p>
                                                     Baby Shower
 
                                                 </p>
                                                 <p>₹0</p>
-                                                <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">know more
+                                                <a class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>know more
                                                 </a>
                                             </div>
 
@@ -419,51 +420,13 @@
                                 </div>
 
                             </div>
-                            <div class="row justify-content-center mt-2">
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <a href="#Theme" class="custom-btn" tabindex="-1">Next<i class=" ms-2 mt-1 fas fa-angle-right fa-lg"></i></a>
+                            <div class='row justify-content-center mt-2'>
+                                <div class='col-lg-4 col-md-6 col-6'>
+                                    <a href='#Theme' class='custom-btn' tabindex='-1'>Next<i class=' ms-2 mt-1 fas fa-angle-right fa-lg'></i></a>
                                 </div>
                             </div>
-                            <div class="row mt-4">
-
-                                <div class="order-summary-table table-responsive">
-                                    <h4 class="fw-semibold">Selected items</h4>
-                                    <table class="table text-center">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Item Type	</th>
-                                                <th scope="col">Items Name	</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="bg-gray-light">
-                                                <td scope="row">Customizations	</td>
-                                                <td>Baby Shower	</td>
-                                                <td>1</td>
-                                                <td>₹150.00</td>
-                                                <td>₹150.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">Customizations</td>
-                                                <td>Anniversary</td>
-                                                <td>2</td>
-                                                <td>₹5.00</td>
-                                                <td>₹5.00</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <textarea placeholder="Add Note Here"></textarea>
-                            </div>
-                        </div>
-                        <div id="Cakes" class="tab-pane fade">
+                        </div>--%>
+                        <%--<div id="Cakes" class="tab-pane fade">
                             <div class="row mt-0 gy-4">
 
                                 <div class="col-lg-4 col-md-6 col-6">
@@ -1600,92 +1563,47 @@
                             <div class="row mt-4">
                                 <textarea placeholder="Add Note Here"></textarea>
                             </div>
+                        </div>--%>
+
+
+
+                        <div class="row mt-4">
+
+                            <div class="order-summary-table table-responsive">
+                                <h4 class="fw-semibold">Selected items</h4>
+                                <table class="table text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Item Type	</th>
+                                            <th scope="col">Items Name	</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-gray-light">
+                                            <td scope="row">Customizations	</td>
+                                            <td>Baby Shower	</td>
+                                            <td>1</td>
+                                            <td>₹150.00</td>
+                                            <td>₹150.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">Customizations</td>
+                                            <td>Anniversary</td>
+                                            <td>2</td>
+                                            <td>₹5.00</td>
+                                            <td>₹5.00</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
                         </div>
-                        <div id="Ballon" class="tab-pane fade">
-                            <div class="row mt-0 gy-4">
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="r1" />
-                                        <label for="r1" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/baloon/1.png" />
-                                            <div class="content">
-                                                <p>Round</p>
-                                                <p>₹0</p>
-                                            </div>
-
-
-
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="r2" />
-                                        <label for="r2" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/baloon/2.png" />
-                                            <div class="content">
-                                                <p>Heart</p>
-                                                <p>₹0</p>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-6">
-                                    <div class="tile">
-                                        <input type="checkbox" name="party" id="r3" />
-                                        <label for="r3" class="theme-sec">
-                                            <img src="/assets/images/00icons/addon/baloon/3.png" />
-                                            <div class="content">
-                                                <p>Square</p>
-                                                <p>₹0</p>
-                                            </div>
-
-
-
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div class="row mt-4">
-
-                                <div class="order-summary-table table-responsive">
-                                    <h3>Selected items</h3>
-                                    <table class="table text-center">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Item Type	</th>
-                                                <th scope="col">Items Name	</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="bg-gray-light">
-                                                <td scope="row">Customizations	</td>
-                                                <td>Baby Shower	</td>
-                                                <td>1</td>
-                                                <td>₹150.00</td>
-                                                <td>₹150.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">Customizations</td>
-                                                <td>Anniversary</td>
-                                                <td>2</td>
-                                                <td>₹5.00</td>
-                                                <td>₹5.00</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <textarea placeholder="Add Note Here"></textarea>
-                            </div>
+                        <div class="row mt-4">
+                            <textarea placeholder="Add Note Here"></textarea>
                         </div>
                     </div>
                 </div>
@@ -1699,7 +1617,7 @@
                                     <p>Slot Price</p>
                                 </div>
                                 <div class="col-lg-4 text-end">
-                                    <p class="fw-semibold">₹1899</p>
+                                    <p class="fw-semibold lblslotprice">₹ <%=StrSlotPrice %></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -1710,9 +1628,8 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-4 text-end">
-                                    <p class="fw-semibold">
-                                        ₹0
-
+                                    <p class="fw-semibold lblPaxPrice">
+                                        ₹ <%=StrExtPaxCost %>
                                     </p>
                                 </div>
                             </div>
@@ -1723,16 +1640,16 @@
                                         <span>(Excluded of Gst)</span>
                                     </div>
                                     <div class="col-lg-4 text-end">
-                                        <p class="grand-total">₹1899</p>
+                                        <p class="grand-total">₹ <%= StrTotal %></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-lg-12">
-                                    <a href="#" class="new-term" data-toggle="modal" data-target="#exampleModal1">payment terms  </a>
+                                    <a href="javascript:void(0);" class="new-term" data-toggle="modal" data-target="#exampleModal1">payment terms  </a>
                                 </div>
                                 <div class="col-lg-12">
-                                    <a href="#" class="custom-btn" tabindex="-1">Pay  </a>
+                                    <a href="javascript:void(0);" class="custom-btn btnpay" tabindex="-1">Pay</a>
                                 </div>
                             </div>
 

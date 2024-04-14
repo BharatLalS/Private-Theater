@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Drawing;
 
 /// <summary>
 /// Summary description for BookingDetails
@@ -22,6 +23,8 @@ public class BookingDetails
     public string UserEmail { get; set; }
     public string UserPhoneNo { get; set; }
     public string NoOfPax { get; set; }
+    public string SlotTotal { get; set; }
+    public string ExtPaxTotal { get; set; }
     public string Subtotal { get; set; }
     public DateTime AddedOn { get; set; }
     public string AddedIP { get; set; }
@@ -67,10 +70,10 @@ public class BookingDetails
         {
             string query = @"INSERT INTO BookingDetails 
                             (BookingID, BookingGuid,TheaterGuid, BookingDate, BookingStatus, UserGuid, UserName, 
-                                UserEmail, UserPhoneNo,NoOfPax, Subtotal, AddedOn, AddedIP, Status) 
+                                UserEmail, UserPhoneNo,NoOfPax,SlotTotal,ExtPaxTotal, Subtotal, AddedOn, AddedIP, Status) 
                          VALUES 
                             (@BookingID, @BookingGuid,@TheaterGuid, @BookingDate, @BookingStatus,@UserGuid, @UserName,
-                                @UserEmail, @UserPhoneNo,@NoOfPax, @Subtotal, @AddedOn, @AddedIP, @Status)";
+                                @UserEmail, @UserPhoneNo,@NoOfPax,@SlotTotal,@ExtPaxTotal, @Subtotal, @AddedOn, @AddedIP, @Status)";
 
 
             using (SqlCommand command = new SqlCommand(query, conGV))
@@ -86,6 +89,8 @@ public class BookingDetails
                 command.Parameters.AddWithValue("@UserEmail", booking.UserEmail);
                 command.Parameters.AddWithValue("@UserPhoneNo", booking.UserPhoneNo);
                 command.Parameters.AddWithValue("@NoOfPax", booking.NoOfPax);
+                command.Parameters.AddWithValue("@SlotTotal", booking.SlotTotal);
+                command.Parameters.AddWithValue("@ExtPaxTotal", booking.ExtPaxTotal);
                 command.Parameters.AddWithValue("@Subtotal", booking.Subtotal);
                 command.Parameters.AddWithValue("@AddedOn", booking.AddedOn);
                 command.Parameters.AddWithValue("@AddedIP", booking.AddedIP);
@@ -103,6 +108,51 @@ public class BookingDetails
             return 0;
         }
         return x;
+    }
+
+    public static BookingDetails GetBookingDetails(SqlConnection conGV, string bookingGuid)
+    {
+        var booking = new BookingDetails();
+        try
+        {
+            string query = "Select * from BookingDetails Where BookingGuid=@BookingGuid and Status !=@Status";
+            using (SqlCommand cmd = new SqlCommand(query, conGV))
+            {
+                cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = bookingGuid;
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Deleted";
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                booking = (from DataRow dr in dt.Rows
+                           select new BookingDetails()
+                           {
+                               Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                               BookingID = Convert.ToString(dr["BookingID"]),
+                               BookingGuid = Convert.ToString(dr["BookingGuid"]),
+                               TheaterGuid = Convert.ToString(dr["TheaterGuid"]),
+                               BookingDate = Convert.ToDateTime(Convert.ToString(dr["BookingDate"])),
+                               BookingStatus = Convert.ToString(dr["BookingStatus"]),
+                               UserGuid = Convert.ToString(dr["UserGuid"]),
+                               UserName = Convert.ToString(dr["UserName"]),
+                               UserEmail = Convert.ToString(dr["UserEmail"]),
+                               UserPhoneNo = Convert.ToString(dr["UserPhoneNo"]),
+                               NoOfPax = Convert.ToString(dr["NoOfPax"]),
+                               SlotTotal = Convert.ToString(dr["SlotTotal"]),
+                               ExtPaxTotal = Convert.ToString(dr["ExtPaxTotal"]),
+                               Subtotal = Convert.ToString(dr["Subtotal"]),
+                               AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                               AddedIP = Convert.ToString(dr["AddedIP"]),
+                               Status = Convert.ToString(dr["Status"])
+                           }).FirstOrDefault();
+            }
+            return booking;
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetBookingDetails", ex.Message);
+
+        }
+        return null;
     }
     #endregion
 }

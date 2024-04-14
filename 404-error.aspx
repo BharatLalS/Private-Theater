@@ -23,7 +23,7 @@
 					<!-- error-content - start -->
 					<div class="col-lg-4 col-md-6 col-sm-12">
 						<div class="error-content">
-							<h2>404</h2>
+							<h1>404</h1>
 							<h3>error - page not found</h3>
 							<p class="mb-30">The page you are looking for could not be found.The link to this
                             address may be outdated or we may have moved the since you last bookmarked it.</p>

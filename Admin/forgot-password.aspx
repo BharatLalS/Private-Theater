@@ -34,7 +34,7 @@
                                 <div class="card-body p-4">
                                     <div class="text-center mt-2">
                                         <a href="/admin" class="d-inline-block auth-logo">
-                                            <img src="assets/images/favicon.png" height="70" />
+                                            <img src="assets/images/logo.png" />
                                         </a>
                                     </div>
                                     <div class="text-center mt-2">

@@ -34,7 +34,7 @@
                                 <div class="card-body p-4">
                                     <div class="text-center mt-2">
                                         <a href="/admin" class="d-inline-block auth-logo">
-                                            <img src="assets/images/favicon.png" alt="" height="70" />
+                                            <img src="assets/images/logo.png" alt=""  />
                                         </a>
                                     </div>
                                     <div class="text-center mt-2">
@@ -64,7 +64,7 @@
                                             </div>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtConfirmPassword" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Reset" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
                                             <asp:CompareValidator ID="comp1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Reset" ErrorMessage="Password doesn't match"></asp:CompareValidator>
-                                            <asp:RegularExpressionValidator runat="server" ValidationGroup="Reset" SetFocusOnError="true" ControlToValidate="txtConfirmPassword" Display="Dynamic" ForeColor="Red" ErrorMessage="Invalid Password" ValidationExpression="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[~!@#$%^&*(),.?:{}|<>]).{8,}" ></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator runat="server" ValidationGroup="Reset" SetFocusOnError="true" ControlToValidate="txtConfirmPassword" Display="Dynamic" ForeColor="Red" ErrorMessage="Invalid Password" ValidationExpression="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[~!@#$%^&*(),.?:{}|<>]).{8,}"></asp:RegularExpressionValidator>
                                         </div>
 
                                         <div id="password-contain" class="p-3 bg-light mb-2 password-contain rounded">

@@ -24,8 +24,8 @@
                                     Bengaluru's OG destination for celebrations
 
                                 </p>
-                                <a href="book-now.aspx" class="custom-btn me-2">Book now</a>
-                                <a href="#!" class="details-btn">Connect on whatsapp</a>
+                                <a href="/book-now.aspx" class="custom-btn me-2">Book now</a>
+                                <a href="javascript:void(0);" class="details-btn">Connect on whatsapp</a>
                             </div>
                         </div>
                         <!-- slider-content - end -->
@@ -48,11 +48,9 @@
                                 </h1>
                                 <p class="color-new-w">
                                     Bengaluru's OG destination for celebrations
-
-
                                 </p>
                                 <a href="book-now.aspx" class="custom-btn me-2">Book now</a>
-                                <a href="#!" class="details-btn">Connect on whatsapp</a>
+                                <a href="javascript:void(0);" class="details-btn">Connect on whatsapp</a>
                             </div>
                         </div>
                         <!-- slider-content - end -->

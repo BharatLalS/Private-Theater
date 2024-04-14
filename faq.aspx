@@ -27,17 +27,12 @@
                             <div class="breadcrumb-title text-center mb-20">
                                 <h2 class="big-title">Faq</h2>
                             </div>
-                            <!-- breadcrumb-title - end -->
-
-                            <!-- breadcrumb-list - start -->
                             <div class="breadcrumb-list">
                                 <ul>
-                                    <li class="breadcrumb-item"><a href="index-1.html" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Faq</li>
                                 </ul>
                             </div>
-                            <!-- breadcrumb-list - end -->
-
                         </div>
                     </div>
                 </div>
@@ -52,7 +47,7 @@
                     <div class="col-lg-8 col-md-12 col-sm-12">
                         <div id="faq-accordion" class="faq-accordion">
                             <%=StrFAQ %>
-                           <%-- <div class="card">
+                            <%-- <div class="card">
                                 <div class="card-header" id="headingone">
                                     <button type="button" class="btn collapsed" data-toggle="collapse" data-target="#collapseone" aria-expanded="true" aria-controls="collapseone">
                                         <span>01.</span>
@@ -121,7 +116,6 @@
                                     </div>
                                 </div>
                             </div>--%>
-
                         </div>
                     </div>
                 </div>

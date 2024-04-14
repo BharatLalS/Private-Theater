@@ -41,7 +41,7 @@
     {
         routes.Clear();
         //routes.Ignore("{resource}.axd/{*pathInfo}");
-        routes.MapPageRoute("/404", "404", "~/404.aspx");
+        routes.MapPageRoute("/404", "404", "~/404-error.aspx");
         routes.MapPageRoute("Blogs", "blog/{BUrl}", "~/blog-details.aspx");
         routes.MapPageRoute("Booking Details", "booking/{AUrl}/{TUrl}", "~/details.aspx");
         routes.MapPageRoute("Theater Listing", "theaters/{AUrl}", "~/theater-list.aspx");

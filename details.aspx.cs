@@ -216,7 +216,9 @@ public partial class details : System.Web.UI.Page
             decimal extprice1 = 0;
             decimal.TryParse(theaterdetails.ExtraPrice, out extprice1);
             int extra1 = (pax - limit) > 0 ? pax - limit : 0;
-            decimal totalPrice = (cnt * price) + (extra1 * extprice1);
+            decimal slottotal = cnt * price;
+            decimal extpaxtotal = extra1 * extprice1;
+            decimal totalPrice = slottotal + extpaxtotal;
 
             var booking = new BookingDetails()
             {
@@ -229,6 +231,8 @@ public partial class details : System.Web.UI.Page
                 UserName = name,
                 UserEmail = Email,
                 UserPhoneNo = Phone,
+                SlotTotal = slottotal.ToString(),
+                ExtPaxTotal = extpaxtotal.ToString(),
                 NoOfPax = Pax,
                 Subtotal = totalPrice.ToString(),
                 AddedOn = TimeStamps.UTCTime(),

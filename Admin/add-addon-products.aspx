@@ -56,7 +56,18 @@
                             <small class="text-danger">.png, .jpeg, .jpg, .gif formats are required, Image Size 225 × 225 px is recommended.</small><br />
                             <%=StrThumbImage %>
                         </div>
-                        <div class="col-lg-2 mb-2 d-none" id="divprotype">
+                        <div class="col-lg-2 mb-2" id="divprotype">
+                            <label>Select Type <sup>*</sup></label>
+                            <asp:DropDownList runat="server" ID="ddlProductType" CssClass="form-control form-select ddlProductType">
+                                <asp:ListItem Value="0" Selected="True" disabled hidden>Select Type</asp:ListItem>
+                                <asp:ListItem Value="Snacks">Snacks</asp:ListItem>
+                                <asp:ListItem Value="Appetizer">Appetizer</asp:ListItem>
+                                <asp:ListItem Value="Main Course">Main Course</asp:ListItem>
+                                <asp:ListItem Value="Beverages">Beverages</asp:ListItem>
+                                <asp:ListItem Value="Desert">Desert</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                        <%-- <div class="col-lg-2 mb-2 d-none" id="divdecoprotype">
                             <label>Select Type <sup>*</sup></label>
                             <asp:DropDownList runat="server" ID="ddlProductType" CssClass="form-control form-select ddlProductType ">
                                 <asp:ListItem Value="0" Selected="True" disabled hidden>Select Type</asp:ListItem>
@@ -66,11 +77,11 @@
                                 <asp:ListItem Value="Beverages">Beverages</asp:ListItem>
                                 <asp:ListItem Value="Desert">Desert</asp:ListItem>
                             </asp:DropDownList>
-                        </div>
+                        </div>--%>
                         <div class="col-lg-2 mb-2">
                             <div class="" style="margin-top: 36px;">
                                 <asp:CheckBox runat="server" ID="ChkMultiple" />
-                                <label runat="server" id="lblmultiple" for="<%=ChkMultiple.ClientID %>">Allow Multiple</label>
+                                <label for="<%=ChkMultiple.ClientID %>">Allow Multiple</label>
                             </div>
                         </div>
                         <div class="col-lg-12 mb-2">
