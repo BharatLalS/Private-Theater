@@ -251,6 +251,49 @@ public class AddOnProducts
         }
         return ListOfBolgs;
     }
+    public static List<AddOnProducts> GetAllAddOnProductsWithType(SqlConnection conSQ, string Cat, string PType)
+    {
+        var ListOfBolgs = new List<AddOnProducts>();
+        try
+        {
+            string query = "Select *,(Select CategoryTitle from AddOnCategories Where AddOnCategories.ID=Category) as CategoryTitle from AddOnProducts where Status=@Status and Category=@Category and ProductType = @PType Order by Id";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Active";
+                cmd.Parameters.AddWithValue("@Category", SqlDbType.NVarChar).Value = Cat;
+                cmd.Parameters.AddWithValue("@PType", SqlDbType.NVarChar).Value = PType;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                ListOfBolgs = (from DataRow dr in dt.Rows
+                               select new AddOnProducts()
+                               {
+                                   Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                                   ProductName = Convert.ToString(dr["ProductName"]),
+                                   CategoryTitle = Convert.ToString(dr["CategoryTitle"]),
+                                   Category = Convert.ToString(dr["CategoryTitle"]),
+                                   ProductUrl = Convert.ToString(dr["ProductUrl"]),
+                                   ProductGuid = Convert.ToString(dr["ProductGuid"]),
+                                   ProductOrder = Convert.ToString(dr["ProductOrder"]),
+                                   ProductType = Convert.ToString(dr["ProductType"]),
+                                   Price = Convert.ToString(dr["Price"]),
+                                   ThumbImage = Convert.ToString(dr["ThumbImage"]),
+                                   AllowMultiple = Convert.ToString(dr["AllowMultiple"]),
+                                   Description = Convert.ToString(dr["Description"]),
+                                   AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                                   AddedIp = Convert.ToString(dr["AddedIP"]),
+                                   AddedBy = Convert.ToString(dr["AddedBy"]),
+                                   Status = Convert.ToString(dr["Status"])
+                               }).ToList();
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetAllAddOnProducts", ex.Message);
+        }
+        return ListOfBolgs;
+    }
+
 
     /// <summary>
     /// Updates the details of a Product in the database.
@@ -363,5 +406,30 @@ public class AddOnProducts
         return result;
     }
 
+    public static List<string> SelectProductTypesByCategory(SqlConnection conGV, string Cat)
+    {
+        var list = new List<string>();
+        try
+        {
+            string query = "Select Distinct ProductType from AddOnProducts where Status=@Status and Category=@Cat";
+            using (SqlCommand cmd = new SqlCommand(query, conGV))
+            {
+                cmd.Parameters.AddWithValue("@Status", "Active");
+                cmd.Parameters.AddWithValue("@Cat", Cat);
+                conGV.Open();
+                SqlDataReader sda = cmd.ExecuteReader();
+                while (sda.Read())
+                {
+                    list.Add(sda["ProductType"].ToString());
+                }
+                conGV.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "SelectProductTypesByCategory", ex.Message);
+        }
+        return list;
+    }
     #endregion
 }

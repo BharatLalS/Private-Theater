@@ -62,7 +62,8 @@ public partial class Admin_add_addon_products : System.Web.UI.Page
                 txtUrl.Text = Product.ProductUrl;
                 txtDesc.Text = Product.Description;
                 ChkMultiple.Checked = Product.AllowMultiple == "Yes";
-
+                BindProductType();
+                ddlProductType.Text = Product.ProductType;
                 if (Product.ThumbImage != null)
                 {
                     StrThumbImage = "<img src='/" + Product.ThumbImage + "' style='max-height:60px;' />";
@@ -236,4 +237,44 @@ public partial class Admin_add_addon_products : System.Web.UI.Page
         return thumbfile;
     }
 
+
+    protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BindProductType();
+    }
+    public void BindProductType()
+    {
+        try
+        {
+            if (ddlCategory.SelectedValue == "4")
+            {
+                ddlProductType.Items.Clear();
+                ddlProductType.Items.Add((new ListItem { Value = "0", Text = "Select Type", Selected = true, Enabled = true }));
+                ddlProductType.Items.Add((new ListItem { Value = "Back Drop", Text = "Back Drop" }));
+                ddlProductType.Items.Add((new ListItem { Value = "Balloon", Text = "Balloon" }));
+                ddlProductType.Items.Add((new ListItem { Value = "Add On", Text = "Add On" }));
+                divprotype.Visible = true;
+            }
+            else if (ddlCategory.SelectedValue == "6")
+            {
+                ddlProductType.Items.Clear();
+                ddlProductType.Items.Add((new ListItem { Value = "0", Text = "Select Type", Selected = true, Enabled = true }));
+                ddlProductType.Items.Add((new ListItem { Value = "Snacks", Text = "Snacks" }));
+                ddlProductType.Items.Add((new ListItem { Value = "Appetizer", Text = "Appetizer" }));
+                ddlProductType.Items.Add((new ListItem { Value = "Main Course", Text = "Main Course" }));
+                ddlProductType.Items.Add((new ListItem { Value = "Beverages", Text = "Beverages" }));
+                ddlProductType.Items.Add((new ListItem { Value = "Desert", Text = "Desert" }));
+                divprotype.Visible = true;
+            }
+            else
+            {
+                ddlProductType.Items.Clear();
+                divprotype.Visible = false;
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
 }

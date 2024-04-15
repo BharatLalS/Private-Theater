@@ -57,7 +57,6 @@ public partial class add_on : System.Web.UI.Page
                 for (int i = 0; i < addons.Count; i++)
                 {
 
-                    var strProduct = "";
                     var nextbtn = "";
                     var previousbtn = "";
 
@@ -78,7 +77,7 @@ public partial class add_on : System.Web.UI.Page
                                 </li>";
                         nextbtn = @"";
                         previousbtn = @"<div class='col-lg-4 col-md-6 col-6'>
-                                    <a href='#" + addons[i - 1].CategoryUrl + @"'  data-toggle='tab' class='custom-btn' tabindex='-1'><i class=' ms-2 mt-1 fas fa-angle-left fa-lg'> Prev</i></a>
+                                    <a href='#" + addons[i - 1].CategoryUrl + @"'  data-toggle='tab' class='custom-btn' tabindex='-1'><i class=' me-2 mt-1 fas fa-angle-left fa-lg'></i> Prev</a>
                                 </div>";
                     }
                     else
@@ -93,12 +92,20 @@ public partial class add_on : System.Web.UI.Page
                                     <a href='#" + addons[i - 1].CategoryUrl + @"'  data-toggle='tab' class='custom-btn' tabindex='-1'><i class='me-2 mt-1 fas fa-angle-left fa-lg'></i> Prev</a>
                                 </div>";
                     }
-                    var products = AddOnProducts.GetAllAddOnProductsWithCategory(conSQ, addons[i].Id.ToString());
-                    if (products != null && products.Count > 0)
+                    var producttypes = AddOnProducts.SelectProductTypesByCategory(conSQ, addons[i].Id.ToString());
+                    if (producttypes.Count > 0)
                     {
-                        for (int j = 0; j < products.Count; j++)
+                        var strProduct = "";
+                        if (producttypes.Count == 1 && producttypes[0] == "")
                         {
-                            strProduct += @"<div class='col-lg-4 col-md-6 col-6'>
+                            var products = AddOnProducts.GetAllAddOnProductsWithCategory(conSQ, addons[i].Id.ToString());
+
+                            if (products != null && products.Count > 0)
+                            {
+                                for (int j = 0; j < products.Count; j++)
+                                {
+                                    if (products[j].ProductType == "")
+                                        strProduct += @"<div class='col-lg-4 col-md-6 col-6'>
                                     <div class='tile'>
                                         <input type='checkbox' name='party' id='" + products[j].ProductUrl + @"' />
                                         <label for='" + products[j].ProductUrl + @"' class='theme-sec'>
@@ -112,13 +119,13 @@ public partial class add_on : System.Web.UI.Page
                                     </div>
                                     </div>";
 
-                        }
-                    }
-                    else
-                    {
-                        strProduct += @"No Add Ons To Show.";
-                    }
-                    StrAddOnProducts += @"<div id='" + addons[i].CategoryUrl + @"' class='tab-pane fade " + (i == 0 ? "show active" : "") + @"'>
+                                }
+                            }
+                            else
+                            {
+                                strProduct += @"No Add Ons To Show.";
+                            }
+                            StrAddOnProducts += @"<div id='" + addons[i].CategoryUrl + @"' class='tab-pane fade " + (i == 0 ? "show active" : "") + @"'>
                             <div class='row mt-0 gy-4'>
                                " + strProduct + @"
                             </div>
@@ -126,6 +133,53 @@ public partial class add_on : System.Web.UI.Page
                                 " + previousbtn + nextbtn + @"
                             </div>
                         </div>";
+                        }
+                        else if (producttypes.Count > 1)
+                        {
+                            producttypes=producttypes
+                            for (var a = 0; a < producttypes.Count; a++)
+                            {
+                                var products = AddOnProducts.GetAllAddOnProductsWithType(conSQ, addons[i].Id.ToString(), producttypes[a].ToString());
+                                if (products != null && products.Count > 0)
+                                {
+                                    strProduct += "<h4 class='fw-semibold'>" + producttypes[a].ToString() + @"</h4>";
+                                    for (int j = 0; j < products.Count; j++)
+                                    {
+                                        strProduct += @"<div class='col-lg-4 col-md-6 col-6'>
+                                                                <div class='tile'>
+                                                                    <input type='checkbox' name='party' id='" + products[j].ProductUrl + @"' />
+                                                                    <label for='" + products[j].ProductUrl + @"' class='theme-sec'>
+                                                                        <img src='/" + products[j].ThumbImage + @"' />
+                                                                        <div class='content'>
+                                                                            <p>" + products[j].ProductName + @"</p>
+                                                                            <p>₹ " + products[j].Price + @"</p>
+                                                                            <a class='btn btn-primary btnknowmoremodal' data-id='" + products[j].ProductGuid + @"'>know more</a>
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+                                                              </div>";
+
+                                    }
+                                }
+                                else
+                                {
+                                    strProduct += @"No Add Ons To Show.";
+                                }
+
+                            }
+                            StrAddOnProducts += @"<div id='" + addons[i].CategoryUrl + @"' class='tab-pane fade " + (i == 0 ? "show active" : "") + @"'>
+                            <div class='row mt-0 gy-4'>
+                               " + strProduct + @"
+                            </div>
+                            <div class='row justify-content-center mt-2'>
+                                " + previousbtn + nextbtn + @"
+                            </div>
+                        </div>";
+
+                        }
+                    }
+
+
 
                 }
             }

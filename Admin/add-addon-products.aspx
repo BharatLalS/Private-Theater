@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-lg-4 mb-2">
                             <label>Select Category <sup>*</sup></label>
-                            <asp:DropDownList runat="server" ID="ddlCategory" CssClass="form-control ddlCategory form-select">
+                            <asp:DropDownList runat="server" ID="ddlCategory" CssClass="form-control ddlCategory form-select" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged" AutoPostBack="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlCategory" InitialValue="0" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
                         </div>
@@ -56,17 +56,23 @@
                             <small class="text-danger">.png, .jpeg, .jpg, .gif formats are required, Image Size 225 × 225 px is recommended.</small><br />
                             <%=StrThumbImage %>
                         </div>
-                        <div class="col-lg-2 mb-2" id="divprotype">
+                        <div runat="server" class="col-lg-2 mb-2" id="divprotype" visible="false">
+                            <label>Select Type <sup>*</sup></label>
+                            <asp:DropDownList runat="server" ID="ddlProductType" CssClass="form-control form-select"></asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlProductType" InitialValue="0" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Save" ErrorMessage="Field can't be empty"></asp:RequiredFieldValidator>
+
+                        </div>
+                        <%-- <div class="col-lg-2 mb-2" id="divprotype">
                             <label>Select Type <sup>*</sup></label>
                             <asp:DropDownList runat="server" ID="ddlProductType" CssClass="form-control form-select ddlProductType">
                                 <asp:ListItem Value="0" Selected="True" disabled hidden>Select Type</asp:ListItem>
-                                <asp:ListItem Value="Snacks">Snacks</asp:ListItem>
+                                <asp:ListItem Value="Snacks" >Snacks</asp:ListItem>
                                 <asp:ListItem Value="Appetizer">Appetizer</asp:ListItem>
                                 <asp:ListItem Value="Main Course">Main Course</asp:ListItem>
                                 <asp:ListItem Value="Beverages">Beverages</asp:ListItem>
                                 <asp:ListItem Value="Desert">Desert</asp:ListItem>
                             </asp:DropDownList>
-                        </div>
+                        </div>--%>
                         <%-- <div class="col-lg-2 mb-2 d-none" id="divdecoprotype">
                             <label>Select Type <sup>*</sup></label>
                             <asp:DropDownList runat="server" ID="ddlProductType" CssClass="form-control form-select ddlProductType ">
@@ -90,7 +96,7 @@
                         </div>
                         <div class="col-lg-12 mb-2">
                             <asp:Button runat="server" ID="BtnSubmit" CssClass="btn btn-secondary" Text="Save" OnClick="BtnSubmit_Click" ValidationGroup="Save" OnClientClick="tinyMCE.triggerSave(false,true);" />
-                            <asp:Button runat="server" ID="btnNew" CssClass="btn btn-info" Visible="false" Text="Add New Theater" OnClick="btnNew_Click" />
+                            <asp:Button runat="server" ID="btnNew" CssClass="btn btn-info" Visible="false" Text="Add New Add On" OnClick="btnNew_Click" />
                             <asp:Label ID="lblThumb" runat="server" Visible="false"></asp:Label>
                         </div>
                     </div>
@@ -100,15 +106,15 @@
     </div>
     <script>
         $(document).ready(function () {
-            $(document.body).on("change", ".ddlCategory", function (e) {
-                e.preventDefault();
-                if ($(".ddlCategory option:selected").text() == "Food Party") {
-                    $("#divprotype").removeClass("d-none");
-                } else {
-                    $("#divprotype").addClass("d-none");
-                    $(".ddlProductType").val('0');
-                }
-            });
+            //$(document.body).on("change", ".ddlCategory", function (e) {
+            //    e.preventDefault();
+            //    if ($(".ddlCategory option:selected").text() == "Food Party") {
+            //        $("#divprotype").removeClass("d-none");
+            //    } else {
+            //        $("#divprotype").addClass("d-none");
+            //        $(".ddlProductType").val('0');
+            //    }
+            //});
             $(document.body).on("change", '.txtName', function () {
                 $(".txtUrl").val($(".txtName").val().toLowerCase().replace(/\./g, '').replace(/\//g, '').replace(/\\/g, '').replace(/\*/g, '').replace(/\?/g, '').replace(/\~/g, '').replace(/\ /g, '-'));
             });

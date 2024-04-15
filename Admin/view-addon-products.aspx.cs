@@ -35,6 +35,7 @@ public partial class Admin_view_addon_products : System.Web.UI.Page
                                         <td ><a href='/" + sub[i].ThumbImage + @"' target='_blank'><img src='/" + sub[i].ThumbImage + @"' width='60px' /></a></td>
                                         <td>" + sub[i].CategoryTitle + @"</td>
                                         <td>" + sub[i].ProductName + @"</td>
+                                        <td>" + (sub[i].ProductType == "" ? "NA" : sub[i].ProductType) + @"</td>
                                         <td>" + sub[i].Price + @"</td>
                                         <td>" + Convert.ToDateTime(sub[i].AddedOn).ToString("dd MMM yyyy") + @"</td>
                                         <td class='text-center'>

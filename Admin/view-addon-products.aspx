@@ -35,6 +35,7 @@
                                         <th class='col-1'>Thumb Image</th>
                                         <th>Category</th>
                                         <th>Product Title</th>
+                                        <th>Product Type</th>
                                         <th>Product Price</th>
                                         <th>Added On</th>
                                         <th class="text-center">Action</th>
@@ -49,6 +50,7 @@
                                         <th class='col-1'>Thumb Image</th>
                                         <th>Category</th>
                                         <th>Product Title</th>
+                                        <th>Product Type</th>
                                         <th>Product Price</th>
                                         <th>Added On</th>
                                         <th class="text-center">Action</th>
