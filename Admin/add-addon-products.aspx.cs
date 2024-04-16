@@ -246,24 +246,14 @@ public partial class Admin_add_addon_products : System.Web.UI.Page
     {
         try
         {
-            if (ddlCategory.SelectedValue == "4")
+            var types = AddOnProductType.GetAllProductTypeDetailsWithCategory(conSQ, ddlCategory.SelectedValue);
+            if (types != null && types.Count > 0)
             {
-                ddlProductType.Items.Clear();
-                ddlProductType.Items.Add((new ListItem { Value = "0", Text = "Select Type", Selected = true, Enabled = true }));
-                ddlProductType.Items.Add((new ListItem { Value = "Back Drop", Text = "Back Drop" }));
-                ddlProductType.Items.Add((new ListItem { Value = "Balloon", Text = "Balloon" }));
-                ddlProductType.Items.Add((new ListItem { Value = "Add On", Text = "Add On" }));
-                divprotype.Visible = true;
-            }
-            else if (ddlCategory.SelectedValue == "6")
-            {
-                ddlProductType.Items.Clear();
-                ddlProductType.Items.Add((new ListItem { Value = "0", Text = "Select Type", Selected = true, Enabled = true }));
-                ddlProductType.Items.Add((new ListItem { Value = "Snacks", Text = "Snacks" }));
-                ddlProductType.Items.Add((new ListItem { Value = "Appetizer", Text = "Appetizer" }));
-                ddlProductType.Items.Add((new ListItem { Value = "Main Course", Text = "Main Course" }));
-                ddlProductType.Items.Add((new ListItem { Value = "Beverages", Text = "Beverages" }));
-                ddlProductType.Items.Add((new ListItem { Value = "Desert", Text = "Desert" }));
+                ddlProductType.DataSource = types;
+                ddlProductType.DataValueField = "ProductType";
+                ddlProductType.DataTextField = "ProductType";
+                ddlProductType.DataBind();
+                ddlCategory.Items.Insert(0, new ListItem("Select Type", "0"));
                 divprotype.Visible = true;
             }
             else
@@ -271,6 +261,31 @@ public partial class Admin_add_addon_products : System.Web.UI.Page
                 ddlProductType.Items.Clear();
                 divprotype.Visible = false;
             }
+            //if (ddlCategory.SelectedValue == "4")
+            //{
+            //    ddlProductType.Items.Clear();
+            //    ddlProductType.Items.Add((new ListItem { Value = "0", Text = "Select Type", Selected = true, Enabled = true }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Back Drop", Text = "Back Drop" }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Balloon", Text = "Balloon" }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Add On", Text = "Add On" }));
+            //    divprotype.Visible = true;
+            //}
+            //else if (ddlCategory.SelectedValue == "6")
+            //{
+            //    ddlProductType.Items.Clear();
+            //    ddlProductType.Items.Add((new ListItem { Value = "0", Text = "Select Type", Selected = true, Enabled = true }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Snacks", Text = "Snacks" }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Appetizer", Text = "Appetizer" }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Main Course", Text = "Main Course" }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Beverages", Text = "Beverages" }));
+            //    ddlProductType.Items.Add((new ListItem { Value = "Desert", Text = "Desert" }));
+            //    divprotype.Visible = true;
+            //}
+            //else
+            //{
+            //    ddlProductType.Items.Clear();
+            //    divprotype.Visible = false;
+            //}
         }
         catch (Exception ex)
         {

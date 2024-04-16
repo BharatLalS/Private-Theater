@@ -107,12 +107,12 @@ public class AddOnProductType
     /// <param name="id">The identifier of the ProductType.</param>
     /// <returns>A AddOnProductType object containing details of the specified ProductType.</returns>
 
-    public static AddOnProductType GetAllProductTypeDetailsWithCategory(SqlConnection conSQ, string Cat)
+    public static List<AddOnProductType> GetAllProductTypeDetailsWithCategory(SqlConnection conSQ, string Cat)
     {
-        var categories = new AddOnProductType();
+        var categories = new List<AddOnProductType>();
         try
         {
-            string query = "Select * from AddOnProductType where Status=@Status and CategoryID=@CategoryID";
+            string query = "Select * from AddOnProductType where Status=@Status and CategoryID=@CategoryID Order By ProductOrder";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
                 cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Active";
@@ -131,7 +131,7 @@ public class AddOnProductType
                                   AddedIp = Convert.ToString(dr["AddedIP"]),
                                   AddedBy = Convert.ToString(dr["AddedBy"]),
                                   Status = Convert.ToString(dr["Status"])
-                              }).FirstOrDefault();
+                              }).ToList();
             }
         }
         catch (Exception ex)
@@ -191,11 +191,12 @@ public class AddOnProductType
         int result = 0;
         try
         {
-            string query = "Update AddOnProductType Set ProductType=@ProductType,CategoryID=@CategoryID,AddedOn=@AddedOn,AddedIp=@AddedIp, AddedBy=@AddedBy Where Id=@Id ";
+            string query = "Update AddOnProductType Set ProductType=@ProductType,ProductOrder=@ProductOrder,CategoryID=@CategoryID,AddedOn=@AddedOn,AddedIp=@AddedIp, AddedBy=@AddedBy Where Id=@Id ";
             using (SqlCommand cmd = new SqlCommand(query, conGV))
             {
                 cmd.Parameters.AddWithValue("@Id", SqlDbType.NVarChar).Value = ProductType.Id;
                 cmd.Parameters.AddWithValue("@ProductType", SqlDbType.NVarChar).Value = ProductType.ProductType;
+                cmd.Parameters.AddWithValue("@ProductOrder", SqlDbType.NVarChar).Value = ProductType.ProductOrder;
                 cmd.Parameters.AddWithValue("@CategoryID", SqlDbType.NVarChar).Value = ProductType.CategoryID;
                 cmd.Parameters.AddWithValue("@AddedOn", SqlDbType.NVarChar).Value = TimeStamps.UTCTime();
                 cmd.Parameters.AddWithValue("@AddedIp", SqlDbType.NVarChar).Value = CommonModel.IPAddress();
@@ -224,7 +225,7 @@ public class AddOnProductType
         int result = 0;
         try
         {
-            string query = "Insert Into AddOnProductType (ProductType,CategoryID,AddedOn,AddedIP,Status,AddedBy) values (@ProductType,@CategoryID,@AddedOn,@AddedIP,@Status,@AddedBy) select SCOPE_IDENTITY()";
+            string query = "Insert Into AddOnProductType (ProductType,CategoryID,ProductOrder,AddedOn,AddedIP,Status,AddedBy) values (@ProductType,@CategoryID,@ProductOrder,@AddedOn,@AddedIP,@Status,@AddedBy) select SCOPE_IDENTITY()";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
                 cmd.Parameters.AddWithValue("@ProductType", SqlDbType.NVarChar).Value = ProductType.ProductType;

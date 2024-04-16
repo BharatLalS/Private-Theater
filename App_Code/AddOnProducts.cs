@@ -158,6 +158,56 @@ public class AddOnProducts
         return Products;
     }
 
+
+    /// <summary>
+    /// Retrieves all details of a Product from the database based on the Product's identifier.
+    /// </summary>
+    /// <param name="conSQ">The SQL connection object.</param>
+    /// <param name="id">The identifier of the Product.</param>
+    /// <returns>A AddOnProducts object containing details of the specified Product.</returns>
+
+    public static AddOnProducts GetAllProductDetailsWithGuid(SqlConnection conSQ, string Guid)
+    {
+        var Products = new AddOnProducts();
+        try
+        {
+            string query = "Select *,(Select CategoryTitle from AddOnCategories Where AddOnCategories.ID=Category) as CategoryTitle from AddOnProducts where Status=@Status and ProductGuid=@ProductGuid";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Active";
+                cmd.Parameters.AddWithValue("@ProductGuid", SqlDbType.NVarChar).Value = Guid;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                Products = (from DataRow dr in dt.Rows
+                            select new AddOnProducts()
+                            {
+                                Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                                ProductName = Convert.ToString(dr["ProductName"]),
+                                CategoryTitle = Convert.ToString(dr["CategoryTitle"]),
+                                Category = Convert.ToString(dr["CategoryTitle"]),
+                                ProductUrl = Convert.ToString(dr["ProductUrl"]),
+                                ProductGuid = Convert.ToString(dr["ProductGuid"]),
+                                ProductOrder = Convert.ToString(dr["ProductOrder"]),
+                                ProductType = Convert.ToString(dr["ProductType"]),
+                                Price = Convert.ToString(dr["Price"]),
+                                ThumbImage = Convert.ToString(dr["ThumbImage"]),
+                                AllowMultiple = Convert.ToString(dr["AllowMultiple"]),
+                                Description = Convert.ToString(dr["Description"]),
+                                AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                                AddedIp = Convert.ToString(dr["AddedIP"]),
+                                AddedBy = Convert.ToString(dr["AddedBy"]),
+                                Status = Convert.ToString(dr["Status"])
+                            }).FirstOrDefault();
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetAlProductDetailsWithId", ex.Message);
+        }
+        return Products;
+    }
+
     /// <summary>
     /// Retrieves details of all AddOnProducts from the database.
     /// </summary>

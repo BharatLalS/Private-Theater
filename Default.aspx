@@ -16,14 +16,8 @@
                         <!-- slider-content - start -->
                         <div class="col-lg-8">
                             <div class="slider-content">
-
-                                <h1 class="title-text fw-bold">Discover Celebrations Unfolding in Cinematic Magic
-
-                                </h1>
-                                <p class="color-new-w">
-                                    Bengaluru's OG destination for celebrations
-
-                                </p>
+                                <h1 class="title-text fw-bold">Discover Celebrations Unfolding in Cinematic Magic</h1>
+                                <p class="color-new-w">Bengaluru's OG destination for celebrations</p>
                                 <a href="/book-now.aspx" class="custom-btn me-2">Book now</a>
                                 <a href="javascript:void(0);" class="details-btn">Connect on whatsapp</a>
                             </div>
