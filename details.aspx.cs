@@ -219,7 +219,9 @@ public partial class details : System.Web.UI.Page
             decimal slottotal = cnt * price;
             decimal extpaxtotal = extra1 * extprice1;
             decimal totalPrice = slottotal + extpaxtotal;
-
+            decimal taxper = 18;
+            decimal tax = (totalPrice * taxper) / 100;
+            decimal subtotal = totalPrice + tax;
             var booking = new BookingDetails()
             {
                 BookingID = "BPO" + maxid,
@@ -227,6 +229,17 @@ public partial class details : System.Web.UI.Page
                 TheaterGuid = theater,
                 BookingDate = bookingdate,
                 BookingStatus = "Initiated",
+                CakeMessage = "",
+                Discount = "",
+                Notes = "",
+                PaymentID = "",
+                PaymentMode = "",
+                PaymentStatus = "",
+                PromoCode = "",
+                ReceiptNo = "RBPO" + maxid,
+                SubTotalWithoutTax = totalPrice.ToString(),
+                TaxPercentage = taxper.ToString(),
+                TaxAmount = tax.ToString("N2"),
                 UserGuid = Guid.NewGuid().ToString(),
                 UserName = name,
                 UserEmail = Email,
@@ -234,7 +247,7 @@ public partial class details : System.Web.UI.Page
                 SlotTotal = slottotal.ToString(),
                 ExtPaxTotal = extpaxtotal.ToString(),
                 NoOfPax = Pax,
-                Subtotal = totalPrice.ToString(),
+                Subtotal = subtotal.ToString(),
                 AddedOn = TimeStamps.UTCTime(),
                 AddedIP = CommonModel.IPAddress(),
                 Status = "Active"
@@ -246,15 +259,24 @@ public partial class details : System.Web.UI.Page
                 {
                     for (int i = 0; i < timeslots.Count(); i++)
                     {
+                        var time = TheaterTiming.GetAllTheaterTimingsWithGuid(conSQ, timeslots[i]);
+                        var taxpercent = 18;
+                        decimal taxprice = Convert.ToInt32(theaterdetails.Price) * taxpercent / 100;
                         var timeslot = new BookingSlots()
                         {
                             BookingDate = bookingdate,
+                            StartTime = time.StartTime,
+                            EndTime = time.EndTime,
+                            ItemPrice = theaterdetails.Price,
+                            TaxPercentage = taxpercent.ToString(),
+                            TaxAmount = taxprice.ToString(),
+                            TotalPrice = (Convert.ToInt32(theaterdetails.Price) + taxprice).ToString(),
                             BookingGuid = booking.BookingGuid,
                             TheaterGuid = theater,
                             TimingGuid = timeslots[i],
                             AddedIP = CommonModel.IPAddress(),
                             AddedOn = TimeStamps.UTCTime(),
-                            Status = "Active",
+                            Status = "Initiated",
                             Quantity = "1"
                         };
                         var exe1 = BookingSlots.AddBookingSlots(conSQ, timeslot);
@@ -272,28 +294,4 @@ public partial class details : System.Web.UI.Page
         }
         return "Error";
     }
-    //public void BindTiming(string TGuid, string price)
-    //{
-    //    try
-    //    {
-    //        var timing = TheaterTiming.GetAllTheaterTimingWithTheaterID(conSQ, TGuid);
-
-    //        if (timing != null && timing.Count > 0)
-    //        {
-    //            for (int i = 0; i < timing.Count; i++)
-    //            {
-    //                StrTiming += @"<div class='reason-box col-lg-12 col-md-12 col-6 text-center'>
-    //                                            <input type='checkbox' class='timeSlot-btn time-selected' id='time" + i + @"'>
-    //                                            <label for='time" + i + "'>" + timing[i].StartTime + " - " + timing[i].EndTime + @"</label>
-    //                                            <p>₹ " + price + @"</p>
-    //                                        </div>";
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "BindTiming", ex.Message);
-
-    //    }
-    //}
 }

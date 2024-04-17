@@ -25,6 +25,17 @@ public class BookingDetails
     public string NoOfPax { get; set; }
     public string SlotTotal { get; set; }
     public string ExtPaxTotal { get; set; }
+    public string TaxPercentage { get; set; }
+    public string TaxAmount { get; set; }
+    public string SubTotalWithoutTax { get; set; }
+    public string Discount { get; set; }
+    public string PaymentMode { get; set; }
+    public string PromoCode { get; set; }
+    public string PaymentID { get; set; }
+    public string PaymentStatus { get; set; }
+    public string ReceiptNo { get; set; }
+    public string CakeMessage { get; set; }
+    public string Notes { get; set; }
     public string Subtotal { get; set; }
     public DateTime AddedOn { get; set; }
     public string AddedIP { get; set; }
@@ -69,12 +80,15 @@ public class BookingDetails
         try
         {
             string query = @"INSERT INTO BookingDetails 
-                            (BookingID, BookingGuid,TheaterGuid, BookingDate, BookingStatus, UserGuid, UserName, 
-                                UserEmail, UserPhoneNo,NoOfPax,SlotTotal,ExtPaxTotal, Subtotal, AddedOn, AddedIP, Status) 
-                         VALUES 
-                            (@BookingID, @BookingGuid,@TheaterGuid, @BookingDate, @BookingStatus,@UserGuid, @UserName,
-                                @UserEmail, @UserPhoneNo,@NoOfPax,@SlotTotal,@ExtPaxTotal, @Subtotal, @AddedOn, @AddedIP, @Status)";
-
+                (BookingID, BookingGuid, TheaterGuid, BookingDate, BookingStatus, UserGuid, UserName, 
+                    UserEmail, UserPhoneNo, NoOfPax, SlotTotal, ExtPaxTotal,TaxPercentage, TaxAmount, SubTotalWithoutTax,
+                    Discount, PaymentMode, PromoCode, PaymentID, PaymentStatus, ReceiptNo, CakeMessage,
+                    Notes, Subtotal, AddedOn, AddedIP, Status) 
+             VALUES 
+                (@BookingID, @BookingGuid, @TheaterGuid, @BookingDate, @BookingStatus, @UserGuid, @UserName,
+                    @UserEmail, @UserPhoneNo, @NoOfPax, @SlotTotal, @ExtPaxTotal,@TaxPercentage, @TaxAmount, @SubTotalWithoutTax,
+                    @Discount, @PaymentMode, @PromoCode, @PaymentID, @PaymentStatus, @ReceiptNo, @CakeMessage,
+                    @Notes, @Subtotal, @AddedOn, @AddedIP, @Status)";
 
             using (SqlCommand command = new SqlCommand(query, conGV))
             {
@@ -91,6 +105,17 @@ public class BookingDetails
                 command.Parameters.AddWithValue("@NoOfPax", booking.NoOfPax);
                 command.Parameters.AddWithValue("@SlotTotal", booking.SlotTotal);
                 command.Parameters.AddWithValue("@ExtPaxTotal", booking.ExtPaxTotal);
+                command.Parameters.AddWithValue("@TaxPercentage", booking.TaxPercentage);
+                command.Parameters.AddWithValue("@TaxAmount", booking.TaxAmount);
+                command.Parameters.AddWithValue("@SubTotalWithoutTax", booking.SubTotalWithoutTax);
+                command.Parameters.AddWithValue("@Discount", booking.Discount);
+                command.Parameters.AddWithValue("@PaymentMode", booking.PaymentMode);
+                command.Parameters.AddWithValue("@PromoCode", booking.PromoCode);
+                command.Parameters.AddWithValue("@PaymentID", booking.PaymentID);
+                command.Parameters.AddWithValue("@PaymentStatus", booking.PaymentStatus);
+                command.Parameters.AddWithValue("@ReceiptNo", booking.ReceiptNo);
+                command.Parameters.AddWithValue("@CakeMessage", booking.CakeMessage);
+                command.Parameters.AddWithValue("@Notes", booking.Notes);
                 command.Parameters.AddWithValue("@Subtotal", booking.Subtotal);
                 command.Parameters.AddWithValue("@AddedOn", booking.AddedOn);
                 command.Parameters.AddWithValue("@AddedIP", booking.AddedIP);
@@ -126,11 +151,11 @@ public class BookingDetails
                 booking = (from DataRow dr in dt.Rows
                            select new BookingDetails()
                            {
-                               Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                               Id = Convert.ToInt32(dr["Id"]),
                                BookingID = Convert.ToString(dr["BookingID"]),
                                BookingGuid = Convert.ToString(dr["BookingGuid"]),
                                TheaterGuid = Convert.ToString(dr["TheaterGuid"]),
-                               BookingDate = Convert.ToDateTime(Convert.ToString(dr["BookingDate"])),
+                               BookingDate = Convert.ToDateTime(dr["BookingDate"]),
                                BookingStatus = Convert.ToString(dr["BookingStatus"]),
                                UserGuid = Convert.ToString(dr["UserGuid"]),
                                UserName = Convert.ToString(dr["UserName"]),
@@ -139,8 +164,19 @@ public class BookingDetails
                                NoOfPax = Convert.ToString(dr["NoOfPax"]),
                                SlotTotal = Convert.ToString(dr["SlotTotal"]),
                                ExtPaxTotal = Convert.ToString(dr["ExtPaxTotal"]),
+                               TaxPercentage = Convert.ToString(dr["TaxPercentage"]),
+                               TaxAmount = Convert.ToString(dr["TaxAmount"]),
+                               SubTotalWithoutTax = Convert.ToString(dr["SubTotalWithoutTax"]),
+                               Discount = Convert.ToString(dr["Discount"]),
+                               PaymentMode = Convert.ToString(dr["PaymentMode"]),
+                               PromoCode = Convert.ToString(dr["PromoCode"]),
+                               PaymentID = Convert.ToString(dr["PaymentID"]),
+                               PaymentStatus = Convert.ToString(dr["PaymentStatus"]),
+                               ReceiptNo = Convert.ToString(dr["ReceiptNo"]),
+                               CakeMessage = Convert.ToString(dr["CakeMessage"]),
+                               Notes = Convert.ToString(dr["Notes"]),
                                Subtotal = Convert.ToString(dr["Subtotal"]),
-                               AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                               AddedOn = Convert.ToDateTime(dr["AddedOn"]),
                                AddedIP = Convert.ToString(dr["AddedIP"]),
                                Status = Convert.ToString(dr["Status"])
                            }).FirstOrDefault();

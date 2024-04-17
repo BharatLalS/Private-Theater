@@ -1,10 +1,15 @@
 ﻿$(document).ready(function () {
     const booking = $(".lblhidden").html();
-
+    const total = $(".lbltotal").html();
+    const tax = $(".lbltax").html();
     if (booking != "") {
         $(".lblhidden").html("");
+    } if (total != "") {
+        $(".lbltotal").html("");
+    } if (tax != "") {
+        $(".lbltax").html("");
     }
-
+    BindCart(booking, total, tax);
     //Know More
     $(document.body).on("click", ".btnknowmoremodal", function () {
         var PGuid = $(this).attr("data-id");
@@ -134,8 +139,74 @@
                     });
 
                 }
+                BindCart(booking, total, tax);
             }
         })
 
     })
+
+
+
 });
+function BindCart(Bid, total, tax) {
+    $.ajax({
+        type: 'POST',
+        url: "/add-on.aspx/BindCart",
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        data: JSON.stringify({
+            BGuid: Bid
+        }),
+        success: function (data2) {
+            if (data2.d != null) {
+                res = data2.d;
+                var products = "";
+                var addonprice = 0;
+                var addontax = 0;
+                if (res != "") {
+                    for (var i = 0; i < res.length; i++) {
+                        products += "<tr>";
+                        products += "<td scope='row'>" + res[i].Category + "</td>";
+                        products += "<td>" + res[i].ProductName + "</td>";
+                        products += "<td>" + res[i].Quantity + "</td>";
+                        products += "<td> ₹ " + res[i].ItemPrice + "</td>";
+                        products += "<td> ₹ " + res[i].ItemTotal + "</td>";
+                        products += "</tr>";
+
+                        addonprice += parseFloat(res[i].ItemTotal.replace(/,/g, ''));
+                        addontax += parseFloat(res[i].TaxAmount.replace(/,/g, ''));
+                        CheckSelectedProducts(res[i].ProductGuid, res[i].Quantity);
+                    }
+                    if (addonprice > 0) {
+                        $(".lblAddonPrice").html("₹ " + addonprice.toFixed(2).toLocaleString());
+                        var oTotal = total;
+                        var oTax = tax;
+                        $(".grand-total").html("₹ " + (addonprice + + addontax + parseFloat(oTotal.replace(/,/g, ''))).toFixed(2).toLocaleString());
+                        $(".lblTaxPrice").html("₹ " + (addontax + parseFloat(oTax.replace(/,/g, ''))).toFixed(2).toLocaleString());
+                    }
+
+                    $(".cartTable").html(products);
+                }
+                else {
+                    $(".cartTable").html("<tr><td colspan='5' class='text-center'> No items to show </td></tr>");
+                }
+                //$("#KnowMoreModalTitle").html(PTitle);
+                //$(".knowmorebody").html(data2.d.toString());
+                //$("#KnowMoreModal").modal("show");
+            }
+            else {
+                $(".cartTable").html("<tr><td colspan='5' class='text-center'> No items to show </td></tr>");
+            }
+        }
+    })
+
+}
+function CheckSelectedProducts(PGuid, Qty) {
+    var product = $('div.product-box[data-id="' + PGuid + '"]');
+    var hasqty = product.find("#qty").length === 0;
+    product.find('input[type="checkbox"]').prop('checked', true);
+    if (!hasqty) {
+        product.find("#qty").val(Qty);
+    }
+
+}

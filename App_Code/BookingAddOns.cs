@@ -15,11 +15,14 @@ public class BookingAddOns
     public int Id { get; set; }
     public string BookingGuid { get; set; }
     public string ProductGuid { get; set; }
-    public string ProductType { get; set; }
     public string ProductName { get; set; }
+    public string Category { get; set; }
     public string Quantity { get; set; }
     public string ItemPrice { get; set; }
     public string TotalPrice { get; set; }
+    public string TaxPercentage { get; set; }
+    public string TaxAmount { get; set; }
+    public string ItemTotal { get; set; }
     public DateTime? AddedOn { get; set; }
     public string AddedIp { get; set; }
     public string Status { get; set; }
@@ -82,11 +85,14 @@ public class BookingAddOns
                                   Id = Convert.ToInt32(dr["Id"]),
                                   BookingGuid = Convert.ToString(dr["BookingGuid"]),
                                   ProductGuid = Convert.ToString(dr["ProductGuid"]),
-                                  ProductType = Convert.ToString(dr["ProductType"]),
                                   ProductName = Convert.ToString(dr["ProductName"]),
+                                  Category = Convert.ToString(dr["Category"]),
                                   Quantity = Convert.ToString(dr["Quantity"]),
                                   ItemPrice = Convert.ToString(dr["ItemPrice"]),
                                   TotalPrice = Convert.ToString(dr["TotalPrice"]),
+                                  TaxPercentage = Convert.ToString(dr["TaxPercentage"]),
+                                  TaxAmount = Convert.ToString(dr["TaxAmount"]),
+                                  ItemTotal = Convert.ToString(dr["ItemTotal"]),
                                   AddedOn = Convert.ToDateTime(dr["AddedOn"]),
                                   AddedIp = Convert.ToString(dr["AddedIp"]),
                                   Status = Convert.ToString(dr["Status"])
@@ -126,11 +132,14 @@ public class BookingAddOns
                                   Id = Convert.ToInt32(dr["Id"]),
                                   BookingGuid = Convert.ToString(dr["BookingGuid"]),
                                   ProductGuid = Convert.ToString(dr["ProductGuid"]),
-                                  ProductType = Convert.ToString(dr["ProductType"]),
                                   ProductName = Convert.ToString(dr["ProductName"]),
                                   Quantity = Convert.ToString(dr["Quantity"]),
                                   ItemPrice = Convert.ToString(dr["ItemPrice"]),
                                   TotalPrice = Convert.ToString(dr["TotalPrice"]),
+                                  TaxPercentage = Convert.ToString(dr["TaxPercentage"]),
+                                  TaxAmount = Convert.ToString(dr["TaxAmount"]),
+                                  ItemTotal = Convert.ToString(dr["ItemTotal"]),
+                                  Category = Convert.ToString(dr["Category"]),
                                   AddedOn = Convert.ToDateTime(dr["AddedOn"]),
                                   AddedIp = Convert.ToString(dr["AddedIp"]),
                                   Status = Convert.ToString(dr["Status"])
@@ -194,17 +203,20 @@ public class BookingAddOns
         int result = 0;
         try
         {
-            string query = "INSERT INTO BookingAddOns (BookingGuid, ProductGuid, ProductType, ProductName, " +
-                               "Quantity, ItemPrice, TotalPrice, AddedOn, AddedIp, Status) " +
-                               "VALUES (@BookingGuid,@ProductGuid, @ProductType, @ProductName, " +
-                               "@Quantity, @ItemPrice, @TotalPrice, @AddedOn, @AddedIp, @Status)";
+            string query = "INSERT INTO BookingAddOns (BookingGuid, ProductGuid, Category, ProductName, " +
+                               "Quantity, ItemPrice,TaxPercentage,TaxAmount,ItemTotal,TotalPrice, AddedOn, AddedIp, Status) " +
+                               "VALUES (@BookingGuid,@ProductGuid, @Category, @ProductName, " +
+                               "@Quantity, @ItemPrice,@TaxPercentage,@TaxAmount,@ItemTotal, @TotalPrice, @AddedOn, @AddedIp, @Status)";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
                 cmd.Parameters.AddWithValue("@BookingGuid", bookingAddOns.BookingGuid);
                 cmd.Parameters.AddWithValue("@ProductGuid", bookingAddOns.ProductGuid);
-                cmd.Parameters.AddWithValue("@ProductType", bookingAddOns.ProductType);
+                cmd.Parameters.AddWithValue("@Category", bookingAddOns.Category);
                 cmd.Parameters.AddWithValue("@ProductName", bookingAddOns.ProductName);
                 cmd.Parameters.AddWithValue("@Quantity", bookingAddOns.Quantity);
+                cmd.Parameters.AddWithValue("@TaxPercentage", bookingAddOns.TaxPercentage);
+                cmd.Parameters.AddWithValue("@TaxAmount", bookingAddOns.TaxAmount);
+                cmd.Parameters.AddWithValue("@ItemTotal", bookingAddOns.ItemTotal);
                 cmd.Parameters.AddWithValue("@ItemPrice", bookingAddOns.ItemPrice);
                 cmd.Parameters.AddWithValue("@TotalPrice", bookingAddOns.TotalPrice);
                 cmd.Parameters.AddWithValue("@AddedOn", bookingAddOns.AddedOn);

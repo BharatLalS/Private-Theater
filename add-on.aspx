@@ -312,19 +312,19 @@
 
                             <div class="order-summary-table table-responsive">
                                 <h4 class="fw-semibold">Selected items</h4>
-                                <table class="table text-center">
+                                <table class="table text-center table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Item Type	</th>
-                                            <th scope="col">Items Name	</th>
+                                            <th scope="col">Item Type</th>
+                                            <th scope="col">Items Name</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="bg-gray-light">
-                                            <td scope="row">Customizations	</td>
+                                    <tbody class="cartTable">
+                                        <%-- <tr class='bg-gray-light'>
+                                            <td scope='row'>Customizations	</td>
                                             <td>Baby Shower	</td>
                                             <td>1</td>
                                             <td>₹150.00</td>
@@ -336,8 +336,7 @@
                                             <td>2</td>
                                             <td>₹5.00</td>
                                             <td>₹5.00</td>
-                                        </tr>
-
+                                        </tr>--%>
                                     </tbody>
                                 </table>
 
@@ -386,13 +385,24 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-8 text-start">
+                                    <p>
+                                        Tax
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 text-end">
+                                    <p class="fw-semibold lblTaxPrice">
+                                        ₹ <%=StrTax %>
+                                    </p>
+                                </div>
+                            </div>
                             <div class="total">
                                 <div class="row align-items-center">
-                                    <div class="col-lg-8 text-start gtotal">
+                                    <div class="col-lg-6 text-start gtotal">
                                         <p class="fw-semibold">Total</p>
-                                        <span>(Excluded of Gst)</span>
                                     </div>
-                                    <div class="col-lg-4 text-end">
+                                    <div class="col-lg-6 text-end">
                                         <p class="grand-total">₹ <%= StrTotal %></p>
                                     </div>
                                 </div>
@@ -506,7 +516,9 @@
             </div>
         </div>
     </div>
-    <label ID="lblhidden" class="d-none lblhidden"><%=RouteData.Values["BUrl"] %></label>
+    <label id="lblhidden" class="d-none lblhidden"><%=RouteData.Values["BUrl"] %></label>
+    <label id="lbltotal" class="d-none lbltotal"><%=StrTotal%></label>
+    <label id="lbltax" class="d-none lbltax"><%=StrTax%></label>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/pages/add-ons.js"></script>
 

@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 public partial class add_on : System.Web.UI.Page
 {
     SqlConnection conSQ = new SqlConnection(ConfigurationManager.ConnectionStrings["conSQ"].ConnectionString);
-    public string strBookUrl = "", StrSlotPrice = "", StrExtPaxCost = "", StrTotal = "", StrAddOnCategory = "", StrAddOnProducts = "";
+    public string strBookUrl = "", StrSlotPrice = "", StrTax = "", StrExtPaxCost = "", StrTotal = "", StrAddOnCategory = "", StrAddOnProducts = "";
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -33,10 +33,14 @@ public partial class add_on : System.Web.UI.Page
             var booking = BookingDetails.GetBookingDetails(conSQ, strBookUrl);
             if (booking != null)
             {
-                StrSlotPrice = Convert.ToInt32(booking.SlotTotal).ToString("N0");
-                StrExtPaxCost = Convert.ToInt32(booking.ExtPaxTotal).ToString("N0");
-                StrTotal = Convert.ToInt32(booking.Subtotal).ToString("N0");
-
+                var slottotal = Convert.ToDecimal(booking.SlotTotal);
+                var paxtotal = Convert.ToDecimal(booking.ExtPaxTotal);
+                var taxper = Convert.ToDecimal(booking.TaxPercentage);
+                var tax = (slottotal + paxtotal) * (taxper / 100);
+                StrSlotPrice = slottotal.ToString("N2");
+                StrExtPaxCost = paxtotal.ToString("N2");
+                StrTax = tax.ToString("N2");
+                StrTotal = (slottotal + paxtotal + tax).ToString("N2");
             }
             else
             {
@@ -60,7 +64,7 @@ public partial class add_on : System.Web.UI.Page
 
                     var nextbtn = "";
                     var previousbtn = "";
-
+                    var cakemessage = "";
                     if (i == 0)
                     {
                         StrAddOnCategory += @"<li>
@@ -93,7 +97,15 @@ public partial class add_on : System.Web.UI.Page
                                     <a href='javascript:void(0);' class='custom-btn btn-prev' tabindex='-1'><i class='me-2 mt-1 fas fa-angle-left fa-lg'></i> Prev</a>
                                 </div>";
                     }
-
+                    if (addons[i].CategoryUrl.ToLower().Trim() == "cakes")
+                    {
+                        cakemessage = @"<div class='col-lg-5 mt-4 mx-auto'>
+                                    <div class='input-group_1'>
+                                        <i class='far fa-user'></i>
+                                        <input type='text' placeholder='Message on cake' id='nick_name' class='cake_message'>
+                                    </div>
+                                </div>";
+                    }
                     //Product Type Binding
                     var producttypes = AddOnProductType.GetAllProductTypeDetailsWithCategory(conSQ, addons[i].Id.ToString());
                     if (producttypes.Count > 0)
@@ -129,10 +141,10 @@ public partial class add_on : System.Web.UI.Page
                                         }
                                     }
                                     strProduct += @"<div class='col-lg-4 col-md-6 col-6'>
-                                                        <div class='tile'>
+                                                        <div class='tile product-box' data-id='" + products[j].ProductGuid + @"'>
                                                             <input type='checkbox' name='party' id='" + products[j].ProductUrl + products[j].Id + @"' />
                                                                 <label for='" + products[j].ProductUrl + products[j].Id + @"' class='theme-sec'>
-                                                                <img src='/" + products[j].ThumbImage + @"' />
+                                                                <img src='/" + products[j].ThumbImage + @"' alt='" + products[j].ProductUrl + products[j].Id + @"' />
                                                                     <div class='content'>
                                                                         <p>" + products[j].ProductName + @"</p>
                                                                         <p>₹ " + Convert.ToInt32(products[j].Price).ToString("N0") + @"</p>
@@ -155,7 +167,7 @@ public partial class add_on : System.Web.UI.Page
                         StrAddOnProducts += @"<div id='" + addons[i].CategoryUrl + @"' class='tab-pane fade " + (i == 0 ? "show active" : "") + @"'>
                             <div class='row mt-0 gy-4'>
                                " + strProduct + @"
-                            </div>
+                            </div> " + cakemessage + @"
                             <div class='row justify-content-center mt-2'>
                                 " + previousbtn + nextbtn + @"
                             </div>
@@ -195,9 +207,9 @@ public partial class add_on : System.Web.UI.Page
                                 }
                                 strProduct += @"<div class='col-lg-4 col-md-6 col-6'>
                                     <div class='tile product-box' data-id='" + products[j].ProductGuid + @"'>
-                                        <input type='checkbox' name='party' id='" + products[j].ProductUrl + products[j].Id + @"' data-id='" + products[j].ProductGuid + @"' />
+                                        <input type='checkbox' name='party' id='" + products[j].ProductUrl + products[j].Id + @"' />
                                         <label for='" + products[j].ProductUrl + products[j].Id + @"' class='theme-sec '>
-                                            <img src='/" + products[j].ThumbImage + @"' />
+                                        <img src='/" + products[j].ThumbImage + @"' alt='" + products[j].ProductUrl + products[j].Id + @"' />
                                             <div class='content'>
                                                 <p>" + products[j].ProductName + @"</p>
                                                 <p>₹ " + products[j].Price + @"</p>
@@ -216,7 +228,7 @@ public partial class add_on : System.Web.UI.Page
                         StrAddOnProducts += @"<div id='" + addons[i].CategoryUrl + @"' class='tab-pane fade " + (i == 0 ? "show active" : "") + @"'>
                             <div class='row mt-0 gy-4'>
                                " + strProduct + @"
-                            </div>
+                            </div> " + cakemessage + @"
                             <div class='row justify-content-center mt-2'>
                                 " + previousbtn + nextbtn + @"
                             </div>
@@ -289,10 +301,16 @@ public partial class add_on : System.Web.UI.Page
             else
             {
                 var product = AddOnProducts.GetAllProductDetailsWithGuid(conSQ, PGuid);
+                decimal total = Convert.ToInt32(Qty) * Convert.ToDecimal(product.Price);
+                var taxper = 18;
+                decimal tax = (total * taxper) / 100;
                 addon.ItemPrice = product.Price;
-                addon.TotalPrice = (Convert.ToInt32(Qty) * Convert.ToDecimal(product.Price)).ToString("N2");
+                addon.ItemTotal = total.ToString("N2");
                 addon.ProductName = product.ProductName;
-                addon.ProductType = product.ProductType;
+                addon.TaxPercentage = taxper.ToString();
+                addon.TaxAmount = tax.ToString("N2");
+                addon.TotalPrice = (total + tax).ToString("N2");
+                addon.Category = product.CategoryTitle;
                 var check = BookingAddOns.CheckProductExist(conSQ, addon);
                 if (check > 0)
                 {
@@ -319,6 +337,29 @@ public partial class add_on : System.Web.UI.Page
         {
             ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "KnowMoreModalDetails", ex.Message);
             return "Error";
+        }
+    }
+
+    [WebMethod(EnableSession = true)]
+    public static List<BookingAddOns> BindCart(string BGuid)
+    {
+        try
+        {
+            SqlConnection conSQ = new SqlConnection(ConfigurationManager.ConnectionStrings["conSQ"].ConnectionString);
+            var Products = BookingAddOns.GetAllBookingAddOnsDetailsWithBooking(conSQ, BGuid);
+            if (Products.Count > 0)
+            {
+                return Products;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "KnowMoreModalDetails", ex.Message);
+            return null;
         }
     }
 }

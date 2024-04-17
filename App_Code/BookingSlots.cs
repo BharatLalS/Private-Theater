@@ -19,6 +19,12 @@ public class BookingSlots
     public DateTime AddedOn { get; set; }
     public string AddedIP { get; set; }
     public string Status { get; set; }
+    public string ItemPrice { get; set; }
+    public string TaxPercentage { get; set; }
+    public string TaxAmount { get; set; }
+    public string StartTime { get; set; }
+    public string EndTime { get; set; }
+    public string TotalPrice { get; set; }
     public string Quantity { get; set; }
     #endregion
 
@@ -28,9 +34,8 @@ public class BookingSlots
         int x = 0;
         try
         {
-            string query = @"INSERT INTO BookingSlots (BookingDate, BookingGuid, TheaterGuid, TimingGuid,AddedOn, AddedIP, Status, Quantity) 
-                         VALUES (@BookingDate, @BookingGuid, @TheaterGuid, @TimingGuid,@AddedOn, @AddedIP, @Status, @Quantity)";
-
+            string query = @"INSERT INTO BookingSlots (BookingDate, BookingGuid, TheaterGuid, TimingGuid, AddedOn, AddedIP, Status, Quantity, ItemPrice, TaxPercentage, TaxAmount, StartTime, EndTime, TotalPrice) 
+             VALUES (@BookingDate, @BookingGuid, @TheaterGuid, @TimingGuid, @AddedOn, @AddedIP, @Status, @Quantity, @ItemPrice, @TaxPercentage, @TaxAmount, @StartTime, @EndTime, @TotalPrice)";
 
             using (SqlCommand command = new SqlCommand(query, conGV))
             {
@@ -43,10 +48,18 @@ public class BookingSlots
                 command.Parameters.AddWithValue("@AddedIP", booking.AddedIP);
                 command.Parameters.AddWithValue("@Status", booking.Status);
                 command.Parameters.AddWithValue("@Quantity", booking.Quantity);
+                command.Parameters.AddWithValue("@ItemPrice", booking.ItemPrice);
+                command.Parameters.AddWithValue("@TaxPercentage", booking.TaxPercentage);
+                command.Parameters.AddWithValue("@TaxAmount", booking.TaxAmount);
+                command.Parameters.AddWithValue("@StartTime", booking.StartTime);
+                command.Parameters.AddWithValue("@EndTime", booking.EndTime);
+                command.Parameters.AddWithValue("@TotalPrice", booking.TotalPrice);
+
                 conGV.Open();
                 x = command.ExecuteNonQuery();
                 conGV.Close();
             }
+
 
         }
         catch (Exception ex)
@@ -63,9 +76,10 @@ public class BookingSlots
         int x = 0;
         try
         {
-            string query = @"Select Count(ID) as Cnt From BookingSlots Where BookingDate=@BookingDate and TimingGuid=@TimingGuid";
+            string query = @"Select Count(ID) as Cnt From BookingSlots Where BookingDate=@BookingDate and TimingGuid=@TimingGuid and Status = @Status";
             SqlCommand cmd = new SqlCommand(query, conGV);
             cmd.Parameters.AddWithValue("@BookingDate", SqlDbType.NVarChar).Value = date;
+            cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Completed";
             cmd.Parameters.AddWithValue("@TimingGuid", SqlDbType.NVarChar).Value = Tid;
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

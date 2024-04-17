@@ -97,7 +97,48 @@ public class TheaterTiming
         }
         return categories;
     }
+    /// <summary>
+    /// Retrieves all details of a Timing from the database based on the Timing's Guid.
+    /// </summary>
+    /// <param name="conSQ">The SQL connection object.</param>
+    /// <param name="id">The identifier of the Timing.</param>
+    /// <returns>A TheaterTiming object containing details of the specified Timing.</returns>
 
+    public static TheaterTiming GetAllTheaterTimingsWithGuid(SqlConnection conSQ, string Guid)
+    {
+        var categories = new TheaterTiming();
+        try
+        {
+            string query = "Select *,(Select TheaterTitle from TheaterDetails where TheaterID=TheaterDetails.TheaterGuid) as TheaterTitle from TheaterTiming where Status=@Status and TimingGuid=@Guid ";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@Guid", SqlDbType.NVarChar).Value = Guid;
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Active";
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                categories = (from DataRow dr in dt.Rows
+                              select new TheaterTiming()
+                              {
+                                  Id = Convert.ToInt32(Convert.ToString(dr["Id"])),
+                                  TimingGuid = Convert.ToString(dr["TimingGuid"]),
+                                  StartTime = Convert.ToString(dr["StartTime"]),
+                                  EndTime = Convert.ToString(dr["EndTime"]),
+                                  TheaterID = Convert.ToString(dr["TheaterID"]),
+                                  TheaterTitle = Convert.ToString(dr["TheaterTitle"]),
+                                  AddedOn = Convert.ToDateTime(Convert.ToString(dr["AddedOn"])),
+                                  AddedIp = Convert.ToString(dr["AddedIP"]),
+                                  AddedBy = Convert.ToString(dr["AddedBy"]),
+                                  Status = Convert.ToString(dr["Status"])
+                              }).FirstOrDefault();
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetAllTheaterTimingsWithGuid", ex.Message);
+        }
+        return categories;
+    }
 
     /// <summary>
     /// Retrieves details of all TheaterTiming from the database.
