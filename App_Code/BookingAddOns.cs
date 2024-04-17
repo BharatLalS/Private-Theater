@@ -14,7 +14,6 @@ public class BookingAddOns
     #region Booking Addons Parameters
     public int Id { get; set; }
     public string BookingGuid { get; set; }
-    public string UserGuid { get; set; }
     public string ProductGuid { get; set; }
     public string ProductType { get; set; }
     public string ProductName { get; set; }
@@ -82,7 +81,6 @@ public class BookingAddOns
                               {
                                   Id = Convert.ToInt32(dr["Id"]),
                                   BookingGuid = Convert.ToString(dr["BookingGuid"]),
-                                  UserGuid = Convert.ToString(dr["UserGuid"]),
                                   ProductGuid = Convert.ToString(dr["ProductGuid"]),
                                   ProductType = Convert.ToString(dr["ProductType"]),
                                   ProductName = Convert.ToString(dr["ProductName"]),
@@ -127,7 +125,6 @@ public class BookingAddOns
                               {
                                   Id = Convert.ToInt32(dr["Id"]),
                                   BookingGuid = Convert.ToString(dr["BookingGuid"]),
-                                  UserGuid = Convert.ToString(dr["UserGuid"]),
                                   ProductGuid = Convert.ToString(dr["ProductGuid"]),
                                   ProductType = Convert.ToString(dr["ProductType"]),
                                   ProductName = Convert.ToString(dr["ProductName"]),
@@ -163,7 +160,7 @@ public class BookingAddOns
                            "SET Quantity = @Quantity, " +
                            "TotalPrice = @TotalPrice, " +
                            "AddedOn = @AddedOn, " +
-                           "AddedIp = @AddedIp, " +
+                           "AddedIp = @AddedIp " +
                            "WHERE BookingGuid = @BookingGuid and ProductGuid=@ProductGuid";
             using (SqlCommand cmd = new SqlCommand(query, conGV))
             {
@@ -197,14 +194,13 @@ public class BookingAddOns
         int result = 0;
         try
         {
-            string query = "INSERT INTO BookingAddOns (BookingGuid, UserGuid, ProductGuid, ProductType, ProductName, " +
+            string query = "INSERT INTO BookingAddOns (BookingGuid, ProductGuid, ProductType, ProductName, " +
                                "Quantity, ItemPrice, TotalPrice, AddedOn, AddedIp, Status) " +
-                               "VALUES (@BookingGuid, @UserGuid, @ProductGuid, @ProductType, @ProductName, " +
+                               "VALUES (@BookingGuid,@ProductGuid, @ProductType, @ProductName, " +
                                "@Quantity, @ItemPrice, @TotalPrice, @AddedOn, @AddedIp, @Status)";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
                 cmd.Parameters.AddWithValue("@BookingGuid", bookingAddOns.BookingGuid);
-                cmd.Parameters.AddWithValue("@UserGuid", bookingAddOns.UserGuid);
                 cmd.Parameters.AddWithValue("@ProductGuid", bookingAddOns.ProductGuid);
                 cmd.Parameters.AddWithValue("@ProductType", bookingAddOns.ProductType);
                 cmd.Parameters.AddWithValue("@ProductName", bookingAddOns.ProductName);
@@ -238,7 +234,7 @@ public class BookingAddOns
         int result = 0;
         try
         {
-            string query = "Select Count(ID) from BookingAddOns Where BookingGuid =@BookingGuid and ProductGuid=@ProductGuid and Status !=@Status ";
+            string query = "Select Count(ID) as cnt from BookingAddOns Where BookingGuid =@BookingGuid and ProductGuid=@ProductGuid and Status !=@Status ";
             SqlCommand cmd = new SqlCommand(query, conSQ);
             cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = AddOns.BookingGuid;
             cmd.Parameters.AddWithValue("@ProductGuid", SqlDbType.NVarChar).Value = AddOns.ProductGuid;
@@ -246,7 +242,7 @@ public class BookingAddOns
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            result = dt.Rows.Count;
+            result = Convert.ToInt32(dt.Rows[0]["cnt"]);
         }
         catch (Exception ex)
         {

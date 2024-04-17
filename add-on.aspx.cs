@@ -273,7 +273,9 @@ public partial class add_on : System.Web.UI.Page
                 BookingGuid = BGuid,
                 AddedIp = CommonModel.IPAddress(),
                 AddedOn = TimeStamps.UTCTime(),
-                
+                Quantity = Qty,
+                Status = "Active",
+
             };
             if (Qty == "0")
             {
@@ -286,15 +288,29 @@ public partial class add_on : System.Web.UI.Page
             }
             else
             {
+                var product = AddOnProducts.GetAllProductDetailsWithGuid(conSQ, PGuid);
+                addon.ItemPrice = product.Price;
+                addon.TotalPrice = (Convert.ToInt32(Qty) * Convert.ToDecimal(product.Price)).ToString("N2");
+                addon.ProductName = product.ProductName;
+                addon.ProductType = product.ProductType;
                 var check = BookingAddOns.CheckProductExist(conSQ, addon);
-                if(check > 0)
+                if (check > 0)
                 {
                     //Update
-
+                    var exe = BookingAddOns.UpdateAddOnsQuantity(conSQ, addon);
+                    if (exe > 0)
+                    {
+                        return "Success";
+                    }
                 }
                 else
                 {
                     //Add
+                    var exe = BookingAddOns.AddBookingAddOns(conSQ, addon);
+                    if (exe > 0)
+                    {
+                        return "Success";
+                    }
                 }
             }
             return "Error";
