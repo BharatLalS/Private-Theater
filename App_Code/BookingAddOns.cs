@@ -26,6 +26,7 @@ public class BookingAddOns
     public DateTime? AddedOn { get; set; }
     public string AddedIp { get; set; }
     public string Status { get; set; }
+    public decimal TotalAddon { get; set; }
 
     #endregion
 
@@ -118,7 +119,7 @@ public class BookingAddOns
         var categories = new List<BookingAddOns>();
         try
         {
-            string query = "Select * from BookingAddOns where Status=@Status and BookingGuid=@BookingGuid  Order By Id";
+            string query = "Select *,(Select Sum(Try_Convert(decimal,TotalPrice)) from BookingAddOns where Status=@Status and BookingGuid=@BookingGuid ) as AddonTotal from BookingAddOns where Status=@Status and BookingGuid=@BookingGuid  Order By Id";
             using (SqlCommand cmd = new SqlCommand(query, conSQ))
             {
                 cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Active";
@@ -138,6 +139,7 @@ public class BookingAddOns
                                   TotalPrice = Convert.ToString(dr["TotalPrice"]),
                                   TaxPercentage = Convert.ToString(dr["TaxPercentage"]),
                                   TaxAmount = Convert.ToString(dr["TaxAmount"]),
+                                  TotalAddon = Convert.ToDecimal(dr["AddonTotal"]),
                                   ItemTotal = Convert.ToString(dr["ItemTotal"]),
                                   Category = Convert.ToString(dr["Category"]),
                                   AddedOn = Convert.ToDateTime(dr["AddedOn"]),
@@ -261,6 +263,34 @@ public class BookingAddOns
             ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "DeleteBookingAddOns", ex.Message);
         }
         return result;
+    }
+
+
+    public static DataTable AddonPrices(SqlConnection conSQ, string BGuid)
+    {
+        var dt = new DataTable();
+        try
+        {
+            string query = @"SELECT 
+                            SUM(Try_Convert(decimal,TaxAmount)) AS TotalTax,
+                            SUM(Try_Convert(decimal,ItemTotal)) AS TotalPrice,
+                            SUM(Try_Convert(decimal,TotalPrice)) AS TotalPriceWithTax
+                            FROM BookingAddons Where BookingGuid=@BookingGuid and Status !=@Status;";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = BGuid;
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Deleted";
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                return dt;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "AddonPrices", ex.Message);
+        }
+        return dt;
     }
 
     #endregion

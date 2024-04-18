@@ -308,6 +308,13 @@
 
                     <div class="tab-content">
                         <%=StrAddOnProducts %>
+                        <div class='col-lg-5 mt-4 mx-auto' id="divcake" runat="server" visible="false">
+                            <div class='input-group_1'>
+                                <i class='far fa-user'></i>
+                                <asp:TextBox runat="server" placeholder='Message on cake' ID='TxtCakeMsg' class='cake_message'></asp:TextBox>
+                            </div>
+                        </div>
+
                         <div class="row mt-4">
 
                             <div class="order-summary-table table-responsive">
@@ -343,7 +350,7 @@
                             </div>
                         </div>
                         <div class="row mt-4">
-                            <textarea placeholder="Add Note Here"></textarea>
+                            <asp:TextBox runat="server" ID="txtNotes" TextMode="MultiLine" placeholder="Add Note Here"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -412,7 +419,9 @@
                                     <a href="javascript:void(0);" class="new-term" data-toggle="modal" data-target="#exampleModal1">payment terms  </a>
                                 </div>
                                 <div class="col-lg-12">
-                                    <a href="javascript:void(0);" class="custom-btn btnpay" tabindex="-1">Pay</a>
+                                    <asp:Label runat="server" Visible="false" ID="lblError" CssClass="alert alert-danger"></asp:Label>
+                                    <%--<a href="javascript:void(0);" class="custom-btn btnpay" tabindex="-1">Pay</a>--%>
+                                    <asp:LinkButton runat="server" ID="BtnPay" CssClass="custom-btn btnpay" TabIndex="-1" OnClick="BtnPay_Click">Pay</asp:LinkButton>
                                 </div>
                             </div>
 

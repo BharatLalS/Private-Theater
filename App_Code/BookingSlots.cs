@@ -98,5 +98,78 @@ public class BookingSlots
         }
         return x;
     }
+
+    public static List<BookingSlots> GetBookingSlotsByBGuid(SqlConnection conSQ, string bGuid)
+    {
+        var categories = new List<BookingSlots>();
+
+        try
+        {
+            string query = "Select * from BookingSlots where Status != @Status and BookingGuid=@BookingGuid  Order By Id";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Deleted";
+                cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = bGuid;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                categories = (from DataRow dr in dt.Rows
+                              select new BookingSlots()
+                              {
+                                  Id = Convert.ToInt32(dr["Id"]),
+                                  BookingGuid = Convert.ToString(dr["BookingGuid"]),
+                                  BookingDate = Convert.ToDateTime(Convert.ToString(dr["BookingDate"])),
+                                  TheaterGuid = Convert.ToString(dr["TheaterGuid"]),
+                                  TimingGuid = Convert.ToString(dr["TimingGuid"]),
+                                  Quantity = Convert.ToString(dr["Quantity"]),
+                                  ItemPrice = Convert.ToString(dr["ItemPrice"]),
+                                  TotalPrice = Convert.ToString(dr["TotalPrice"]),
+                                  TaxPercentage = Convert.ToString(dr["TaxPercentage"]),
+                                  TaxAmount = Convert.ToString(dr["TaxAmount"]),
+                                  StartTime = Convert.ToString(dr["StartTime"]),
+                                  EndTime = Convert.ToString(dr["EndTime"]),
+                                  AddedOn = Convert.ToDateTime(dr["AddedOn"]),
+                                  AddedIP = Convert.ToString(dr["AddedIp"]),
+                                  Status = Convert.ToString(dr["Status"])
+                              }).ToList();
+            }
+            return categories;
+        }
+        catch(Exception ex) 
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetBookingSlotsByBGuid", ex.Message);
+
+            return categories;
+
+        }
+    }
+
+    public static int UpdateBookingComplete(SqlConnection conSQ,string bGuid)
+    {
+        var result = 0;
+        try
+        {
+            string query = "Update BookingSlots Set Status=@Status Where BookingGuid=@BookingGuid and Status !='Deleted'";
+
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@BookingGuid", bGuid);
+                cmd.Parameters.AddWithValue("@Status", "Completed");
+                conSQ.Open();
+                result = cmd.ExecuteNonQuery();
+                conSQ.Close();
+            }
+            return result;
+        }
+        catch(Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetBookingSlotsByBGuid", ex.Message);
+            return 0;
+
+        }
+        return 0;
+
+    }
+
     #endregion
 }

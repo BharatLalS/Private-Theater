@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Drawing;
+using System.Security.Cryptography;
 
 /// <summary>
 /// Summary description for BookingDetails
@@ -32,6 +33,7 @@ public class BookingDetails
     public string PaymentMode { get; set; }
     public string PromoCode { get; set; }
     public string PaymentID { get; set; }
+    public string TransactionID { get; set; }
     public string PaymentStatus { get; set; }
     public string ReceiptNo { get; set; }
     public string CakeMessage { get; set; }
@@ -134,17 +136,16 @@ public class BookingDetails
         }
         return x;
     }
-
     public static BookingDetails GetBookingDetails(SqlConnection conGV, string bookingGuid)
     {
         var booking = new BookingDetails();
         try
         {
-            string query = "Select * from BookingDetails Where BookingGuid=@BookingGuid and Status !=@Status";
+            string query = "Select * from BookingDetails Where BookingGuid=@BookingGuid and BookingStatus !=@Status";
             using (SqlCommand cmd = new SqlCommand(query, conGV))
             {
                 cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = bookingGuid;
-                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Deleted";
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Completed";
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
@@ -189,6 +190,308 @@ public class BookingDetails
 
         }
         return null;
+    }
+    public static int UpdateBookingDetails(SqlConnection conGV, BookingDetails booking)
+    {
+        int result = 0;
+        try
+        {
+            string query = "UPDATE BookingDetails " +
+                           "SET CakeMessage = @CakeMessage, " +
+                           "Notes = @Notes, " +
+                           "PaymentID = @PaymentID, " +
+                           "TransactionID = @TransactionID, " +
+                           "PaymentMode = @PaymentMode, " +
+                           "PaymentStatus = @PaymentStatus, " +
+                           "PromoCode = @PromoCode, " +
+                           "Discount = @Discount, " +
+                           "SubTotalWithoutTax = @SubTotalWithoutTax, " +
+                           "TaxAmount = @TaxAmount, " +
+                           "Subtotal = @Subtotal, " +
+                           "AddedOn = @AddedOn, " +
+                           "AddedIp = @AddedIp " +
+                           "WHERE BookingGuid = @BookingGuid";
+            using (SqlCommand cmd = new SqlCommand(query, conGV))
+            {
+                cmd.Parameters.AddWithValue("@BookingGuid", booking.BookingGuid);
+                cmd.Parameters.AddWithValue("@CakeMessage", booking.CakeMessage);
+                cmd.Parameters.AddWithValue("@Notes", booking.Notes);
+                cmd.Parameters.AddWithValue("@PaymentID", booking.PaymentID);
+                cmd.Parameters.AddWithValue("@TransactionID", booking.TransactionID);
+                cmd.Parameters.AddWithValue("@PaymentMode", booking.PaymentMode);
+                cmd.Parameters.AddWithValue("@PaymentStatus", booking.PaymentStatus);
+                cmd.Parameters.AddWithValue("@PromoCode", booking.PromoCode);
+                cmd.Parameters.AddWithValue("@Discount", booking.Discount);
+                cmd.Parameters.AddWithValue("@SubTotalWithoutTax", booking.SubTotalWithoutTax);
+                cmd.Parameters.AddWithValue("@TaxAmount", booking.TaxAmount);
+                cmd.Parameters.AddWithValue("@Subtotal", booking.Subtotal);
+                cmd.Parameters.AddWithValue("@AddedOn", booking.AddedOn);
+                cmd.Parameters.AddWithValue("@AddedIp", booking.AddedIP);
+                conGV.Open();
+                result = cmd.ExecuteNonQuery();
+                conGV.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "UpdateAddOnsQuantity", ex.Message);
+        }
+        return result;
+    }
+
+    public static int UpdatePaymentDetails(SqlConnection conSQ, BookingDetails booking)
+    {
+        int result = 0;
+        try
+        {
+            string query = "UPDATE BookingDetails " +
+                           "SET " +
+                           "PaymentID = @PaymentID, " +
+                           "PaymentMode = @PaymentMode, " +
+                           "PaymentStatus = @PaymentStatus, " +
+                           "BookingStatus = @BookingStatus " +
+                           "WHERE BookingGuid = @BookingGuid";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@BookingGuid", booking.BookingGuid);
+                cmd.Parameters.AddWithValue("@PaymentID", booking.PaymentID);
+                cmd.Parameters.AddWithValue("@BookingStatus", booking.BookingStatus);
+                cmd.Parameters.AddWithValue("@PaymentMode", booking.PaymentMode);
+                cmd.Parameters.AddWithValue("@PaymentStatus", booking.PaymentStatus);
+
+                conSQ.Open();
+                result = cmd.ExecuteNonQuery();
+                conSQ.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "UpdateAddOnsQuantity", ex.Message);
+        }
+        return result;
+    }
+    public static string GetBookingGuidWithTransID(SqlConnection con, string TransID)
+    {
+        try
+        {
+            SqlCommand cmd = new SqlCommand("select BookingGuid from BookingDetails where TransactionID=@TransactionID", con);
+            cmd.Parameters.AddWithValue("@TransactionID", TransID);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                string cc = Convert.ToString(dt.Rows[0]["BookingGuid"]);
+                if (cc.Length > 0)
+                {
+                    return cc;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetBookingGuidWithTransID", ex.Message);
+
+        }
+        return "";
+    }
+    public static string GetBookingIDWithBookingGuid(SqlConnection con, string BGuid)
+    {
+        try
+        {
+            SqlCommand cmd = new SqlCommand("select BookingID from BookingDetails where BookingGuid=@BookingGuid", con);
+            cmd.Parameters.AddWithValue("@BookingGuid", BGuid);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                string cc = Convert.ToString(dt.Rows[0]["BookingID"]);
+                if (cc.Length > 0)
+                {
+                    return cc;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetBookingIDWithBookingGuid", ex.Message);
+
+        }
+        return "";
+    }
+    public static void SendToUser(SqlConnection conGV, string Bguid)
+    {
+        try
+        {
+            string query = "Select *,(Select Sum(Try_Convert(decimal,ItemTotal)) from BookingAddons Where BookingGuid=@BookingGuid and Status !='Deleted') as AddonTotal  from BookingDetails Where BookingGuid=@BookingGuid";
+            SqlCommand cmd = new SqlCommand(query, conGV);
+            cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = Bguid;
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                string pType = Convert.ToString(dt.Rows[0]["PaymentMode"]);
+                string pTable = ProductDetails(conGV, Bguid);
+                string theaterdetails = BindTheaterDetails(conGV, dt.Rows[0]["TheaterGuid"].ToString());
+
+                string bookingdetails = BindBookingDetails(conGV, dt.Rows[0]["BookingGuid"].ToString());
+
+
+                string Disc = "";
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["Discount"])))
+                {
+                    Disc = @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Discount </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>- ₹" + Convert.ToString(dt.Rows[0]["Discount"]) + "</th></tr>";
+                }
+
+                string AddDisc = "";
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["TaxAmount"])))
+                {
+                    AddDisc = @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Total Tax (Excluded from price) </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + Convert.ToString(dt.Rows[0]["TaxAmount"]) + "</th></tr>";
+                }
+                else
+                {
+                    AddDisc = @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Total Tax (included in price) </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹ 0</th></tr>";
+                }
+                //string ship = "";
+                //if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["ShippingPrice"])))
+                //{
+                //    ship = @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Shipping & Handling </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + Convert.ToString(dt.Rows[0]["ShippingPrice"]) + "</th></tr>";
+                //}
+                string adv = "";
+                if (pType == "COD")
+                {
+                    adv += @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Advance Paid </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + Convert.ToString(dt.Rows[0]["AdvAmount"]) == "" ? "0" : Convert.ToString(dt.Rows[0]["AdvAmount"]) + "</th></tr>";
+                    adv += @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Balance Amount </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + Convert.ToString(dt.Rows[0]["BalAmount"]) == "" ? "0" : Convert.ToString(dt.Rows[0]["BalAmount"]) + "</th></tr>";
+                }
+                string slots = "";
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["SlotTotal"])) && Convert.ToString(dt.Rows[0]["ExtPaxTotal"]) != "0")
+                {
+                    slots += @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Time Slots Amount </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + (Convert.ToString(dt.Rows[0]["SlotTotal"]) == "" ? "0" : Convert.ToDecimal(Convert.ToString(dt.Rows[0]["SlotTotal"])).ToString("N2")) + "</th></tr>";
+
+                }
+                string pax = "";
+
+                if (!string.IsNullOrEmpty(Convert.ToString(dt.Rows[0]["ExtPaxTotal"])) && Convert.ToString(dt.Rows[0]["ExtPaxTotal"]) != "0")
+                {
+                    pax += @"<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Extra Pax Amount (" + (Convert.ToString(dt.Rows[0]["NoofPax"]) == "" ? "0" : Convert.ToString(dt.Rows[0]["NoofPax"])) + " people) </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + (Convert.ToString(dt.Rows[0]["ExtPaxTotal"]) == "" ? "0" : Convert.ToDecimal(Convert.ToString(dt.Rows[0]["ExtPaxTotal"])).ToString("N2")) + "</th></tr>";
+
+                }
+                string table = pTable +
+                    "<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='border-top: 1px solid #573e40!important;float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'> Sub Total </th><th align='left' valign='top' style='border-top: 1px solid #573e40!important;float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + Convert.ToDecimal(Convert.ToString(dt.Rows[0]["AddonTotal"])).ToString() + "</th></tr>" +
+                     Disc + adv + slots + pax +
+                    AddDisc +
+                    "<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'>  Grand Total </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + Convert.ToString(dt.Rows[0]["SubTotal"]) + "</th></tr>";
+
+                Emails.BookingConfirmed(Convert.ToString(dt.Rows[0]["BookingId"]), table + "", Convert.ToString(dt.Rows[0]["UserName"]), Convert.ToString(dt.Rows[0]["UserEmail"]), Convert.ToString(dt.Rows[0]["SubTotal"]), pType, theaterdetails, bookingdetails);
+                Emails.BookingConfirmedAdmin(Convert.ToString(dt.Rows[0]["BookingId"]), table + "", theaterdetails, bookingdetails);
+
+                //SMSServices.SendOrderSuccess(Convert.ToString(dt.Rows[0]["Mobile1"]).Replace("-", ""), Convert.ToString(dt.Rows[0]["OrderId"]));
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "SendToUser", ex.Message);
+        }
+    }
+    public static string ProductDetails(SqlConnection conGV, string oGuid)
+    {
+        string pTable = "";
+        try
+        {
+            //Addons
+            string query = "Select * from BookingAddons where BookingGuid = @BookingGuid";
+            SqlCommand cmd = new SqlCommand(query, conGV);
+            cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = oGuid;
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    //decimal p1 = Convert.ToDecimal(Convert.ToString(dr["ItemPrice"]));
+                    //decimal qty = Convert.ToDecimal(Convert.ToString(dr["Quantity"]));
+                    //decimal price = (p1 * qty);
+                    pTable += @"<tr valign='middle'>
+                                    <td align='left' valign='middle' style='float:left;width:25%;margin-bottom:10px;margin-top:20px;padding:1%;' class='flexibleContainerCell'><span style='font-size:16px;'><b>" + dr["Category"] + @"</b></span><br /></td>
+                                    <td align='left' valign='middle' style='float:left;width:20%;margin-bottom:10px;margin-top:20px;padding:1%;' class='flexibleContainerCell'><span style='font-size:16px;'><b>" + dr["ProductName"] + @" </b></span><br /></td>
+                                    <td align='left' valign='middle' style='float:left;width:15%;margin-bottom:10px;margin-top:20px;padding:1%;text-align:center;' class='flexibleContainerCell'>" + dr["Quantity"] + @" </td>
+                                    <td align='left' valign='middle' style='float:left;width:15%;margin-bottom:10px;margin-top:20px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + dr["ItemPrice"] + @" </td>
+                                    <td align='left' valign='middle' style='float:left;width:10%;margin-bottom:10px;margin-top:20px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + dr["ItemTotal"] + @" </td>
+                                </tr>";
+                }
+                pTable = @"<tr style='border-bottom:1px solid #573e40!important;margin-bottom:10px'>
+                                                                <th align='left' valign='top' style='border-bottom:1px solid #573e40!important;float:left;width:30%;color:#573e40;margin-bottom:10px;font-size:18px;font-weight:500;text-align:center' class='flexibleContainerCell'>Item Category </th>
+                                                                <th align='left' valign='top' style='border-bottom:1px solid #573e40!important;float:left;width:20%;color:#573e40;margin-bottom:10px;font-size:18px;font-weight:500;text-align:center' class='flexibleContainerCell'>Item Name </th>
+                                                                <th align='left' valign='top' style='border-bottom:1px solid #573e40!important;float:left;width:15%;color:#573e40;margin-bottom:10px;font-size:18px;font-weight:500;text-align:center' class='flexibleContainerCell'> Quantity </th>
+                                                                <th align='left' valign='top' style='border-bottom:1px solid #573e40!important;float:left;width:15%;color:#573e40;margin-bottom:10px;font-size:18px;font-weight:500;text-align:center' class='flexibleContainerCell'> Price </th>
+                                                                <th align='left' valign='top' style='border-bottom:1px solid #573e40!important;float:left;width:20%;color:#573e40;margin-bottom:10px;font-size:18px;font-weight:500;text-align:center' class='flexibleContainerCell'> Total </th>
+                                                            </tr>" + pTable + "";
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "ProductDetails", ex.Message);
+
+        }
+        return pTable;
+    }
+    public static string BindTheaterDetails(SqlConnection conGV, string TGuid)
+    {
+        string tTable = "";
+        try
+        {
+            string query = "Select Top 1 * from TheaterDetails where TheaterGuid = @TheaterGuid";
+            SqlCommand cmd = new SqlCommand(query, conGV);
+            cmd.Parameters.AddWithValue("@TheaterGuid", SqlDbType.NVarChar).Value = TGuid;
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+
+                tTable += @"<span>" + dt.Rows[0]["TheaterTitle"] + "</span>" +
+                    "<br/>" +
+                    "<span>" + dt.Rows[0]["Address"] + @"</span>";
+
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "BindTheaterDetails", ex.Message);
+
+        }
+        return tTable;
+    }
+    public static string BindBookingDetails(SqlConnection conGV, string BGuid)
+    {
+        string tTable = "";
+        try
+        {
+            string query = "Select * from BookingSlots where BookingGuid = @BookingGuid";
+            SqlCommand cmd = new SqlCommand(query, conGV);
+            cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = BGuid;
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    tTable += @"<span><strong>Time Slot " + (i + 1) + @"</strong> : " + Convert.ToString(dt.Rows[i]["StartTime"]) + @" - " + Convert.ToString(dt.Rows[i]["EndTime"]) + @"</span></br>";
+                }
+                tTable = @" <span><strong>Booking Date</strong> : " + Convert.ToDateTime(dt.Rows[0]["BookingDate"]).ToString("dd MMM yyyy") + @"</span></br> " + tTable;
+
+            }
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "BindTheaterDetails", ex.Message);
+
+        }
+        return tTable;
     }
     #endregion
 }
