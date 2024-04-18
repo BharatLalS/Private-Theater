@@ -376,7 +376,7 @@ public partial class add_on : System.Web.UI.Page
             {
                 for (int i = 0; i < bookingslots.Count; i++)
                 {
-                    var CheckTimingExist = BookingSlots.GetBookedSlotByDate(conSQ, bookingslots[i].BookingDate, bookingslots[i].TimingGuid);
+                    var CheckTimingExist = BookingSlots.GetBookedSlotByDate(conSQ, bookingslots[i].BookingDate, bookingslots[i].TimingGuid, bookingslots[i].TheaterGuid);
                     if (CheckTimingExist > 0)
                     {
                         count++;

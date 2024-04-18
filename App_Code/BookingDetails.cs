@@ -384,8 +384,8 @@ public class BookingDetails
                     AddDisc +
                     "<tr style='padding-bottom:5px;border-top:1px solid #856869'><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;padding:1%;' class='flexibleContainerCell'>  Grand Total </th><th align='left' valign='top' style='float:left;width:46%;color:#856869;font-size:15px;text-align:right;padding:1%;' class='flexibleContainerCell'>₹" + Convert.ToString(dt.Rows[0]["SubTotal"]) + "</th></tr>";
 
-                Emails.BookingConfirmed(Convert.ToString(dt.Rows[0]["BookingId"]), table + "", Convert.ToString(dt.Rows[0]["UserName"]), Convert.ToString(dt.Rows[0]["UserEmail"]), Convert.ToString(dt.Rows[0]["SubTotal"]), pType, theaterdetails, bookingdetails);
-                Emails.BookingConfirmedAdmin(Convert.ToString(dt.Rows[0]["BookingId"]), table + "", theaterdetails, bookingdetails);
+                Emails.BookingConfirmed(Convert.ToString(dt.Rows[0]["BookingId"]), table + "", Convert.ToString(dt.Rows[0]["UserName"]), Convert.ToString(dt.Rows[0]["UserEmail"]), Convert.ToString(dt.Rows[0]["UserPhoneNo"]), Convert.ToString(dt.Rows[0]["SubTotal"]), pType, theaterdetails, bookingdetails);
+                Emails.BookingConfirmedAdmin(Convert.ToString(dt.Rows[0]["BookingId"]), Convert.ToString(dt.Rows[0]["UserName"]), Convert.ToString(dt.Rows[0]["UserEmail"]), Convert.ToString(dt.Rows[0]["UserPhoneNo"]), table + "", theaterdetails, bookingdetails);
 
                 //SMSServices.SendOrderSuccess(Convert.ToString(dt.Rows[0]["Mobile1"]).Replace("-", ""), Convert.ToString(dt.Rows[0]["OrderId"]));
             }

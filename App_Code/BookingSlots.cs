@@ -71,16 +71,17 @@ public class BookingSlots
         return x;
     }
 
-    public static int GetBookedSlotByDate(SqlConnection conGV, DateTime date, string Tid)
+    public static int GetBookedSlotByDate(SqlConnection conGV, DateTime date, string Tid,string TheaterId)
     {
         int x = 0;
         try
         {
-            string query = @"Select Count(ID) as Cnt From BookingSlots Where BookingDate=@BookingDate and TimingGuid=@TimingGuid and Status = @Status";
+            string query = @"Select Count(ID) as Cnt From BookingSlots Where BookingDate=@BookingDate and TimingGuid=@TimingGuid and TheaterGuid=@TheaterGuid and Status = @Status";
             SqlCommand cmd = new SqlCommand(query, conGV);
             cmd.Parameters.AddWithValue("@BookingDate", SqlDbType.NVarChar).Value = date;
             cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Completed";
             cmd.Parameters.AddWithValue("@TimingGuid", SqlDbType.NVarChar).Value = Tid;
+            cmd.Parameters.AddWithValue("@TheaterGuid", SqlDbType.NVarChar).Value = TheaterId;
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);

@@ -1532,7 +1532,7 @@ Your password remains unchanged.</p></td> </tr> <tr>
     }
 
 
-    public static int BookingConfirmed(string oid, string productTable, string name, string email, string paidAmount, string pType, string address1, string address2)
+    public static int BookingConfirmed(string oid, string productTable, string name, string email, string phone, string paidAmount, string pType, string address1, string address2)
     {
         try
         {
@@ -1934,7 +1934,7 @@ Your password remains unchanged.</p></td> </tr> <tr>
                                                                     <table border='0' cellpadding='0' cellspacing='0' style='float:left;float: left; margin-right: 0; width: 100%;'>
                                                                         <tr>
                                                                             <td align='left' valign='top' width='100%' class='flexibleContainerCell'>
-                                                                                <center><img style='height:90px;margin-bottom:0px;' src='" + ConfigurationManager.AppSettings["domain"] + @"/Img/websiteLogos/logo.png' /></center>
+                                                                                <center><img style='height:50px;margin-bottom:0px;' src='" + ConfigurationManager.AppSettings["domain"] + @"/Img/websiteLogos/logo.png' /></center>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -1976,7 +1976,10 @@ Your password remains unchanged.</p></td> </tr> <tr>
                                                                 </td>
                                                                 <td align='left' valign='top' style='min-height:180px;float:left;width:46%;margin-bottom:10px;margin-top:20px;text-align:left;padding:10px;color:#fff;font-size:18px;margin-left:0.5%;' bgcolor='#5a2d9d' class='flexibleContainerCell'>
                                                                    Booking Details
-                                                                    <p style='color:#fff;text-align:left;line-height:20px;'>
+                                                                        <p style='color:#fff;text-align:left;line-height:20px;'>
+                                                                        " + name + @",<br>
+                                                                        " + email + @",<br>
+                                                                        " + phone + @",<br>
                                                                         " + address2 + @"
                                                                     </p>
                                                                 </td>
@@ -2048,7 +2051,7 @@ Your password remains unchanged.</p></td> </tr> <tr>
         }
     }
 
-    public static int BookingConfirmedAdmin(string oid, string productTable, string address1, string address2)
+    public static int BookingConfirmedAdmin(string oid, string name, string email, string phone, string productTable, string address1, string address2)
     {
         try
         {
@@ -2461,7 +2464,7 @@ Your password remains unchanged.</p></td> </tr> <tr>
                                                                     <table border='0' cellpadding='0' cellspacing='0' style='float:left;float: left; margin-right: 0; width: 100%;'>
                                                                         <tr>
                                                                             <td align='left' valign='top' width='100%' class='flexibleContainerCell'>
-                                                                                <center><img style='height:90px;margin-bottom:0px;' src='" + ConfigurationManager.AppSettings["domain"] + @"/Img/websiteLogos/logo.png' /></center>
+                                                                                <center><img style='height:50px;margin-bottom:0px;' src='" + ConfigurationManager.AppSettings["domain"] + @"/Img/websiteLogos/logo.png' /></center>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -2499,6 +2502,9 @@ Your password remains unchanged.</p></td> </tr> <tr>
                                                                 <td align='left' valign='top' style='min-height:180px;float:left;width:46%;margin-bottom:10px;margin-top:20px;text-align:left;padding:10px;color:#fff;font-size:18px;margin-left:0.5%;' bgcolor='#5a2d9d' class='flexibleContainerCell'>
                                                                    Booking Details
                                                                     <p style='color:#fff;text-align:left;line-height:20px;'>
+                                                                        " + name + @",<br>
+                                                                        " + email + @",<br>
+                                                                        " + phone + @",<br>
                                                                         " + address2 + @"
                                                                     </p>
                                                                 </td>

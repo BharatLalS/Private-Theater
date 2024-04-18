@@ -97,7 +97,7 @@ public partial class details : System.Web.UI.Page
                 {
                     for (int i = 0; i < timings.Count; i++)
                     {
-                        var timingexist = BookingSlots.GetBookedSlotByDate(conSQ, Currdate, timings[i].TimingGuid);
+                        var timingexist = BookingSlots.GetBookedSlotByDate(conSQ, Currdate, timings[i].TimingGuid, timings[i].TheaterID);
                         if (timingexist > 0)
                         {
                             x += @"<div class='reason-box col-lg-12 col-md-12 col-6 text-center timeslots disable'>

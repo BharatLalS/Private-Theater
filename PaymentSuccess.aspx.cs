@@ -17,6 +17,7 @@ public partial class PaymentSuccess : System.Web.UI.Page
         if (Request.QueryString["o"] != null)
         {
             StrOrderID = BookingDetails.GetBookingIDWithBookingGuid(conSQ, Request.QueryString["o"]);
+           // BookingDetails.SendToUser(conSQ, Request.QueryString["o"]);
         }
         else
         {

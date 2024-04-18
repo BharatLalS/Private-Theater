@@ -188,6 +188,9 @@ function BindCart(Bid, total, tax) {
                     $(".cartTable").html(products);
                 }
                 else {
+                    $(".grand-total").html("₹ " + (parseFloat(total.replace(/,/g, ''))).toFixed(2).toLocaleString());
+                    $(".lblTaxPrice").html("₹ " + (parseFloat(tax.replace(/,/g, ''))).toFixed(2).toLocaleString());
+
                     $(".cartTable").html("<tr><td colspan='5' class='text-center'> No items to show </td></tr>");
                 }
                 //$("#KnowMoreModalTitle").html(PTitle);
@@ -195,6 +198,9 @@ function BindCart(Bid, total, tax) {
                 //$("#KnowMoreModal").modal("show");
             }
             else {
+                $(".grand-total").html("₹ " + (parseFloat(total.replace(/,/g, ''))).toFixed(2).toLocaleString());
+                $(".lblTaxPrice").html("₹ " + (parseFloat(tax.replace(/,/g, ''))).toFixed(2).toLocaleString());
+                $(".lblAddonPrice").html("₹ 0");
                 $(".cartTable").html("<tr><td colspan='5' class='text-center'> No items to show </td></tr>");
             }
         }
