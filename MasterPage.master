@@ -213,12 +213,13 @@
                                 <h3 class="footer-item-title">Book Now
                                 </h3>
                                 <ul>
-                                    <li><a href="/details.aspx">Electronic City</a></li>
+
+                                   <%-- <li><a href="/details.aspx">Electronic City</a></li>
                                     <li><a href="/details.aspx">HSR Layout 
                                     </a></li>
                                     <li><a href="/details.aspx">Anathnaagar
                                     </a></li>
-                                    <li><a href="/details.aspx">Sahkarnagar</a></li>
+                                    <li><a href="/details.aspx">Sahkarnagar</a></li>--%>
                                 </ul>
 
                             </div>
