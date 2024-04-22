@@ -192,6 +192,61 @@ public class BookingDetails
         }
         return null;
     }
+    public static BookingDetails GetBookingDetailsWithBookingGuid(SqlConnection conGV, string bookingGuid)
+    {
+        var booking = new BookingDetails();
+        try
+        {
+            string query = "Select * from BookingDetails Where BookingGuid=@BookingGuid and BookingStatus !=@Status";
+            using (SqlCommand cmd = new SqlCommand(query, conGV))
+            {
+                cmd.Parameters.AddWithValue("@BookingGuid", SqlDbType.NVarChar).Value = bookingGuid;
+                cmd.Parameters.AddWithValue("@Status", SqlDbType.NVarChar).Value = "Deleted";
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                booking = (from DataRow dr in dt.Rows
+                           select new BookingDetails()
+                           {
+                               Id = Convert.ToInt32(dr["Id"]),
+                               BookingID = Convert.ToString(dr["BookingID"]),
+                               BookingGuid = Convert.ToString(dr["BookingGuid"]),
+                               TheaterGuid = Convert.ToString(dr["TheaterGuid"]),
+                               BookingDate = Convert.ToDateTime(dr["BookingDate"]),
+                               BookingStatus = Convert.ToString(dr["BookingStatus"]),
+                               UserGuid = Convert.ToString(dr["UserGuid"]),
+                               UserName = Convert.ToString(dr["UserName"]),
+                               UserEmail = Convert.ToString(dr["UserEmail"]),
+                               UserPhoneNo = Convert.ToString(dr["UserPhoneNo"]),
+                               NoOfPax = Convert.ToString(dr["NoOfPax"]),
+                               SlotTotal = Convert.ToString(dr["SlotTotal"]),
+                               ExtPaxTotal = Convert.ToString(dr["ExtPaxTotal"]),
+                               TaxPercentage = Convert.ToString(dr["TaxPercentage"]),
+                               TaxAmount = Convert.ToString(dr["TaxAmount"]),
+                               SubTotalWithoutTax = Convert.ToString(dr["SubTotalWithoutTax"]),
+                               Discount = Convert.ToString(dr["Discount"]),
+                               PaymentMode = Convert.ToString(dr["PaymentMode"]),
+                               PromoCode = Convert.ToString(dr["PromoCode"]),
+                               PaymentID = Convert.ToString(dr["PaymentID"]),
+                               PaymentStatus = Convert.ToString(dr["PaymentStatus"]),
+                               ReceiptNo = Convert.ToString(dr["ReceiptNo"]),
+                               CakeMessage = Convert.ToString(dr["CakeMessage"]),
+                               Notes = Convert.ToString(dr["Notes"]),
+                               Subtotal = Convert.ToString(dr["Subtotal"]),
+                               AddedOn = Convert.ToDateTime(dr["AddedOn"]),
+                               AddedIP = Convert.ToString(dr["AddedIP"]),
+                               Status = Convert.ToString(dr["Status"])
+                           }).FirstOrDefault();
+            }
+            return booking;
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetBookingDetails", ex.Message);
+
+        }
+        return null;
+    }
     public static int UpdateBookingDetails(SqlConnection conGV, BookingDetails booking)
     {
         int result = 0;

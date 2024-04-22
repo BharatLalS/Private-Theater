@@ -184,7 +184,7 @@ public partial class Admin_dashboard : System.Web.UI.Page
                         };
                         tableitems += @"<tr  class='" + deadlineclass + @"'>
                                             <td>" + bookings.Rows[i]["RN"] + @"</td>
-                                            <td><a href='view-booking-details.aspx?o=" + bookings.Rows[i]["BookingGuid"] + @"' target='_blank' class='badge badge badge-gradient-secondary text-light fs-12'>" + bookings.Rows[i]["BookingID"] + @"</a></td>
+                                            <td><a href='\receipt.aspx?o=" + bookings.Rows[i]["BookingGuid"] + @"' target='_blank' class='badge badge badge-gradient-secondary text-light fs-12'>" + bookings.Rows[i]["BookingID"] + @"</a></td>
                                             <td>" + Convert.ToDateTime(bookings.Rows[i]["BookingDate"]).ToString("dd MMM yyyy") + @"</td>
                                             <td>" + bookings.Rows[i]["TheaterName"] + @"</td>
                                             <td>" + bookings.Rows[i]["UserName"] + @"</td>
