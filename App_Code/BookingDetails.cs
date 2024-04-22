@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Drawing;
 using System.Security.Cryptography;
+using System.IO;
 
 /// <summary>
 /// Summary description for BookingDetails
@@ -493,5 +494,60 @@ public class BookingDetails
         }
         return tTable;
     }
+
+
+    /// <summary>
+    /// Retrieves orders from the database based on specified filters.
+    /// </summary>
+    /// <param name="conSQ">The SQL connection object.</param>
+    /// <param name="filter">A FilterOptions object containing filtering criteria.</param>
+    /// <returns>A DataTable containing orders filtered based on the specified criteria.</returns>
+
+    public static DataTable GetBookingWithFilter(SqlConnection conSQ, FilterOptions filter)
+    {
+
+        var dt = new DataTable();
+        try
+        {
+            int page = (Convert.ToInt32(filter.PgNo) - 1) * Convert.ToInt32(filter.PLenght);
+            string query = "FilteredBookingList @BookingStatus,@Key,@StartDate,@EndDate,@PLenght,@Pno";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                cmd.Parameters.AddWithValue("@BookingStatus", SqlDbType.NVarChar).Value = filter.OrderStatus;
+                cmd.Parameters.AddWithValue("@Key", SqlDbType.NVarChar).Value = filter.SearchKey;
+                cmd.Parameters.AddWithValue("@StartDate", SqlDbType.NVarChar).Value = filter.StartDate;
+                cmd.Parameters.AddWithValue("@EndDate", SqlDbType.NVarChar).Value = filter.EndDate;
+                cmd.Parameters.AddWithValue("@Pno", SqlDbType.Int).Value = page;
+                cmd.Parameters.AddWithValue("@PLenght", SqlDbType.Int).Value = filter.PLenght;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                return dt;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetOrdersWithFilters", ex.Message);
+        }
+        return dt;
+    }
+    #endregion
+
+
+}    
+//Filters Class
+public class FilterOptions
+{
+    public FilterOptions()
+    {
+
+    }
+    #region FilterProperties
+    public string SearchKey { get; set; }
+    public string OrderStatus { get; set; }
+    public string StartDate { get; set; }
+    public string EndDate { get; set; }
+    public int PgNo { get; set; }
+    public int PLenght { get; set; }
     #endregion
 }

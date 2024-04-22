@@ -103,16 +103,41 @@ public partial class details : System.Web.UI.Page
                             x += @"<div class='reason-box col-lg-12 col-md-12 col-6 text-center timeslots disable'>
                                                 <input type='checkbox' class='timeSlot-btn time-selected' disabled data-id='" + timings[i].TimingGuid + @"' id='time" + i + @"' name='time'>
                                                 <label for='time" + i + @"'>" + timings[i].StartTime + @" - " + timings[i].EndTime + @" </label>
-                                                <p>₹ " + theaterdetails.Price + @"</p>
+                                                <p>₹ " + theaterdetails.Price + @" <span class='maxcap'>(" + theaterdetails.MaxCapacity + @" people)</span></p>
                                             </div>";
                         }
                         else
                         {
-                            x += @"<div class='reason-box col-lg-12 col-md-12 col-6 text-center timeslots'>
+                            if (Currdate.ToString("dd/MMM/yyyy") == DateTime.Now.ToString("dd/MMM/yyyy"))
+                            {
+                                if (Convert.ToDateTime(Convert.ToDateTime(timings[i].StartTime).ToString("HH:mm")) < Convert.ToDateTime(TimeStamps.UTCTime().ToString("HH:mm")))
+                                {
+                                    x += @"<div class='reason-box col-lg-12 col-md-12 col-6 text-center timeslots disable'>
+                                                <input type='checkbox' class='timeSlot-btn time-selected' disabled data-id='" + timings[i].TimingGuid + @"' id='time" + i + @"' name='time'>
+                                                <label for='time" + i + @"'>" + timings[i].StartTime + @" - " + timings[i].EndTime + @" </label>
+                                                <p>₹ " + theaterdetails.Price + @" <span class='maxcap'>(" + theaterdetails.MaxCapacity + @" people)</span></p>
+                                            </div>";
+                                }
+                                else
+                                {
+                                    x += @"<div class='reason-box col-lg-12 col-md-12 col-6 text-center timeslots'>
                                                 <input type='checkbox' class='timeSlot-btn time-selected' data-id='" + timings[i].TimingGuid + @"' id='time" + i + @"' name='time'>
                                                 <label for='time" + i + @"'>" + timings[i].StartTime + @" - " + timings[i].EndTime + @" </label>
-                                                <p>₹ " + theaterdetails.Price + @"</p>
+                                                <p>₹ " + theaterdetails.Price + @" <span class='maxcap'>(" + theaterdetails.MaxCapacity + @" people)</span></p>
                                             </div>";
+
+                                }
+                            }
+                            else
+                            {
+                                x += @"<div class='reason-box col-lg-12 col-md-12 col-6 text-center timeslots'>
+                                                <input type='checkbox' class='timeSlot-btn time-selected' data-id='" + timings[i].TimingGuid + @"' id='time" + i + @"' name='time'>
+                                                <label for='time" + i + @"'>" + timings[i].StartTime + @" - " + timings[i].EndTime + @" </label>
+                                                <p>₹ " + theaterdetails.Price + @" <span class='maxcap'>(" + theaterdetails.MaxCapacity + @" people)</span></p>
+                                            </div>";
+
+                            }
+
 
                         }
 

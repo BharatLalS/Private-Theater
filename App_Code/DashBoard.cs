@@ -74,12 +74,12 @@ public class DashBoard
 
 
 
-    public static int GetCustomerCount(SqlConnection conSQ)
+    public static int GetTheaterCount(SqlConnection conSQ)
     {
         int x = 0;
         try
         {
-            string query = " Select * from CustomerDetails Where Status='Active'";
+            string query = " Select * from TheaterDetails Where Status !='Deleted'";
             SqlCommand cmd = new SqlCommand(query, conSQ);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -112,12 +112,12 @@ public class DashBoard
         }
         return x;
     }
-    public static int GetArchitectCount(SqlConnection conSQ)
+    public static int GetBlogCount(SqlConnection conSQ)
     {
         int x = 0;
         try
         {
-            string query = " Select * from ArchitectDetails Where Status='Published'";
+            string query = " Select * from BlogDetails Where Status !='Deleted'";
             SqlCommand cmd = new SqlCommand(query, conSQ);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -126,7 +126,7 @@ public class DashBoard
         }
         catch (Exception ex)
         {
-            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetStudentCount", ex.Message);
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetBlogCount", ex.Message);
         }
         return x;
     }
@@ -159,12 +159,12 @@ public class DashBoard
         return x;
     }
 
-    public static decimal TodaysOrder(SqlConnection conSQ, string tDay)
+    public static decimal TodaysBooking(SqlConnection conSQ, string tDay)
     {
         decimal x = 0;
         try
         {
-            string query = " Select Count(Id) as cntB from Orders Where  PaymentStatus = 'Paid' and Try_Convert(date, AddedOn)=@tDay";
+            string query = " Select Count(Id) as cntB from BookingDetails Where  PaymentStatus = 'Paid' and Try_Convert(date, BookingDate)=@tDay";
             SqlCommand cmd = new SqlCommand(query, conSQ);
             cmd.Parameters.AddWithValue("@tDay", SqlDbType.NVarChar).Value = tDay;
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -179,20 +179,18 @@ public class DashBoard
         }
         catch (Exception ex)
         {
-            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "NoOfEmailSubscribed", ex.Message);
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "TodaysBooking", ex.Message);
         }
         return x;
     }
-
-    public static decimal MonthsOrder(SqlConnection conSQ, string mnth, string yr)
+    public static decimal TodaysBookingRevenue(SqlConnection conSQ, string tDay)
     {
         decimal x = 0;
         try
         {
-            string query = " Select Count(Id) as cntB from Orders Where  PaymentStatus = 'Paid' and (Month(AddedOn) = @mnth and Year(AddedOn) = @yr)";
+            string query = " Select Sum(Try_Convert(decimal,SubTotal)) as cntB from BookingDetails Where  PaymentStatus = 'Paid' and Try_Convert(date, BookingDate)=@tDay";
             SqlCommand cmd = new SqlCommand(query, conSQ);
-            cmd.Parameters.AddWithValue("@mnth", SqlDbType.NVarChar).Value = mnth;
-            cmd.Parameters.AddWithValue("@yr", SqlDbType.NVarChar).Value = yr;
+            cmd.Parameters.AddWithValue("@tDay", SqlDbType.NVarChar).Value = tDay;
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -205,11 +203,51 @@ public class DashBoard
         }
         catch (Exception ex)
         {
-            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "NoOfEmailSubscribed", ex.Message);
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "TodaysBookingRevenue", ex.Message);
         }
         return x;
     }
 
+    public static DataTable GetDashboardMontlyRevnue(SqlConnection conSQ)
+    {
+        var dt = new DataTable();
+        try
+        {
+            string query = "AdminMonthlyRevenue";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                return dt;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetDashboardMontlyRevnue", ex.Message);
+        }
+        return dt;
+    }
+    public static DataTable GetDashboardWidgetValues(SqlConnection conSQ)
+    {
+        var dt = new DataTable();
+        try
+        {
+            string query = "AdminDashboardWidgetsValue";
+            using (SqlCommand cmd = new SqlCommand(query, conSQ))
+            {
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                return dt;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            ExceptionCapture.CaptureException(HttpContext.Current.Request.Url.PathAndQuery, "GetDashboardWidgetValues", ex.Message);
+        }
+        return dt;
+    }
 
 
 

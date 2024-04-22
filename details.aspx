@@ -209,6 +209,10 @@
         .NoofPax {
             border-radius: 50px;
         }
+
+        .maxcap {
+            font-size: 12px;
+        }
     </style>
     <!-- carousel css include -->
 </asp:Content>

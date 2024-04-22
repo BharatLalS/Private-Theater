@@ -553,7 +553,7 @@
                     <div id="faq-accordion" class="faq-accordion">
                         <%=StrFAQ %>
                     </div>
-                    <div class="text-center mt-4">
+                    <div class="text-center mt-4" id="faqviewmore" visible="false" runat="server">
                         <a href="/faq.aspx" class="custom-btn white-btn">View More</a>
                     </div>
                 </div>

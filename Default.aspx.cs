@@ -53,10 +53,10 @@ public partial class _Default : System.Web.UI.Page
     {
         try
         {
-            var faq = FAQDetails.GetAllFAQDetails(conSQ).Take(5).ToList();
+            var faq = FAQDetails.GetAllFAQDetails(conSQ).ToList();
             if (faq != null)
             {
-                for (int i = 0; i < faq.Count; i++)
+                for (int i = 0; i < faq.Take(10).ToList().Count; i++)
                 {
                     StrFAQ += @"<div class='card'>
                             <div class='card-header' id='heading" + i + @"'>
@@ -71,6 +71,10 @@ public partial class _Default : System.Web.UI.Page
                                 </div>
                             </div>
                         </div>";
+                }
+                if (faq.Count > 10)
+                {
+                    faqviewmore.Visible = true;
                 }
             }
         }

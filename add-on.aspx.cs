@@ -143,17 +143,19 @@ public partial class add_on : System.Web.UI.Page
                                         }
                                     }
                                     strProduct += @"<div class='col-lg-4 col-md-6 col-6'>
-                                                        <div class='tile product-box' data-id='" + products[j].ProductGuid + @"'>
-                                                            <input type='checkbox' name='party' id='" + products[j].ProductUrl + products[j].Id + @"' />
-                                                                <label for='" + products[j].ProductUrl + products[j].Id + @"' class='theme-sec'>
-                                                                <img src='/" + products[j].ThumbImage + @"' alt='" + products[j].ProductUrl + products[j].Id + @"' />
-                                                                    <div class='content'>
-                                                                        <p>" + products[j].ProductName + @"</p>
-                                                                        <p>₹ " + Convert.ToInt32(products[j].Price).ToString("N0") + @"</p>
-                                                                        " + optSec + @"           
-                                                                     </div>
-                                                                 </label>
-                                                          </div>
+                                    <div class='newAddOnWrap  product-box' data-id='" + products[j].ProductGuid + @"'>
+                                             <div class='position-relative'>
+                                                                <img src='/" + products[j].ThumbImage + @"' alt='" + products[j].ProductUrl + products[j].Id + @"' class='w-100' />
+                                                                 <div class='position-absolute inputWrap'>
+                                                                    <input type='checkbox' name='party' id='" + products[j].ProductUrl + products[j].Id + @"' class='addOnInput' />
+                                                                 </div>
+                                              </div>
+                                              <div class='content'>
+                                                <p>" + products[j].ProductName + @"</p>
+                                                <p>₹ " + Convert.ToInt32(products[j].Price).ToString("N0") + @"</p>
+                                                " + optSec + @"           
+                                               </div>
+                                    </div>
                                                      </div>";
 
                                 }
@@ -208,18 +210,20 @@ public partial class add_on : System.Web.UI.Page
                                     }
                                 }
                                 strProduct += @"<div class='col-lg-4 col-md-6 col-6'>
-                                    <div class='tile product-box' data-id='" + products[j].ProductGuid + @"'>
-                                        <input type='checkbox' name='party' id='" + products[j].ProductUrl + products[j].Id + @"' />
-                                        <label for='" + products[j].ProductUrl + products[j].Id + @"' class='theme-sec '>
-                                        <img src='/" + products[j].ThumbImage + @"' alt='" + products[j].ProductUrl + products[j].Id + @"' />
-                                            <div class='content'>
-                                                <p>" + products[j].ProductName + @"</p>
-                                                <p>₹ " + products[j].Price + @"</p>
-                                                " + optSec + @"                 
-                                            </div>
-                                        </label>
-                                    </div>
-                                    </div>";
+                                                  <div class='newAddOnWrap product-box' data-id='" + products[j].ProductGuid + @"'>
+                                                    <div class='position-relative'>
+                                                                    <img src='/" + products[j].ThumbImage + @"' alt='" + products[j].ProductUrl + products[j].Id + @"' class='w-100' />
+                                                                        <div class='position-absolute inputWrap'>
+                                                                        <input type='checkbox' name='party' id='" + products[j].ProductUrl + products[j].Id + @"' class='addOnInput' />
+                                                                        </div>
+                                                    </div>
+                                                    <div class='content'>
+                                                    <p>" + products[j].ProductName + @"</p>
+                                                    <p>₹ " + Convert.ToInt32(products[j].Price).ToString("N0") + @"</p>
+                                                    " + optSec + @"           
+                                                    </div>
+                                                </div>
+                                               </div>";
 
                             }
                         }
@@ -293,12 +297,22 @@ public partial class add_on : System.Web.UI.Page
             };
             if (Qty == "0")
             {
-                //Delete
-                var exe = BookingAddOns.DeleteBookingAddOns(conSQ, addon);
-                if (exe > 0)
+                var check = BookingAddOns.CheckProductExist(conSQ, addon);
+                if (check > 0)
+                {
+                    var exe = BookingAddOns.DeleteBookingAddOns(conSQ, addon);
+                    if (exe > 0)
+                    {
+                        return "Success";
+                    }
+
+                }
+                else
                 {
                     return "Success";
                 }
+                //Delete
+               
             }
             else
             {
@@ -425,8 +439,8 @@ public partial class add_on : System.Web.UI.Page
                     var exe = BookingDetails.UpdateBookingDetails(conSQ, updatedBookingdetails);
                     if (exe > 0)
                     {
-                        StartPayment(Convert.ToDouble(totalwithtax).ToString(), BGuid, bookingdetails.BookingID,  bookingdetails.UserName, bookingdetails.UserEmail, bookingdetails.UserPhoneNo, updatedBookingdetails.TransactionID);
-                       // PayNowInstamojo(Convert.ToDouble(totalwithtax), BGuid,  bookingdetails.UserName, bookingdetails.UserEmail, bookingdetails.UserPhoneNo);
+                        StartPayment(Convert.ToDouble(totalwithtax).ToString(), BGuid, bookingdetails.BookingID, bookingdetails.UserName, bookingdetails.UserEmail, bookingdetails.UserPhoneNo, updatedBookingdetails.TransactionID);
+                        // PayNowInstamojo(Convert.ToDouble(totalwithtax), BGuid,  bookingdetails.UserName, bookingdetails.UserEmail, bookingdetails.UserPhoneNo);
                     }
                     else
                     {

@@ -27,7 +27,7 @@ public partial class Admin_forgot_password : System.Web.UI.Page
                     string r_id = Guid.NewGuid().ToString();
                     int reset = CreateUser.SetRestId(conSQ, logins, r_id);
                     var username = CreateUser.GetLoggedUserName(conSQ, Convert.ToString(logins));
-                    Emails.SendPasswordRestLink(logins, txtEmail.Text.Trim(), ConfigurationManager.AppSettings["domain"] + "/admin/reset-password.aspx?r=" + r_id);
+                    Emails.SendPasswordRestLink(username, txtEmail.Text.Trim(), ConfigurationManager.AppSettings["domain"] + "/admin/reset-password.aspx?r=" + r_id);
                     if (reset >= 1)
                     {
                         lblStatus.Text = "<strong>Success !</strong><br/>Password reset link has been sent to your email address";

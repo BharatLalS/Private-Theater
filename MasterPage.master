@@ -38,6 +38,17 @@
     <link href="/assets/plugins/snackbar/snackbar.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style>
+        .mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    background: #5a2d9e;
+    height: 100%;
+    max-width: 100%;
+    outline: 0;
+    direction: ltr;
+}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -51,7 +62,7 @@
                         <div class="col-lg-3">
                             <div class="site-logo-wrapper">
                                 <a href="/" class="logo">
-                                    <img src="/assets/images/00icons/logo.png" alt="logo_not_found">
+                                    <img src="/assets/images/00icons/logo1.jpeg" alt="logo_not_found">
                                 </a>
                             </div>
                         </div>
@@ -106,7 +117,7 @@
             <div class="container">
                 <div class="logo-area float-left">
                     <a href="Default.aspx">
-                        <img src="/assets/images/00icons/logo.png" alt="logo_not_found">
+                        <img src="/assets/images/00icons/logo1.jpeg" alt="logo_not_found">
                     </a>
                 </div>
 
@@ -130,16 +141,16 @@
                     <div class="menu-link-list other-pages-links">
                         <ul>
                             <li>
-                                <a href="/"><span class="icon"><i class="fas fa-home"></i></span>Home</a>
+                                <a href="/"><span class="icon"><i class="fas fa-chevron-right"></i></span>Home</a>
                             </li>
                             <li>
-                                <a href="/book-now.aspx"><span class="icon"><i class="fas fa-home"></i></span>Book Now</a>
+                                <a href="/book-now.aspx"><span class="icon"><i class="fas fa-chevron-right"></i></span>Book Now</a>
                             </li>
                             <li>
-                                <a href="/blog.aspx"><span class="icon"><i class="fas fa-home"></i></span>Blog</a>
+                                <a href="/blog.aspx"><span class="icon"><i class="fas fa-chevron-right"></i></span>Blog</a>
                             </li>
                             <li>
-                                <a href="/faq.aspx"><span class="icon"><i class="fas fa-home"></i></span>Faq</a>
+                                <a href="/faq.aspx"><span class="icon"><i class="fas fa-chevron-right"></i></span>Faq</a>
                             </li>
                         </ul>
                     </div>
@@ -172,7 +183,7 @@
                                 <!-- site-logo-wrapper - start -->
                                 <div class="site-logo-wrapper mb-30">
                                     <a href="/" class="logo">
-                                        <img src="/assets/images/00icons/logo1.png" alt="logo_not_found">
+                                        <img src="/assets/images/00icons/logo2.png" alt="logo_not_found">
                                     </a>
                                 </div>
                                 <!-- site-logo-wrapper - end -->
@@ -213,7 +224,7 @@
                                 <h3 class="footer-item-title">Book Now
                                 </h3>
                                 <ul>
-
+                                    <%=StrLocations %>
                                    <%-- <li><a href="/details.aspx">Electronic City</a></li>
                                     <li><a href="/details.aspx">HSR Layout 
                                     </a></li>

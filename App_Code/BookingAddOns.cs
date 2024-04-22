@@ -170,6 +170,8 @@ public class BookingAddOns
             string query = "UPDATE BookingAddOns " +
                            "SET Quantity = @Quantity, " +
                            "TotalPrice = @TotalPrice, " +
+                           "ItemTotal = @ItemTotal, " +
+                           "TaxAmount = @TaxAmount, " +
                            "AddedOn = @AddedOn, " +
                            "AddedIp = @AddedIp " +
                            "WHERE BookingGuid = @BookingGuid and ProductGuid=@ProductGuid";
@@ -180,6 +182,8 @@ public class BookingAddOns
                 cmd.Parameters.AddWithValue("@ProductGuid", BookingAddOns.ProductGuid);
                 cmd.Parameters.AddWithValue("@Quantity", BookingAddOns.Quantity);
                 cmd.Parameters.AddWithValue("@TotalPrice", BookingAddOns.TotalPrice);
+                cmd.Parameters.AddWithValue("@ItemTotal", BookingAddOns.ItemTotal);
+                cmd.Parameters.AddWithValue("@TaxAmount", BookingAddOns.TaxAmount);
                 cmd.Parameters.AddWithValue("@AddedOn", BookingAddOns.AddedOn);
                 cmd.Parameters.AddWithValue("@AddedIp", BookingAddOns.AddedIp);
                 conGV.Open();

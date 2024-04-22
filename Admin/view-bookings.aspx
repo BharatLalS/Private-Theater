@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-                <div class="container-fluid">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -110,27 +110,58 @@
                                     <label style="margin-top: 10px;">entries</label>
                                 </div>
                             </div>
-                            <div class="table-responsive">
+                            <div class="">
+                                <div class="loaderclass justify-content-center text-center d-flex gap-4">
+                                    <div class='spinner-grow text-primary' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                    <div class='spinner-grow text-secondary' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                    <div class='spinner-grow text-success' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                    <div class='spinner-grow text-info' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                    <div class='spinner-grow text-warning' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                    <div class='spinner-grow text-danger' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                    <div class='spinner-grow text-dark' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                    <div class='spinner-grow text-light' role='status'>
+                                        <span class='sr-only'>Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="mytablewrap d-none">
+                                    <div class="table-responsive">
 
-                                <table id="alternative-pagination" class="table align-middle table-nowrap table-striped table-bordered " style="width: 100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Booking Id</th>
-                                            <th>Booking Date</th>
-                                            <th>Name</th>
-                                            <th>Email Id</th>
-                                            <th>Phone No.</th>
-                                            <th>Booking Status</th>
-                                            <th>Booking On</th>
-                                            <th>Payment Status</th>
-                                            <th>Payment Id</th>
-                                            <th>Total Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="strTable">
-                                    </tbody>
-                                </table>
+                                        <table id="alternative-pagination" class="table align-middle table-nowrap table-striped table-bordered " style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Booking Id</th>
+                                                    <th>Booking Date</th>
+                                                    <th>Theater Name</th>
+                                                    <th>Name</th>
+                                                    <th>Email Id</th>
+                                                    <th>Phone No.</th>
+                                                    <th>Booking Status</th>
+                                                    <th>Booking On</th>
+                                                    <th>Payment Status</th>
+                                                    <th>Payment Id</th>
+                                                    <th>Total Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="strTable">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <nav aria-label="Page navigation" class="mt-2">
                                 <ul class=" mppagination pagination justify-content-center">

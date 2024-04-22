@@ -62,6 +62,7 @@
         if (qty > min) {
             input.val(qty - 1);
         }
+        BindCart();
     });
 
     //Quantity Plus
@@ -101,12 +102,12 @@
     });
 
     //Adding Addons
-    $(document.body).on("change", ".product-box", function () {
+    $(document.body).on("click", ".product-box", function () {
         $this = $(this);
         var PId = $this.attr("data-id");
         var BId = booking;
         var qty = $this.find("#qty").length === 0 ? "1" : $this.find("#qty").val();
-        if (!$this.find("input[type ='checkbox']").is(":checked")) {
+        if (!$this.find("input[type ='checkbox']").hasClass("active")) {
             qty = 0;
         }
         $.ajax({
@@ -145,7 +146,75 @@
 
     })
 
+    //$(document.body).on("click", ".newAddOnWrap img", function (e) {
+    //    e.preventDefault();
+    //    $this = $(this).parent().parent();
+    //    var PId = $this.attr("data-id");
+    //    var BId = booking;
+    //    var qty = $this.find("#qty").length === 0 ? "1" : $this.find("#qty").val();
+    //    if ($this.find("input[type ='checkbox']").is(":checked")) {
+    //        qty = 0;
+    //    }
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: "/add-on.aspx/UpdateAddon",
+    //        contentType: 'application/json; charset=utf-8',
+    //        dataType: "json",
+    //        data: JSON.stringify({
+    //            PGuid: PId,
+    //            Qty: qty,
+    //            BGuid: BId
+    //        }),
+    //        success: function (data2) {
+    //            if (data2.d.toString() == "Error") {
+    //                //Error Message
+    //                Snackbar.show({
+    //                    pos: 'top-right',
+    //                    text: 'there is some problem right now.please try again later.',
+    //                    actionTextColor: '#fff',
+    //                    backgroundColor: '#ea1c1c'
+    //                });
+    //            }
+    //            else if (data2.d.toString() == "Empty") {
+    //                //Empty Message
+    //                Snackbar.show({
+    //                    pos: 'top-right',
+    //                    text: 'there is some problem right now.please try again later.',
+    //                    actionTextColor: '#fff',
+    //                    backgroundColor: '#ea1c1c'
+    //                });
 
+    //            }
+    //            BindCart(booking, total, tax);
+    //        }
+    //    })
+
+    //})
+
+    $(document.body).on("click", ".addOnInput", function () {
+        var ele = $(this);
+        if (ele.parent().parent().find("input.addOnInput").hasClass("active")) {
+            ele.parent().parent().find("input.addOnInput").removeClass("active");
+            ele.parent().parent().parent().removeClass("shadow");
+        }
+        else {
+            ele.parent().parent().find("input.addOnInput").addClass("active");
+            ele.parent().parent().parent().addClass("shadow");
+
+        }
+    });
+    $(document.body).on("click", ".newAddOnWrap img", function () {
+        var ele = $(this);
+        if (ele.parent().parent().find("input.addOnInput").hasClass("active")) {
+            ele.parent().parent().find("input.addOnInput").removeClass("active");
+            ele.parent().parent().removeClass("shadow");
+        }
+        else {
+            ele.parent().parent().find("input.addOnInput").addClass("active");
+            ele.parent().parent().addClass("shadow");
+
+        }
+    });
 
 });
 function BindCart(Bid, total, tax) {
@@ -211,6 +280,7 @@ function CheckSelectedProducts(PGuid, Qty) {
     var product = $('div.product-box[data-id="' + PGuid + '"]');
     var hasqty = product.find("#qty").length === 0;
     product.find('input[type="checkbox"]').prop('checked', true);
+    product.find('input[type="checkbox"]').addClass('active');
     if (!hasqty) {
         product.find("#qty").val(Qty);
     }

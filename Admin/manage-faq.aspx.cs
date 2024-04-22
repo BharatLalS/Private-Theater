@@ -51,7 +51,7 @@ public partial class Admin_manage_faq : System.Web.UI.Page
                                                 <td>" + FAQ.FAQQuestion + @"</td>
                                                 <td><a href='javascript:void:(0);' data-bs-toggle='tooltip' data-placement='top' title='Added By : " + FAQ.AddedBy + @"' >" + FAQ.AddedOn.ToString("dd/MMM/yyyy") + @"</a></td>  
                                                 <td class='text-center'>
-                                                    <a href='manage-FAQs.aspx?id=" + FAQ.Id + @"' class='bs-tooltip text-info fs-18' data-id='" + FAQ.Id + @"' data-toggle='tooltip' data-placement='top' title='Edit' data-original-title='Edit'>
+                                                    <a href='manage-faq.aspx?id=" + FAQ.Id + @"' class='bs-tooltip text-info fs-18' data-id='" + FAQ.Id + @"' data-toggle='tooltip' data-placement='top' title='Edit' data-original-title='Edit'>
                                                        <i class='mdi mdi-pencil'></i></a>
                                                     <a href='javascript:void(0);' class='bs-tooltip deleteItem warning confirm text-danger fs-18' data-id='" + FAQ.Id + @"' data-toggle='tooltip' data-placement='top' title='Delete' data-original-title='Delete'>
                                                        <i class='mdi mdi-delete-forever'></i></a>

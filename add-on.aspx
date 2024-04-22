@@ -1,268 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="./MasterPage.master" AutoEventWireup="true" CodeFile="add-on.aspx.cs" Inherits="add_on" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style>
-        .default-header-section .header-bottom .menu-item-list ul li:nth-child(2) a {
-            color: #f5e860;
-        }
-
-        .nav-link {
-            position: relative;
-            display: inline-block;
-            background: #fff;
-            height: 40px;
-            padding: 0 20px;
-            margin-bottom: 0px;
-            margin-right: 10px;
-            cursor: pointer;
-            border: transparent;
-            font-size: 14px;
-            font-weight: 500;
-            color: #000;
-        }
-
-        .pl-50 {
-            padding-left: 30px;
-            position: sticky;
-            top: 0;
-        }
-
-        .blog-section .blog-layout-menubar li a:hover, .blog-section .blog-layout-menubar li .active {
-            color: #fff !important;
-        }
-
-        .blog-section .blog-layout-menubar li:hover {
-            color: #fff !important;
-        }
-
-        .nav-tabs .nav-link {
-            border: none;
-            border-top-left-radius: unset;
-            border-top-right-radius: unset;
-        }
-
-        .nav-item {
-            margin-right: 20px;
-        }
-
-        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-            background: #5a2d9d;
-            color: #fff;
-        }
-
-        .nav-tabs {
-            border: none;
-            border-radius: 50px;
-        }
-
-        .tile {
-            height: 300px;
-            width: 100%;
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        /*  .tile.new-hei {
-                height: 250px;
-                width: 170px;
-                position: relative;
-            }*/
-
-        input[type="checkbox"] {
-            -webkit-appearance: none;
-            position: relative;
-            height: 100%;
-            width: 100%;
-            background-color: #ffffff;
-            border-radius: 10px;
-            cursor: pointer;
-            outline: none;
-        }
-
-            input[type="checkbox"]:after {
-                position: absolute;
-                font-family: "Font Awesome 5 Free";
-                font-weight: 400;
-                content: "\f111";
-                font-size: 22px;
-                top: 10px;
-                left: 10px;
-                color: #e2e6f3;
-            }
-
-            input[type="checkbox"]:checked {
-                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            }
-
-                input[type="checkbox"]:checked:after {
-                    font-weight: 900;
-                    content: "\f058";
-                    color: #ffffff;
-                }
-
-        label {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: center;
-            gap: 12px;
-            height: 80%;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            cursor: pointer;
-        }
-
-            label .fas {
-                font-size: 60px;
-                color: #2c2c51;
-            }
-
-        input[type="checkbox"]:checked + label .fas {
-            animation: grow 0.5s;
-        }
-
-        @keyframes grow {
-            50% {
-                font-size: 80px;
-            }
-        }
-
-        label h6 {
-            font-size: 15px;
-            font-weight: 400;
-            color: #7b7b93;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus,
-        .blog-section .blog-grid-item:hover,
-        .event-section .event-list-item:hover,
-        .event-section .event-grid-item:hover,
-        .event-section .tab-content .event-item:hover,
-        .event-section .tab-content .event-item2:hover,
-        .homepage3 .event-expertise-section .link-btn a,
-        .event-expertise-section2 .expertise-item:hover,
-        .main-carousel2 .item .slider-content .details-btn,
-        .sticky-header-section .header-bottom .user-search-btn-group ul li > a,
-        .upcomming-event-section2 .comming-event-item .event-content .details-btn,
-        .upcomming-event-section3 .comming-event-item .event-content .details-btn,
-        .sticky-header-section .header-bottom .user-search-btn-group ul li > a,
-        .slide-section .main-carousel1 .item .slider-item-content .link-groups .start-btn,
-        .scrolltop-fixed-header-section .header-bottom .user-search-btn-group ul li > a,
-        .scrolltop-fixed-header-section .header-bottom .user-search-btn-group ul li > a,
-        .event-details-section .reviewer-comment-wrapper .comment-bar .comment-content .meta-wrapper .btn-group-right ul li a:hover {
-            border-color: unset !important;
-        }
-
-        .custom-btn {
-            z-index: 1;
-            font-weight: 700;
-            overflow: hidden;
-            padding: 8px 30px;
-            text-align: center;
-            position: relative;
-            border-radius: 50px;
-            margin-top: 1.5rem !important;
-            display: -webkit-inline-box;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            font-size: 16px;
-            text-transform: capitalize;
-            background: #f5e860;
-            color: #ffffff !important;
-            -webkit-box-shadow: unset !important;
-            box-shadow: unset !important;
-        }
-
-            .custom-btn:hover {
-                background: unset !important;
-            }
-
-        .input-group_1 {
-            margin-top: 1.5rem;
-            height: 45px;
-            width: 100%;
-            line-height: 45px;
-            border-radius: 50px !important;
-            border: 1px solid #e9e9e9 !important;
-            position: relative;
-            outline: none;
-            margin-bottom: 16px !important;
-        }
-
-            .input-group_1 i {
-                position: absolute;
-                top: 15px;
-                left: 20px;
-            }
-
-            .input-group_1 input {
-                height: 45px;
-                width: 100%;
-                padding-left: 50px;
-                border: 1px solid #5a2d9d !important;
-                outline: none;
-                border-radius: 50px !important;
-                background-color: transparent;
-            }
-
-        textarea {
-            background: #fff;
-        }
-
-        .order-summary-table {
-            margin-top: 30px;
-            padding: 30px;
-            border-radius: 3px;
-            background-color: #ffffff;
-        }
-
-            .order-summary-table .table {
-                margin: 0px;
-            }
-
-                .order-summary-table .table tr {
-                    border: none;
-                }
-
-
-
-                .order-summary-table .table tr {
-                    border: none;
-                }
-
-                .order-summary-table .table .tfooter {
-                    color: #ffffff;
-                    text-transform: capitalize;
-                    background: -webkit-gradient(linear, left top, right bottom, from(#ff3e00), to(#ffbe30));
-                    background: -webkit-linear-gradient(top left, #ff3e00, #ffbe30);
-                    background: -o-linear-gradient(top left, #ff3e00, #ffbe30);
-                    background: linear-gradient(to bottom right, #ff3e00, #ffbe30);
-                }
-
-                .order-summary-table .table tr th, .booking-section .booking-content-wrapper .order-summary-table .table tr td {
-                    border: 0px;
-                    padding: 5px;
-                    text-align: left;
-                    background: #ddd;
-                    border-bottom: 1px solid #ddd;
-                    color: #000;
-                }
-
-        td {
-            text-align: left;
-            border-bottom: 1px solid #ddd !important;
-        }
-
-        .booking-section .booking-content-wrapper .order-summary-table .table thead tr th {
-            color: #000;
-            TEXT-ALIGN: left;
-            font-size: 16px;
-            text-transform: capitalize;
-        }
-    </style>
+    <link href="/assets/css/addon.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section id="breadcrumb-section" class="breadcrumb-section clearfix">
@@ -271,22 +10,15 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-md-12 col-sm-12">
-
-                            <!-- breadcrumb-title - start -->
                             <div class="breadcrumb-title text-center mb-20">
                                 <h2 class="big-title">Add  <strong>on</strong></h2>
                             </div>
-                            <!-- breadcrumb-title - end -->
-
-                            <!-- breadcrumb-list - start -->
                             <div class="breadcrumb-list">
                                 <ul>
                                     <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Add on</li>
                                 </ul>
                             </div>
-                            <!-- breadcrumb-list - end -->
-
                         </div>
                     </div>
                 </div>
@@ -299,7 +31,6 @@
                 <div class="col-lg-8">
                     <div class="blog-wrapper">
                         <div class="layout-btn-group">
-                            <!-- <h3 class="float-left">change layout</h3> -->
                             <ul class="nav blog-layout-menubar float-right">
                                 <%= StrAddOnCategory%>
                             </ul>
@@ -330,20 +61,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cartTable">
-                                        <%-- <tr class='bg-gray-light'>
-                                            <td scope='row'>Customizations	</td>
-                                            <td>Baby Shower	</td>
-                                            <td>1</td>
-                                            <td>₹150.00</td>
-                                            <td>₹150.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">Customizations</td>
-                                            <td>Anniversary</td>
-                                            <td>2</td>
-                                            <td>₹5.00</td>
-                                            <td>₹5.00</td>
-                                        </tr>--%>
+                                    
                                     </tbody>
                                 </table>
 
@@ -530,6 +248,5 @@
     <label id="lbltax" class="d-none lbltax"><%=StrTax%></label>
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/pages/add-ons.js"></script>
-
 </asp:Content>
 
